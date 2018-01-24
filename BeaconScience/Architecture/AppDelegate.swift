@@ -14,15 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let center = UNUserNotificationCenter.current()
+        center.delegate = NotificationCenterX.shared
         center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             // Enable or disable features based on authorization
         }
         
-        registerNoti(timeInterval: 10, title: "hahahah", body: "lalalalala")
         
         return true
     }

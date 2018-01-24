@@ -26,6 +26,10 @@ class ChatRoomVC: UITableViewController {
             index += 1
         }
         
+
+        NotificationCenter.default.addObserver(forName: notiName(name: "testNoti"), object: nil, queue: nil) { (theNoti) in
+            print("lolo", theNoti)
+        }
         
         
         
@@ -36,6 +40,10 @@ class ChatRoomVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    func notiReceived(noti: NSNotification) {
+        print("haha", noti.name)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

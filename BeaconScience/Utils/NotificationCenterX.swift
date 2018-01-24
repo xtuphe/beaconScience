@@ -26,3 +26,31 @@ public func registerNoti(timeInterval:TimeInterval, title:String, body:String){
     let center = UNUserNotificationCenter.current()
     center.add(request, withCompletionHandler: nil)
 }
+
+public func removeNoti(identifier:String){
+    let center = UNUserNotificationCenter.current()
+    center.removePendingNotificationRequests(withIdentifiers: [identifier])
+}
+
+public func removeAllNoti(){
+    let center = UNUserNotificationCenter.current()
+    center.removeAllPendingNotificationRequests()
+}
+
+public class NotificationCenterX: NSObject, UNUserNotificationCenterDelegate {
+    public static let shared = NotificationCenterX.init()
+
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // 通知转发
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "testNoti"), object: notification)
+        print("Will present : foreground")
+    }
+    
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("Did receive : background")
+    }
+}
+
+public func notiName(name: String) -> Notification.Name {
+    return NSNotification.Name(rawValue: name)
+}
