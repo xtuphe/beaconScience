@@ -120,10 +120,50 @@ open class MessageModel: NSObject {
     }
 }
 
-public func transformModel(rawString:String) -> Array<MessageModel> {
-    let rawArray = (rawString as NSString).components(separatedBy: "\n")
+public struct UserDetail {
+    var name : String
+    var male : Bool
+    var age : Int
+    var job : String
+}
+
+public struct InfoModel {
+    var event : String?
+    var name : String?
+    var male : Bool?
+    var age : Int?
+    var job : String?
+
+    init(rawString:String) {
+        let rawArray = rawString.components(separatedBy: "\n")
+        for singleLine in rawArray {
+            if (singleLine == ""){
+                continue//过滤空行
+            }
+            let convertedStr = rawString.replacingOccurrences(of: "：", with: ":")
+            let singleLineArray = convertedStr.components(separatedBy: ":")
+            let prefix = singleLineArray.first
+            let surfix = singleLineArray.last
+            if prefix == "name" {
+                self.name = surfix!
+            } else if prefix == "event" {
+                self.event = surfix
+            } else if prefix == "male" {
+                self.male = ["YES", "true", "1", "yes", "TRUE"] .contains(surfix!) ? true : false
+            } else if prefix == "job" {
+                self.job = surfix
+            } else if prefix == "age" {
+                self.age = (surfix! as NSString).integerValue
+            }
+        }
+    }
+}
+
+public func transformModel(rawString:NSString) -> Array<Any> {
+    let rawArray = rawString.components(separatedBy: "\n")
+    
     var index = 0
-    var resultArray = Array<MessageModel>()
+    var resultArray = Array<Any>()
     for singleLine in rawArray {
         if (singleLine == ""){
             continue//过滤空行
@@ -135,3 +175,8 @@ public func transformModel(rawString:String) -> Array<MessageModel> {
     return resultArray
 }
 
+struct MessageViewModel {
+    var name : String
+    var content : String
+    var avatar : String
+}

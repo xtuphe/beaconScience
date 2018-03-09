@@ -16,15 +16,19 @@ public func registerNoti(timeInterval:TimeInterval, title:String, body:String){
     content.body = NSString.localizedUserNotificationString(forKey:
         body, arguments: nil)
     
-    // Deliver the notification in five seconds.
+    
     content.sound = UNNotificationSound.default()
     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval,
                                                     repeats: false)
     
     // Schedule the notification.
     let request = UNNotificationRequest(identifier: "FiveSecond", content: content, trigger: trigger)
+    
+    
     let center = UNUserNotificationCenter.current()
-    center.add(request, withCompletionHandler: nil)
+    center.add(request) { (error) in
+        print("Notification Registered", error as Any)
+    }
 }
 
 public func removeNoti(identifier:String){
@@ -41,14 +45,19 @@ public class NotificationCenterX: NSObject, UNUserNotificationCenterDelegate {
     public static let shared = NotificationCenterX.init()
 
     public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        // 通知转发
+        // 前台通知转发
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "testNoti"), object: notification)
         print("Will present : foreground")
     }
     
     public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // 后台通知点击时触发
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "testNoti"), object: response)
         print("Did receive : background")
     }
+    
+    
+    
 }
 
 public func notiName(name: String) -> Notification.Name {

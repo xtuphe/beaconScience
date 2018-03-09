@@ -18,12 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let center = UNUserNotificationCenter.current()
         center.delegate = NotificationCenterX.shared
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-            // Enable or disable features based on authorization
+        
+        center.requestAuthorization(options: []) { (granted, error) in
+            if !granted {
+                print("Needs granted")
+            }
         }
         
+        MessageCenter.shared.timer?.fire()
         
         return true
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
