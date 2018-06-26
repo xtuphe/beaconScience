@@ -9,6 +9,22 @@
 import UIKit
 import UserNotifications
 
+/*
+ firstTime
+ load boss
+ list add boss
+ 
+ 
+ (检查新内容)
+ load list
+ load conversation
+    load story
+    load line
+    timer
+ 
+ 
+ */
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

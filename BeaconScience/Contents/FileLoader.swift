@@ -14,3 +14,17 @@ public func loadContentFile(name:String) -> NSString {
     let fileContent = NSData.init(contentsOf: fileUrl)
     return NSString(data: fileContent! as Data, encoding: String.Encoding.utf8.rawValue)!
 }
+
+/*
+ 需要保存的数据:
+ Chat List
+ Chats
+ 
+ Line in story
+ User choices
+ 
+ Cash
+ Progress
+ Title
+ 
+ */

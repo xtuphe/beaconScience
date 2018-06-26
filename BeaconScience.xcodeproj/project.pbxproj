@@ -20,13 +20,13 @@
 		DA1D5E63200F307200BEE807 /* Empty.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA1D5E62200F307200BEE807 /* Empty.txt */; };
 		DA1D5E6A2015F28C00BEE807 /* NotificationCenterX.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D5E692015F28C00BEE807 /* NotificationCenterX.swift */; };
 		DA27C3DD2029A90C005DD70C /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA27C3DC2029A90C005DD70C /* Defaults.swift */; };
-		DA27C3E1202D7A31005DD70C /* XTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA27C3E0202D7A31005DD70C /* XTimer.swift */; };
 		DA855FA7201F2076006E820F /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA855FA6201F2076006E820F /* FileLoader.swift */; };
-		DA855FA920200C85006E820F /* ChatTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA855FA820200C85006E820F /* ChatTimer.swift */; };
 		DA855FAB20284A40006E820F /* MessageCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA855FAA20284A40006E820F /* MessageCenter.swift */; };
 		DA9C31A52043F68300E49915 /* ChatUserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C31A32043F68300E49915 /* ChatUserListCell.swift */; };
 		DA9C31A62043F68300E49915 /* ChatUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9C31A42043F68300E49915 /* ChatUserListCell.xib */; };
 		DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C31A72043F8D200E49915 /* IBInspectable.swift */; };
+		DAA17BE020DDF59400B9B1F7 /* ChatListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA17BDF20DDF59400B9B1F7 /* ChatListDataProvider.swift */; };
+		DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF3ADA205284800084DE1F /* Repeater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,13 +45,13 @@
 		DA1D5E62200F307200BEE807 /* Empty.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Empty.txt; sourceTree = "<group>"; };
 		DA1D5E692015F28C00BEE807 /* NotificationCenterX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterX.swift; sourceTree = "<group>"; };
 		DA27C3DC2029A90C005DD70C /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
-		DA27C3E0202D7A31005DD70C /* XTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTimer.swift; sourceTree = "<group>"; };
 		DA855FA6201F2076006E820F /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
-		DA855FA820200C85006E820F /* ChatTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTimer.swift; sourceTree = "<group>"; };
 		DA855FAA20284A40006E820F /* MessageCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenter.swift; sourceTree = "<group>"; };
 		DA9C31A32043F68300E49915 /* ChatUserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserListCell.swift; sourceTree = "<group>"; };
 		DA9C31A42043F68300E49915 /* ChatUserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUserListCell.xib; sourceTree = "<group>"; };
 		DA9C31A72043F8D200E49915 /* IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBInspectable.swift; sourceTree = "<group>"; };
+		DAA17BDF20DDF59400B9B1F7 /* ChatListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListDataProvider.swift; sourceTree = "<group>"; };
+		DAEF3ADA205284800084DE1F /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +85,12 @@
 			isa = PBXGroup;
 			children = (
 				DA1D5E64200F32E000BEE807 /* Architecture */,
-				DA1D5E68200F33A400BEE807 /* Utils */,
-				DA1D5E67200F338700BEE807 /* TimeLine */,
+				DAEF3AD82052761A0084DE1F /* Contents */,
+				DAA17BDE20DDEB0800B9B1F7 /* ChatList */,
 				DA1D5E66200F337A00BEE807 /* ChatRoom */,
+				DA1D5E67200F338700BEE807 /* TimeLine */,
+				DAEF3AD9205276A00084DE1F /* MiniGames */,
+				DA1D5E68200F33A400BEE807 /* Utils */,
 				DA1D5E5B200F280D00BEE807 /* StoryLines */,
 				DA1D5E65200F331A00BEE807 /* Resources */,
 			);
@@ -146,15 +149,36 @@
 		DA1D5E68200F33A400BEE807 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DAEF3ADA205284800084DE1F /* Repeater.swift */,
+				DA27C3DC2029A90C005DD70C /* Defaults.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DAA17BDE20DDEB0800B9B1F7 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				DAA17BDF20DDF59400B9B1F7 /* ChatListDataProvider.swift */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		DAEF3AD82052761A0084DE1F /* Contents */ = {
+			isa = PBXGroup;
+			children = (
 				DA1D5E59200C999200BEE807 /* StringTransformer.swift */,
 				DA1D5E692015F28C00BEE807 /* NotificationCenterX.swift */,
 				DA855FA6201F2076006E820F /* FileLoader.swift */,
-				DA855FA820200C85006E820F /* ChatTimer.swift */,
 				DA855FAA20284A40006E820F /* MessageCenter.swift */,
-				DA27C3DC2029A90C005DD70C /* Defaults.swift */,
-				DA27C3E0202D7A31005DD70C /* XTimer.swift */,
 			);
-			path = Utils;
+			path = Contents;
+			sourceTree = "<group>";
+		};
+		DAEF3AD9205276A00084DE1F /* MiniGames */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MiniGames;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA9C31A52043F68300E49915 /* ChatUserListCell.swift in Sources */,
-				DA27C3E1202D7A31005DD70C /* XTimer.swift in Sources */,
+				DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */,
 				DA1D5E57200C851200BEE807 /* ChatBaseCell.swift in Sources */,
 				DA1D5E54200C83CC00BEE807 /* MeVC.swift in Sources */,
 				DA855FA7201F2076006E820F /* FileLoader.swift in Sources */,
@@ -242,9 +266,9 @@
 				DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */,
 				DA1D5E5A200C999200BEE807 /* StringTransformer.swift in Sources */,
 				DA855FAB20284A40006E820F /* MessageCenter.swift in Sources */,
-				DA855FA920200C85006E820F /* ChatTimer.swift in Sources */,
 				DA1D5E52200C833A00BEE807 /* TimeLineVC.swift in Sources */,
 				DA1D5E6A2015F28C00BEE807 /* NotificationCenterX.swift in Sources */,
+				DAA17BE020DDF59400B9B1F7 /* ChatListDataProvider.swift in Sources */,
 				DA27C3DD2029A90C005DD70C /* Defaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

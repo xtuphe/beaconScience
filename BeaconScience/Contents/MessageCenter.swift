@@ -12,7 +12,6 @@ class MessageCenter: NSObject {
     public static let shared = MessageCenter.init()
     var timer : Timer?
     var contentArray : Array<MessageModel> = []
-    var dataArray : Array<Any> = []
     var index = 0
     var savedCount = 0
     var secondsLeft = 0
@@ -20,8 +19,8 @@ class MessageCenter: NSObject {
     
     override init() {
         super.init()
-        setupTimer()
-        
+//        setupTimer()
+        getContents(fileName: "Empty")
     }
     
     func setupTimer(){
@@ -32,9 +31,9 @@ class MessageCenter: NSObject {
     
     func getContents(fileName: String){
         let content = loadContentFile(name: fileName)
-        var theArray = transformModel(rawString: content)
-        self.infoModel = theArray.first as! InfoModel
-        self.contentArray = theArray.removeFirst() as! Array<MessageModel>
+        var transformedArray = transformModel(rawString: content)
+        self.infoModel = transformedArray[0] as! InfoModel
+        self.contentArray = Array(transformedArray[1..<transformedArray.count]) as! Array<MessageModel>
 //        checkSaves()
     }
     

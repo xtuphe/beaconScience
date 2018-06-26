@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jls-gI-wdu">
                         <rect key="frame" x="40" y="10" width="270" height="75.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmb-zK-Ej0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmb-zK-Ej0">
                                 <rect key="frame" x="10" y="10" width="250" height="55.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -54,6 +54,10 @@
                     <constraint firstItem="Jls-gI-wdu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="qYA-jk-LK9"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImageView" destination="6Ta-X1-B8S" id="rjQ-qz-hwH"/>
+                <outlet property="contentLabel" destination="Fmb-zK-Ej0" id="bBO-c0-mGN"/>
+            </connections>
             <point key="canvasLocation" x="41" y="52"/>
         </tableViewCell>
     </objects>

@@ -121,20 +121,19 @@ open class MessageModel: NSObject {
 }
 
 public struct UserDetail {
-    var name : String
-    var male : Bool
-    var age : Int
-    var job : String
-}
-
-public struct InfoModel {
-    var event : String?
     var name : String?
     var male : Bool?
     var age : Int?
     var job : String?
+    var avatar : String?
+}
+
+public struct InfoModel {
+    var user : UserDetail
+    var event : String?
 
     init(rawString:String) {
+        self.user = UserDetail.init()
         let rawArray = rawString.components(separatedBy: "\n")
         for singleLine in rawArray {
             if (singleLine == ""){
@@ -145,15 +144,15 @@ public struct InfoModel {
             let prefix = singleLineArray.first
             let surfix = singleLineArray.last
             if prefix == "name" {
-                self.name = surfix!
+                self.user.name = surfix
             } else if prefix == "event" {
                 self.event = surfix
             } else if prefix == "male" {
-                self.male = ["YES", "true", "1", "yes", "TRUE"] .contains(surfix!) ? true : false
+                self.user.male = ["YES", "true", "1", "yes", "TRUE"] .contains(surfix!) ? true : false
             } else if prefix == "job" {
-                self.job = surfix
+                self.user.job = surfix
             } else if prefix == "age" {
-                self.age = (surfix! as NSString).integerValue
+                self.user.age = (surfix! as NSString).integerValue
             }
         }
     }
@@ -168,15 +167,15 @@ public func transformModel(rawString:NSString) -> Array<Any> {
         if (singleLine == ""){
             continue//过滤空行
         }
-        let model = MessageModel.init(rawStr: singleLine, index: index)
-        resultArray.append(model)
+        if index == 0 {
+            let model = InfoModel.init(rawString: singleLine)
+            resultArray.append(model)
+        } else {
+            let model = MessageModel.init(rawStr: singleLine, index: index)
+            resultArray.append(model)
+        }
         index += 1
     }
     return resultArray
 }
 
-struct MessageViewModel {
-    var name : String
-    var content : String
-    var avatar : String
-}

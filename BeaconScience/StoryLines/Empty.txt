@@ -1,4 +1,4 @@
-user: event:
+name:Xtuphe event:welcome job:welcomer age:18 job:Programer male:false avatar:Avatar
 Greetings__m0
 This is the tutorial
 In this software you'll see choices like this

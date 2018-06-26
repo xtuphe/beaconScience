@@ -9,6 +9,14 @@
 import Foundation
 import UserNotifications
 
+/*
+ 聊天页面内: 轮询, 有新消息直接显示
+ 应用内: 通知List
+ 应用歪: 通知
+ 
+ */
+
+
 public func registerNoti(timeInterval:TimeInterval, title:String, body:String){
     let content = UNMutableNotificationContent()
     content.title = NSString.localizedUserNotificationString(forKey:

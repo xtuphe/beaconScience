@@ -49,6 +49,10 @@
                     <constraint firstAttribute="bottom" secondItem="6P1-uw-i6b" secondAttribute="bottom" id="uKG-BU-ytq"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="avatarImageView" destination="6P1-uw-i6b" id="X33-an-289"/>
+                <outlet property="redDot" destination="5VB-28-hl6" id="naP-gB-ZLm"/>
+            </connections>
             <point key="canvasLocation" x="-90" y="62"/>
         </tableViewCell>
     </objects>
