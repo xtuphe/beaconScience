@@ -13,14 +13,14 @@ class ChatUserListCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var redDot: UIView!
     
-    open var model : InfoModel?
+    var model : InfoModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    open func refresh(){
+    func refresh(){
         self.avatarImageView.image = UIImage.init(imageLiteralResourceName: "Avatar")
     }
     

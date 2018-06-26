@@ -9,7 +9,7 @@
 import UIKit
 
 class MessageCenter: NSObject {
-    public static let shared = MessageCenter.init()
+    static let shared = MessageCenter.init()
     var timer : Timer?
     var contentArray : Array<MessageModel> = []
     var index = 0

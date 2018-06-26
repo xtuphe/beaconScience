@@ -8,17 +8,17 @@
 
 import UIKit
 
-public enum ChatActionType : NSInteger{
+enum ChatActionType : NSInteger{
     case Property = 0
     case Game
 }
 
-open class ActionModel : NSObject {
-    open var type : ChatActionType?
-    open var gameName : String?
-    open var mathModel : MathModel?
+class ActionModel : NSObject {
+    var type : ChatActionType?
+    var gameName : String?
+    var mathModel : MathModel?
     
-    public init(rawStr:String){
+    init(rawStr:String){
         let prefix = rawStr.first
         let content = String(rawStr.dropFirst())
         if prefix == "0" {
@@ -31,12 +31,12 @@ open class ActionModel : NSObject {
     }
 }
 
-open class ConditionModel : NSObject {
-    open var name : String?
-    open var theOperator : String?
-    open var value : String?
+class ConditionModel : NSObject {
+    var name : String?
+    var theOperator : String?
+    var value : String?
     
-    public init(rawStr:String){
+    init(rawStr:String){
         let operators = [">=", "<=", ">", "<", "!=", "="]
         for oprtr in operators {
             if rawStr.contains(oprtr) {
@@ -50,12 +50,12 @@ open class ConditionModel : NSObject {
     }
 }
 
-open class MathModel : NSObject {
-    open var name : String?
-    open var theOperator : String?
-    open var value : String?
+class MathModel : NSObject {
+    var name : String?
+    var theOperator : String?
+    var value : String?
     
-    public init(rawStr:String){
+    init(rawStr:String){
         let operators = ["+", "-", "*", "/", "%"]
         for oprtr in operators {
             if rawStr.contains(oprtr) {
@@ -77,18 +77,18 @@ open class MathModel : NSObject {
  g gap      与下条间隔时间
  */
 
-open class MessageModel: NSObject {
-    open var index : NSInteger?
-    open var mark : NSInteger?
-    open var content : String?
-    open var choice : Bool?
-    open var gap : TimeInterval?
-    open var actions : Array<ActionModel>?
-    open var conditions : Array<ConditionModel>?
-    open var date : String?
-    open var jump : NSInteger?
+class MessageModel: NSObject {
+    var index : NSInteger?
+    var mark : NSInteger?
+    var content : String?
+    var choice : Bool?
+    var gap : TimeInterval?
+    var actions : Array<ActionModel>?
+    var conditions : Array<ConditionModel>?
+    var date : String?
+    var jump : NSInteger?
     
-    public init(rawStr:String, index: NSInteger) {
+    init(rawStr:String, index: NSInteger) {
         self.index = index
         var targetStr = rawStr
         if rawStr.hasPrefix("* ") {
@@ -120,7 +120,7 @@ open class MessageModel: NSObject {
     }
 }
 
-public struct UserDetail {
+struct UserDetail {
     var name : String?
     var male : Bool?
     var age : Int?
@@ -128,7 +128,7 @@ public struct UserDetail {
     var avatar : String?
 }
 
-public struct InfoModel {
+struct InfoModel {
     var user : UserDetail
     var event : String?
 
@@ -158,7 +158,7 @@ public struct InfoModel {
     }
 }
 
-public func transformModel(rawString:NSString) -> Array<Any> {
+func transformModel(rawString:NSString) -> Array<Any> {
     let rawArray = rawString.components(separatedBy: "\n")
     
     var index = 0

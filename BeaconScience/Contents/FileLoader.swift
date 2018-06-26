@@ -8,7 +8,7 @@
 
 import UIKit
 
-public func loadContentFile(name:String) -> NSString {
+func loadContentFile(name:String) -> NSString {
     let filePath = Bundle.main.path(forResource: name, ofType: "txt")
     let fileUrl = URL(fileURLWithPath: filePath!)
     let fileContent = NSData.init(contentsOf: fileUrl)

@@ -13,7 +13,7 @@ class ChatBaseCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     
-    public var model : MessageModel?
+    var model : MessageModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
