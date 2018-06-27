@@ -41,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        MessageCenter.shared.timer?.fire()
         
         return true
         

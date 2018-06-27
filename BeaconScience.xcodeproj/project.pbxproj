@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA0CFAA620E36AC60028861B /* ChatChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CFAA420E36AC60028861B /* ChatChoiceCell.swift */; };
+		DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA0CFAA520E36AC60028861B /* ChatChoiceCell.xib */; };
 		DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D5E35200742B000BEE807 /* AppDelegate.swift */; };
 		DA1D5E3D200742B000BEE807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA1D5E3B200742B000BEE807 /* Main.storyboard */; };
 		DA1D5E3F200742B000BEE807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1D5E3E200742B000BEE807 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA0CFAA420E36AC60028861B /* ChatChoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatChoiceCell.swift; sourceTree = "<group>"; };
+		DA0CFAA520E36AC60028861B /* ChatChoiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatChoiceCell.xib; sourceTree = "<group>"; };
 		DA1D5E32200742B000BEE807 /* BeaconScience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconScience.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1D5E35200742B000BEE807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA1D5E3C200742B000BEE807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +69,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA0CFAA820E377090028861B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DA0CFAA420E36AC60028861B /* ChatChoiceCell.swift */,
+				DA0CFAA520E36AC60028861B /* ChatChoiceCell.xib */,
+				DA1D5E55200C851200BEE807 /* ChatBaseCell.swift */,
+				DA1D5E56200C851200BEE807 /* ChatBaseCell.xib */,
+				DA9C31A32043F68300E49915 /* ChatUserListCell.swift */,
+				DA9C31A42043F68300E49915 /* ChatUserListCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		DA1D5E29200742B000BEE807 = {
 			isa = PBXGroup;
 			children = (
@@ -128,10 +145,7 @@
 		DA1D5E66200F337A00BEE807 /* ChatRoom */ = {
 			isa = PBXGroup;
 			children = (
-				DA1D5E55200C851200BEE807 /* ChatBaseCell.swift */,
-				DA1D5E56200C851200BEE807 /* ChatBaseCell.xib */,
-				DA9C31A32043F68300E49915 /* ChatUserListCell.swift */,
-				DA9C31A42043F68300E49915 /* ChatUserListCell.xib */,
+				DA0CFAA820E377090028861B /* Cells */,
 				DA1D5E4D200857E300BEE807 /* ChatRoomVC.swift */,
 			);
 			path = ChatRoom;
@@ -244,6 +258,7 @@
 				DA1D5E42200742B000BEE807 /* LaunchScreen.storyboard in Resources */,
 				DA1D5E3F200742B000BEE807 /* Assets.xcassets in Resources */,
 				DA1D5E3D200742B000BEE807 /* Main.storyboard in Resources */,
+				DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */,
 				DA9C31A62043F68300E49915 /* ChatUserListCell.xib in Resources */,
 				DA1D5E63200F307200BEE807 /* Empty.txt in Resources */,
 			);
@@ -269,6 +284,7 @@
 				DA1D5E52200C833A00BEE807 /* TimeLineVC.swift in Sources */,
 				DA1D5E6A2015F28C00BEE807 /* NotificationCenterX.swift in Sources */,
 				DAA17BE020DDF59400B9B1F7 /* ChatListDataProvider.swift in Sources */,
+				DA0CFAA620E36AC60028861B /* ChatChoiceCell.swift in Sources */,
 				DA27C3DD2029A90C005DD70C /* Defaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

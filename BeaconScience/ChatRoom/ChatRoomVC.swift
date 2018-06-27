@@ -13,8 +13,7 @@ class ChatRoomVC: UIViewController {
     @IBOutlet weak var rightTableView: UITableView!
     var leftDelegate = LeftTableViewDelegate()
     var rightDelegate = RightTableViewDelegate()
-    var message = MessageCenter.shared
-    
+    var messageCenter = MessageCenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +21,6 @@ class ChatRoomVC: UIViewController {
         leftTableView.dataSource = leftDelegate
         rightTableView.delegate = rightDelegate
         rightTableView.dataSource = rightDelegate
-        rightDelegate.data = message.contentArray
         leftTableView.rowHeight = UITableViewAutomaticDimension
         rightTableView.rowHeight = UITableViewAutomaticDimension
         leftTableView.estimatedRowHeight = 300
@@ -31,8 +29,11 @@ class ChatRoomVC: UIViewController {
         rightTableView.separatorStyle = UITableViewCellSeparatorStyle.none
         leftTableView.register(UINib.init(nibName: "ChatUserListCell", bundle: nil), forCellReuseIdentifier: "ChatUserListCell")
         rightTableView.register(UINib.init(nibName: "ChatBaseCell", bundle: nil), forCellReuseIdentifier: "ChatBaseCell")
+        rightTableView.register(UINib.init(nibName: "ChatChoiceCell", bundle: nil), forCellReuseIdentifier: "ChatChoiceCell")
         setupNotification()
-        
+        messageCenter.delegate = self
+        messageCenter.timer.fire()
+        rightDelegate.messageCenter = messageCenter
     }
     
     func setupNotification(){
@@ -52,6 +53,13 @@ func listData() -> Array<InfoModel> {
     let listArray = [welcomer]
     return listArray
     
+}
+
+extension ChatRoomVC: NewMessageDelegate {
+    func newMessageReceived(_ message: MessageModel) {
+        rightDelegate.data.append(message)
+        rightTableView.reloadData()
+    }
 }
 
 class LeftTableViewDelegate: NSCoder, UITableViewDelegate, UITableViewDataSource {
@@ -75,17 +83,29 @@ class LeftTableViewDelegate: NSCoder, UITableViewDelegate, UITableViewDataSource
 }
 
 class RightTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
-    var data : Array<MessageModel>?
+    var data : [MessageModel] = []
+    weak var messageCenter : MessageCenter?
+    var currentName = "Intro"
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data!.count
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatBaseCell")! as! ChatBaseCell
-        cell.model = data![indexPath.row]
-        cell.refresh()
-        return cell
+        let model = data[indexPath.row]
+        if model.choice {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatChoiceCell")! as! ChatChoiceCell
+            cell.model = model
+            cell.messageCenter = messageCenter
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatBaseCell")! as! ChatBaseCell
+            cell.model = model
+            cell.refresh()
+            return cell
+        }
+        
+        
     }
     
     

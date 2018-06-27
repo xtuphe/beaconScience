@@ -8,12 +8,12 @@
 
 import UIKit
 
-enum ChatActionType : NSInteger{
-    case Property = 0
+enum ChatActionType{
+    case Property
     case Game
 }
 
-class ActionModel : NSObject {
+class ActionModel {
     var type : ChatActionType?
     var gameName : String?
     var mathModel : MathModel?
@@ -22,16 +22,16 @@ class ActionModel : NSObject {
         let prefix = rawStr.first
         let content = String(rawStr.dropFirst())
         if prefix == "0" {
-            self.type = ChatActionType.Property
-            self.mathModel = MathModel.init(rawStr: content)
+            type = ChatActionType.Property
+            mathModel = MathModel.init(rawStr: content)
         } else if prefix == "1" {
-            self.type = ChatActionType.Game
-            self.gameName = content
+            type = ChatActionType.Game
+            gameName = content
         }
     }
 }
 
-class ConditionModel : NSObject {
+class ConditionModel  {
     var name : String?
     var theOperator : String?
     var value : String?
@@ -40,17 +40,17 @@ class ConditionModel : NSObject {
         let operators = [">=", "<=", ">", "<", "!=", "="]
         for oprtr in operators {
             if rawStr.contains(oprtr) {
-                self.theOperator = oprtr
+                theOperator = oprtr
                 var rawArray = (rawStr as NSString).components(separatedBy: oprtr)
-                self.name = rawArray[0]
-                self.value = rawArray[1]
+                name = rawArray[0]
+                value = rawArray[1]
                 break
             }
         }
     }
 }
 
-class MathModel : NSObject {
+class MathModel {
     var name : String?
     var theOperator : String?
     var value : String?
@@ -59,10 +59,10 @@ class MathModel : NSObject {
         let operators = ["+", "-", "*", "/", "%"]
         for oprtr in operators {
             if rawStr.contains(oprtr) {
-                self.theOperator = oprtr
+                theOperator = oprtr
                 var rawArray = (rawStr as NSString).components(separatedBy: oprtr)
-                self.name = rawArray[0]
-                self.value = rawArray[1]
+                name = rawArray[0]
+                value = rawArray[1]
             }
         }
     }
@@ -77,44 +77,44 @@ class MathModel : NSObject {
  g gap      与下条间隔时间
  */
 
-class MessageModel: NSObject {
-    var index : NSInteger?
-    var mark : NSInteger?
+class MessageModel {
+    var index : Int?
+    var mark : Int?
     var content : String?
-    var choice : Bool?
+    var choice = false
     var gap : TimeInterval?
     var actions : Array<ActionModel>?
     var conditions : Array<ConditionModel>?
     var date : String?
-    var jump : NSInteger?
+    var jump : Int?
     
-    init(rawStr:String, index: NSInteger) {
+    init(rawStr:String, index: Int) {
         self.index = index
         var targetStr = rawStr
         if rawStr.hasPrefix("* ") {
-            self.choice = true
+            choice = true
             targetStr = String(rawStr.dropFirst(2))
         }
         var rawArray = (targetStr as NSString).components(separatedBy: "__")
-        self.content = rawArray[0]
+        content = rawArray[0]
         rawArray.removeFirst()
         for singleLine in rawArray {
             let prefix = singleLine.first
             let surfix = String(singleLine.dropFirst())
             if prefix == "a" {
                 let action = ActionModel.init(rawStr: surfix)
-                self.actions?.append(action)
+                actions?.append(action)
             } else if prefix == "c" {
                 let condition = ConditionModel.init(rawStr: surfix)
-                self.conditions?.append(condition)
+                conditions?.append(condition)
             } else if prefix == "d" {
-                self.date = surfix
+                date = surfix
             } else if prefix == "g" {
-                self.gap = (surfix as NSString).doubleValue
+                gap = (surfix as NSString).doubleValue
             } else if prefix == "j" {
-                self.jump = (surfix as NSString).integerValue
+                jump = (surfix as NSString).integerValue
             } else if prefix == "m" {
-                self.mark = (surfix as NSString).integerValue
+                mark = (surfix as NSString).integerValue
             }
         }
     }
@@ -133,7 +133,7 @@ struct InfoModel {
     var event : String?
 
     init(rawString:String) {
-        self.user = UserDetail.init()
+        user = UserDetail.init()
         let rawArray = rawString.components(separatedBy: "\n")
         for singleLine in rawArray {
             if (singleLine == ""){
@@ -144,38 +144,38 @@ struct InfoModel {
             let prefix = singleLineArray.first
             let surfix = singleLineArray.last
             if prefix == "name" {
-                self.user.name = surfix
+                user.name = surfix
             } else if prefix == "event" {
-                self.event = surfix
+                event = surfix
             } else if prefix == "male" {
-                self.user.male = ["YES", "true", "1", "yes", "TRUE"] .contains(surfix!) ? true : false
+                user.male = ["YES", "true", "1", "yes", "TRUE"] .contains(surfix!) ? true : false
             } else if prefix == "job" {
-                self.user.job = surfix
+                user.job = surfix
             } else if prefix == "age" {
-                self.user.age = (surfix! as NSString).integerValue
+                user.age = (surfix! as NSString).integerValue
             }
         }
     }
 }
 
-func transformModel(rawString:NSString) -> Array<Any> {
+func transformModel(rawString:NSString) -> (info :InfoModel, array : [MessageModel]) {
     let rawArray = rawString.components(separatedBy: "\n")
     
     var index = 0
-    var resultArray = Array<Any>()
+    var resultArray : [MessageModel] = []
+    var infoModel : InfoModel?
     for singleLine in rawArray {
         if (singleLine == ""){
             continue//过滤空行
         }
         if index == 0 {
-            let model = InfoModel.init(rawString: singleLine)
-            resultArray.append(model)
+            infoModel = InfoModel.init(rawString: singleLine)
         } else {
             let model = MessageModel.init(rawStr: singleLine, index: index)
             resultArray.append(model)
         }
         index += 1
     }
-    return resultArray
+    return (infoModel!, resultArray)
 }
 

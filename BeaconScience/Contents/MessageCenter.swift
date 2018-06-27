@@ -8,33 +8,59 @@
 
 import UIKit
 
-class MessageCenter: NSObject {
-    static let shared = MessageCenter.init()
-    var timer : Timer?
+protocol NewMessageDelegate: AnyObject {
+    func newMessageReceived(_ message: MessageModel)
+}
+
+class MessageCenter {
+    var timer = Timer()
     var contentArray : Array<MessageModel> = []
     var index = 0
     var savedCount = 0
     var secondsLeft = 0
-    var infoModel : InfoModel!
+    var infoModel : InfoModel?
     
-    override init() {
-        super.init()
-//        setupTimer()
+    init() {
         getContents(fileName: "Empty")
+        setupTimer()
     }
     
+    weak var delegate : NewMessageDelegate?
+    
     func setupTimer(){
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self](timer) in
-//            self!.checkIfHasNewMessage()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {[unowned self](timer) in
+            if self.index < self.contentArray.count {
+                let currentMessage = self.contentArray[self.index]
+                self.delegate?.newMessageReceived(currentMessage)
+                self.index += 1
+                self.choicesCheck()
+            }
+            //TODO: check next file
         })
+    }
+    
+    func decisionMade() {
+        setupTimer()
+        timer.fire()
+    }
+    
+    func choicesCheck() {
+        guard index < contentArray.count else { return }
+        let currentMessage = contentArray[index]
+        if currentMessage.choice {
+            self.delegate?.newMessageReceived(currentMessage)
+            index += 1
+            choicesCheck()
+            timer.invalidate()
+        }
     }
     
     func getContents(fileName: String){
         let content = loadContentFile(name: fileName)
-        var transformedArray = transformModel(rawString: content)
-        self.infoModel = transformedArray[0] as! InfoModel
-        self.contentArray = Array(transformedArray[1..<transformedArray.count]) as! Array<MessageModel>
-//        checkSaves()
+        let (info, contents) = transformModel(rawString: content)
+        infoModel = info
+        contentArray = contents
+        //        checkSaves()
     }
     
     func setupNotification(){
@@ -83,8 +109,8 @@ class MessageCenter: NSObject {
  
  */
     func checkIfHasNewMessage() -> Bool {
-        if self.secondsLeft > 0 {
-            self.secondsLeft -= 1
+        if secondsLeft > 0 {
+            secondsLeft -= 1
             return false
         }
         return true
