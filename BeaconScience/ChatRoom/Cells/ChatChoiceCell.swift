@@ -27,7 +27,7 @@ class ChatChoiceCell: UITableViewCell {
     }
     
     @objc func tapped() {
-        messageCenter?.decisionMade()
+        messageCenter?.whatsNext()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

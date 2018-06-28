@@ -17,6 +17,12 @@ class ChatRoomVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableViews()
+        setupNotification()
+        setupMessageCenter()
+    }
+    
+    func setupTableViews(){
         leftTableView.delegate = leftDelegate
         leftTableView.dataSource = leftDelegate
         rightTableView.delegate = rightDelegate
@@ -30,10 +36,6 @@ class ChatRoomVC: UIViewController {
         leftTableView.register(UINib.init(nibName: "ChatUserListCell", bundle: nil), forCellReuseIdentifier: "ChatUserListCell")
         rightTableView.register(UINib.init(nibName: "ChatBaseCell", bundle: nil), forCellReuseIdentifier: "ChatBaseCell")
         rightTableView.register(UINib.init(nibName: "ChatChoiceCell", bundle: nil), forCellReuseIdentifier: "ChatChoiceCell")
-        setupNotification()
-        messageCenter.delegate = self
-        messageCenter.timer.fire()
-        rightDelegate.messageCenter = messageCenter
     }
     
     func setupNotification(){
@@ -41,6 +43,13 @@ class ChatRoomVC: UIViewController {
             self.leftTableView.reloadData()
             self.rightTableView.reloadData()
         }
+    }
+    
+    func setupMessageCenter(){
+        messageCenter.getContents(fileName: "Empty")
+        messageCenter.whatsNext()
+        messageCenter.delegate = self
+        rightDelegate.messageCenter = messageCenter
     }
 }
 
@@ -59,6 +68,7 @@ extension ChatRoomVC: NewMessageDelegate {
     func newMessageReceived(_ message: MessageModel) {
         rightDelegate.data.append(message)
         rightTableView.reloadData()
+        rightTableView.scrollToRow(at: IndexPath.init(row: rightDelegate.data.count - 1, section: 0), at: .bottom, animated: true)
     }
 }
 

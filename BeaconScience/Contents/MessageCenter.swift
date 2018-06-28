@@ -8,6 +8,12 @@
 
 import UIKit
 
+/*
+ 保存上次的file name
+ 上次的file index
+ */
+
+
 protocol NewMessageDelegate: AnyObject {
     func newMessageReceived(_ message: MessageModel)
 }
@@ -16,46 +22,50 @@ class MessageCenter {
     var timer = Timer()
     var contentArray : Array<MessageModel> = []
     var index = 0
+    var gap = 2.0
     var savedCount = 0
     var secondsLeft = 0
     var infoModel : InfoModel?
-    
-    init() {
-        getContents(fileName: "Empty")
-        setupTimer()
-    }
+    var task : Task?
     
     weak var delegate : NewMessageDelegate?
     
-    func setupTimer(){
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {[unowned self](timer) in
-            if self.index < self.contentArray.count {
-                let currentMessage = self.contentArray[self.index]
-                self.delegate?.newMessageReceived(currentMessage)
-                if currentMessage.jump != nil {
-                    self.index = currentMessage.jump! - 2
-                } else {
-                    self.index += 1
-                }
-                self.choicesCheck()
+    func whatsNext(){
+        task = delay(gap){
+            [unowned self] in
+            let currentMessage = self.contentArray[self.index]
+            self.delegate?.newMessageReceived(currentMessage)
+            if currentMessage.jump != nil {
+                self.index = currentMessage.jump! - 2
+            } else {
+                self.index += 1
             }
-            //TODO: check next file
-        })
-    }
-    
-    func decisionMade() {
-        setupTimer()
-        timer.fire()
+            if currentMessage.gap != nil {
+                if currentMessage.gap! > 10 {
+                    //register noti
+                } else {
+                    self.gap = currentMessage.gap!
+                    self.whatsNext()
+                }
+            } else {
+                self.gap = 0.5
+                self.whatsNext()
+            }
+            self.choicesCheck()
+        }
     }
     
     func choicesCheck() {
         guard index < contentArray.count else { return }
         let currentMessage = contentArray[index]
         if currentMessage.choice {
+            if task != nil {
+                cancel(task)
+                task = nil
+            }
             self.delegate?.newMessageReceived(currentMessage)
             index += 1
             choicesCheck()
-            timer.invalidate()
         }
     }
     
@@ -64,7 +74,6 @@ class MessageCenter {
         let (info, contents) = transformModel(rawString: content)
         infoModel = info
         contentArray = contents
-        //        checkSaves()
     }
     
     func setupNotification(){
