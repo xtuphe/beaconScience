@@ -11,6 +11,7 @@ import UIKit
 enum ChatActionType{
     case Property
     case Game
+    case File
 }
 
 class ActionModel {
@@ -69,23 +70,19 @@ class MathModel {
 }
 
 /*
- m mark     标记
  a action   动作
  c condition条件
  j jump     跳转
- d date     显示信息时间
  g gap      与下条间隔时间
  */
 
 class MessageModel {
-    var index : Int?
-    var mark : Int?
+    var index : Int
     var content : String?
     var choice = false
     var gap : TimeInterval?
     var actions : Array<ActionModel>?
     var conditions : Array<ConditionModel>?
-    var date : String?
     var jump : Int?
     
     init(rawStr:String, index: Int) {
@@ -107,28 +104,24 @@ class MessageModel {
             } else if prefix == "c" {
                 let condition = ConditionModel.init(rawStr: surfix)
                 conditions?.append(condition)
-            } else if prefix == "d" {
-                date = surfix
             } else if prefix == "g" {
                 gap = (surfix as NSString).doubleValue
             } else if prefix == "j" {
                 jump = (surfix as NSString).integerValue
-            } else if prefix == "m" {
-                mark = (surfix as NSString).integerValue
             }
         }
     }
 }
 
-struct UserDetail {
-    var name : String?
-    var male : Bool?
-    var age : Int?
+class UserDetail {
+    var name = "Default"
+    var male = false
+    var age = 1
     var job : String?
-    var avatar : String?
+    var avatar = "Avatar"
 }
 
-struct InfoModel {
+class InfoModel {
     var user : UserDetail
     var event : String?
 
@@ -141,18 +134,18 @@ struct InfoModel {
             }
             let convertedStr = rawString.replacingOccurrences(of: "：", with: ":")
             let singleLineArray = convertedStr.components(separatedBy: ":")
-            let prefix = singleLineArray.first
-            let surfix = singleLineArray.last
+            let prefix = singleLineArray.first!
+            let surfix = singleLineArray.last!
             if prefix == "name" {
                 user.name = surfix
             } else if prefix == "event" {
                 event = surfix
             } else if prefix == "male" {
-                user.male = ["YES", "true", "1", "yes", "TRUE"] .contains(surfix!) ? true : false
+                user.male = ["YES", "true", "1", "yes", "TRUE"] .contains(surfix) ? true : false
             } else if prefix == "job" {
                 user.job = surfix
             } else if prefix == "age" {
-                user.age = (surfix! as NSString).integerValue
+                user.age = (surfix as NSString).integerValue
             }
         }
     }

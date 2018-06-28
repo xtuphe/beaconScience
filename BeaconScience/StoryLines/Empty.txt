@@ -1,5 +1,5 @@
 name:Xtuphe event:welcome job:welcomer age:18 job:Programer male:false avatar:Avatar
-Greetings__m0
+Greetings
 This is the tutorial
 In this software you'll see choices like this
 Choose a ramdom number between 1 to 10
@@ -12,4 +12,4 @@ Is that an apple?
 * How did you do that? __cbingo>0
 * YES! __cbingo<1
 * NO
-OK, now you've completed your tutorial, great work __g3__j0
+OK, now you've completed your tutorial, great work __g3__j2

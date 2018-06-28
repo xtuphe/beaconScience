@@ -32,7 +32,11 @@ class MessageCenter {
             if self.index < self.contentArray.count {
                 let currentMessage = self.contentArray[self.index]
                 self.delegate?.newMessageReceived(currentMessage)
-                self.index += 1
+                if currentMessage.jump != nil {
+                    self.index = currentMessage.jump! - 2
+                } else {
+                    self.index += 1
+                }
                 self.choicesCheck()
             }
             //TODO: check next file
