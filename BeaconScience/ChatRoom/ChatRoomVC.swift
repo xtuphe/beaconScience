@@ -67,8 +67,17 @@ func listData() -> Array<InfoModel> {
 extension ChatRoomVC: NewMessageDelegate {
     func newMessageReceived(_ message: MessageModel) {
         rightDelegate.data.append(message)
+
         rightTableView.reloadData()
-        rightTableView.scrollToRow(at: IndexPath.init(row: rightDelegate.data.count - 1, section: 0), at: .bottom, animated: true)
+        
+        if rightTableView.contentOffset.y < rightTableView.contentSize.height - rightTableView.frame.size.height {
+            _ = delay(0.1) { [unowned self] in
+                self.rightTableView.scrollToRow(at: IndexPath.init(row: self.rightDelegate.data.count - 1, section: 0), at: .bottom, animated: true)
+            }
+        }
+        
+            
+            
     }
 }
 

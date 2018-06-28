@@ -23,26 +23,35 @@ class MessageCenter {
     var contentArray : Array<MessageModel> = []
     var index = 0
     var gap = 2.0
-    var savedCount = 0
-    var secondsLeft = 0
     var infoModel : InfoModel?
     var task : Task?
     
     weak var delegate : NewMessageDelegate?
     
     func whatsNext(){
-        task = delay(gap){
-            [unowned self] in
+        task = delay(gap){ [unowned self] in
+            //防越界
+            guard self.index < self.contentArray.count else { return }
+            //当前行消息
             let currentMessage = self.contentArray[self.index]
+            //展示当前消息
             self.delegate?.newMessageReceived(currentMessage)
+            //检查是否需要载入新文件
+            if currentMessage.file != nil {
+                self.newFile(fileName: currentMessage.file!)
+                return
+            }
+            //检查是否需要跳转
             if currentMessage.jump != nil {
                 self.index = currentMessage.jump! - 2
             } else {
                 self.index += 1
             }
+            //检查下条消息间隔时间
             if currentMessage.gap != nil {
                 if currentMessage.gap! > 10 {
-                    //register noti
+                    //超过10秒，注册通知
+                    
                 } else {
                     self.gap = currentMessage.gap!
                     self.whatsNext()
@@ -51,8 +60,15 @@ class MessageCenter {
                 self.gap = 0.5
                 self.whatsNext()
             }
+            //检查接下来是否有选择
             self.choicesCheck()
         }
+    }
+    
+    func newFile(fileName: String) {
+        getContents(fileName: fileName)
+        index = 0
+        whatsNext()
     }
     
     func choicesCheck() {
@@ -121,14 +137,7 @@ class MessageCenter {
 
  
  */
-    func checkIfHasNewMessage() -> Bool {
-        if secondsLeft > 0 {
-            secondsLeft -= 1
-            return false
-        }
-        return true
-    }
-    
+
     func notiReceived(noti: NSNotification) {
         print("haha", noti.name)
     }

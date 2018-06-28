@@ -12,4 +12,5 @@ Is that an apple?
 * How did you do that? __cbingo>0
 * YES! __cbingo<1
 * NO
-OK, now you've completed your tutorial, great work __g3__j2
+OK, now you've completed your tutorial, great work __g3
+Now let me introduce you the best invention of beacon science - apic __fIntro2

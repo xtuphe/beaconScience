@@ -1,0 +1,12 @@
+name:Epic event:Intro2 job:welcomer age:50 job:Everything male:false avatar:Avatar
+Hello
+My name is Epic, and I'm your personal intellegence assistant, and I can deal with lot of things.
+This is my story
+Now I'm gonna test loop and scroll ablities
+1
+2
+3
+4
+5
+6
+7__j6

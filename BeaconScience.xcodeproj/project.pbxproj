@@ -22,6 +22,7 @@
 		DA1D5E63200F307200BEE807 /* Empty.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA1D5E62200F307200BEE807 /* Empty.txt */; };
 		DA1D5E6A2015F28C00BEE807 /* NotificationCenterX.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D5E692015F28C00BEE807 /* NotificationCenterX.swift */; };
 		DA2501BD20E4BD65007F80FC /* CancelableDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2501BC20E4BD65007F80FC /* CancelableDelay.swift */; };
+		DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA2501BE20E4D5D2007F80FC /* Intro2.txt */; };
 		DA27C3DD2029A90C005DD70C /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA27C3DC2029A90C005DD70C /* Defaults.swift */; };
 		DA855FA7201F2076006E820F /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA855FA6201F2076006E820F /* FileLoader.swift */; };
 		DA855FAB20284A40006E820F /* MessageCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA855FAA20284A40006E820F /* MessageCenter.swift */; };
@@ -50,6 +51,7 @@
 		DA1D5E62200F307200BEE807 /* Empty.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Empty.txt; sourceTree = "<group>"; };
 		DA1D5E692015F28C00BEE807 /* NotificationCenterX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterX.swift; sourceTree = "<group>"; };
 		DA2501BC20E4BD65007F80FC /* CancelableDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelableDelay.swift; sourceTree = "<group>"; };
+		DA2501BE20E4D5D2007F80FC /* Intro2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Intro2.txt; sourceTree = "<group>"; };
 		DA27C3DC2029A90C005DD70C /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		DA855FA6201F2076006E820F /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 		DA855FAA20284A40006E820F /* MessageCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenter.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				DA1D5E62200F307200BEE807 /* Empty.txt */,
+				DA2501BE20E4D5D2007F80FC /* Intro2.txt */,
 			);
 			path = StoryLines;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				DA1D5E3D200742B000BEE807 /* Main.storyboard in Resources */,
 				DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */,
 				DA9C31A62043F68300E49915 /* ChatUserListCell.xib in Resources */,
+				DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */,
 				DA1D5E63200F307200BEE807 /* Empty.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -74,6 +74,7 @@ class MathModel {
  c condition条件
  j jump     跳转
  g gap      与下条间隔时间
+ f file     文件
  */
 
 class MessageModel {
@@ -84,6 +85,7 @@ class MessageModel {
     var actions : Array<ActionModel>?
     var conditions : Array<ConditionModel>?
     var jump : Int?
+    var file : String?
     
     init(rawStr:String, index: Int) {
         self.index = index
@@ -108,6 +110,8 @@ class MessageModel {
                 gap = (surfix as NSString).doubleValue
             } else if prefix == "j" {
                 jump = (surfix as NSString).integerValue
+            } else if prefix == "f" {
+                file = surfix
             }
         }
     }
