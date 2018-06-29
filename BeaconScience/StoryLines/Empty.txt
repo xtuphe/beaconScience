@@ -4,8 +4,8 @@ This is the tutorial
 In this software you'll see choices like this
 Choose a ramdom number between 1 to 10
 Your number is 7 right?
-* YES!__abingo+1
-* NO
+* YES!__abingo+1__-Great
+* NO__-Really? It's ok.
 Let's move on
 Now imagine a random fruit on your table__g2
 Is that an apple?

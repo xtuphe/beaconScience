@@ -75,6 +75,7 @@ class MathModel {
  j jump     跳转
  g gap      与下条间隔时间
  f file     文件
+ - reply    只在假选择中，假选择的回复
  */
 
 class MessageModel {
@@ -86,6 +87,7 @@ class MessageModel {
     var conditions : Array<ConditionModel>?
     var jump : Int?
     var file : String?
+    var reply : String?
     
     init(rawStr:String, index: Int) {
         self.index = index
@@ -112,9 +114,16 @@ class MessageModel {
                 jump = (surfix as NSString).integerValue
             } else if prefix == "f" {
                 file = surfix
+            } else if prefix == "-" {
+                reply = surfix
             }
         }
     }
+    
+    init() {
+        index = 0
+    }
+    
 }
 
 class UserDetail {
