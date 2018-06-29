@@ -30,6 +30,7 @@
 		DA9C31A62043F68300E49915 /* ChatUserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9C31A42043F68300E49915 /* ChatUserListCell.xib */; };
 		DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C31A72043F8D200E49915 /* IBInspectable.swift */; };
 		DAA17BE020DDF59400B9B1F7 /* ChatListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA17BDF20DDF59400B9B1F7 /* ChatListDataProvider.swift */; };
+		DADE040F20E5DA41000007ED /* News1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DADE040E20E5DA41000007ED /* News1.txt */; };
 		DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF3ADA205284800084DE1F /* Repeater.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		DA9C31A42043F68300E49915 /* ChatUserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatUserListCell.xib; sourceTree = "<group>"; };
 		DA9C31A72043F8D200E49915 /* IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBInspectable.swift; sourceTree = "<group>"; };
 		DAA17BDF20DDF59400B9B1F7 /* ChatListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListDataProvider.swift; sourceTree = "<group>"; };
+		DADE040E20E5DA41000007ED /* News1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = News1.txt; sourceTree = "<group>"; };
 		DAEF3ADA205284800084DE1F /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 			children = (
 				DA1D5E62200F307200BEE807 /* Empty.txt */,
 				DA2501BE20E4D5D2007F80FC /* Intro2.txt */,
+				DADE040E20E5DA41000007ED /* News1.txt */,
 			);
 			path = StoryLines;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */,
 				DA9C31A62043F68300E49915 /* ChatUserListCell.xib in Resources */,
 				DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */,
+				DADE040F20E5DA41000007ED /* News1.txt in Resources */,
 				DA1D5E63200F307200BEE807 /* Empty.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

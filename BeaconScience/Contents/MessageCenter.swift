@@ -34,6 +34,10 @@ class MessageCenter {
             guard self.index < self.contentArray.count else { return }
             //当前行消息
             let currentMessage = self.contentArray[self.index]
+            //检查是否需要更新朋友圈
+            if currentMessage.quan != nil {
+                // 通知发送朋友圈
+            }
             //展示当前消息
             self.delegate?.newMessageReceived(currentMessage)
             //检查是否需要载入新文件

@@ -11,7 +11,8 @@ import UIKit
 enum ChatActionType{
     case Property
     case Game
-    case File
+    case News
+    case PayCheck //获得报酬
 }
 
 class ActionModel {
@@ -76,6 +77,7 @@ class MathModel {
  g gap      与下条间隔时间
  f file     文件
  - reply    只在假选择中，假选择的回复
+ q quan     朋友圈
  */
 
 class MessageModel {
@@ -88,9 +90,12 @@ class MessageModel {
     var jump : Int?
     var file : String?
     var reply : String?
+    var quan : String?
+    var name : String = "Xtuphe"
     
-    init(rawStr:String, index: Int) {
+    init(rawStr:String, index: Int, name: String) {
         self.index = index
+        self.name = name
         var targetStr = rawStr
         if rawStr.hasPrefix("* ") {
             choice = true
@@ -116,6 +121,8 @@ class MessageModel {
                 file = surfix
             } else if prefix == "-" {
                 reply = surfix
+            } else if prefix == "q" {
+                quan = surfix
             }
         }
     }
@@ -151,10 +158,8 @@ class InfoModel {
             let surfix = singleLineArray.last!
             if prefix == "name" {
                 user.name = surfix
-            } else if prefix == "event" {
+            } else if prefix == "avatar" {
                 event = surfix
-            } else if prefix == "male" {
-                user.male = ["YES", "true", "1", "yes", "TRUE"] .contains(surfix) ? true : false
             } else if prefix == "job" {
                 user.job = surfix
             } else if prefix == "age" {
@@ -177,7 +182,7 @@ func transformModel(rawString:NSString) -> (info :InfoModel, array : [MessageMod
         if index == 0 {
             infoModel = InfoModel.init(rawString: singleLine)
         } else {
-            let model = MessageModel.init(rawStr: singleLine, index: index)
+            let model = MessageModel.init(rawStr: singleLine, index: index, name: infoModel!.user.name)
             resultArray.append(model)
         }
         index += 1
