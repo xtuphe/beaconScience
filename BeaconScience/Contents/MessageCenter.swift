@@ -8,14 +8,13 @@
 
 import UIKit
 
-/*
- 保存上次的file name
- 上次的file index
- */
-
-
 protocol NewMessageDelegate: AnyObject {
     func newMessageReceived(_ message: MessageModel)
+}
+
+struct SavedMessage : Codable {
+    let content : String
+    let type : MessageType
 }
 
 class MessageCenter {
@@ -28,6 +27,11 @@ class MessageCenter {
     
     weak var delegate : NewMessageDelegate?
     
+    init(index: Int, file: String) {
+        self.index = index
+        getContents(fileName: file)
+    }
+    
     func whatsNext(){
         task = delay(gap){ [unowned self] in
             //防越界
@@ -36,13 +40,19 @@ class MessageCenter {
             let currentMessage = self.contentArray[self.index]
             //检查是否需要更新朋友圈
             if currentMessage.quan != nil {
-                // 通知发送朋友圈
+            //通知发送朋友圈
+                
             }
             //展示当前消息
             self.delegate?.newMessageReceived(currentMessage)
+            //本地化当前消息
+            self.saveMessage(message: currentMessage)
             //检查是否需要载入新文件
             if currentMessage.file != nil {
                 self.newFile(fileName: currentMessage.file!)
+                ChatListData.shared.fileName = currentMessage.file!
+                ChatListData.shared.index = 0
+                ChatListData.shared.save()
                 return
             }
             //检查是否需要跳转
@@ -50,6 +60,11 @@ class MessageCenter {
                 self.index = currentMessage.jump! - 2
             } else {
                 self.index += 1
+            }
+            //本地化ChatList
+            if currentMessage.type != .choice {
+                ChatListData.shared.index = self.index
+                ChatListData.shared.updateIndex()
             }
             //检查下条消息间隔时间
             if currentMessage.gap != nil {
@@ -69,6 +84,31 @@ class MessageCenter {
         }
     }
     
+    func saveMessage(message: MessageModel) {
+        switch message.type {
+        case .others, .choice, .invalid:
+            break
+        case .chosen://只保存选中的
+            fallthrough
+        default:
+            let indexKey = Key<Int>("\(infoModel!.name)SavedIndex")
+            var savedIndex = 0
+            if Defaults.shared.has(indexKey) {
+                savedIndex = Defaults.shared.get(for: indexKey)!
+            }
+            savedIndex += 1
+            Defaults.shared.set(savedIndex, for: indexKey)
+            
+            let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(infoModel!.name)")!)
+            let messageKey = Key<SavedMessage>("\(savedIndex)")
+            let savedMessage = SavedMessage(content: message.content!, type: message.type)
+            Defaults.shared.set(savedMessage, for: messageKey)
+            defaults.set(savedMessage, for: messageKey)
+
+        }
+        
+    }
+    
     func newFile(fileName: String) {
         getContents(fileName: fileName)
         index = 0
@@ -78,7 +118,7 @@ class MessageCenter {
     func choicesCheck() {
         guard index < contentArray.count else { return }
         let currentMessage = contentArray[index]
-        if currentMessage.choice {
+        if currentMessage.type == .choice {
             if task != nil {
                 cancel(task)
                 task = nil
@@ -106,41 +146,7 @@ class MessageCenter {
         
     }
     
-    /*
-    
-    func checkSaves(){
-        let countStr = String.init(format: "saveCount", self.infoModel.name!)
-        let keyOfCount = Key<Int>(countStr)
-        if Defaults.shared.has(keyOfCount) {
-            self.savedCount = Defaults.shared.get(for: keyOfCount)!
-        }
-        if self.savedCount > 0 {
-            loadHistory()
-        } else {
-            
-        }
-    }
-    
-    func loadHistory(){
-        for i in 1...self.savedCount {
-            let messageStr = String.init(format: self.infoModel.name!, i)
-            let keyOfMessage = Key<String>(messageStr)
-            self.dataArray.append(Defaults.shared.get(for: keyOfMessage)!)
-        }
-    }
-    
-    func save(content: String){
-        self.savedCount += 1
-        let countStr = String.init(format: "saveCount", self.infoModel.name!)
-        let keyOfCount = Key<Int>(countStr)
-        Defaults.shared.set(self.savedCount, for: keyOfCount)
-        let messageStr = String.init(format: self.infoModel.name!, self.savedCount)
-        let keyOfMessage = Key<String>(messageStr)
-        Defaults.shared.set(content, for: keyOfMessage)
-    }
 
- 
- */
 
     func notiReceived(noti: NSNotification) {
         print("haha", noti.name)

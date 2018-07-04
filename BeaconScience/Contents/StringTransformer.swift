@@ -78,12 +78,20 @@ class MathModel {
  f file     文件
  - reply    只在假选择中，假选择的回复
  q quan     朋友圈
+ n name     名字, 如果有名字，说明不是当前聊天对象
  */
+
+enum MessageType : Int, Codable {
+    case normal
+    case choice
+    case others
+    case invalid
+    case chosen
+}
 
 class MessageModel {
     var index : Int
     var content : String?
-    var choice = false
     var gap : TimeInterval?
     var actions : Array<ActionModel>?
     var conditions : Array<ConditionModel>?
@@ -91,14 +99,14 @@ class MessageModel {
     var file : String?
     var reply : String?
     var quan : String?
-    var name : String = "Xtuphe"
+    var name : String?
+    var type = MessageType.normal
     
-    init(rawStr:String, index: Int, name: String) {
+    init(rawStr:String, index: Int) {
         self.index = index
-        self.name = name
         var targetStr = rawStr
         if rawStr.hasPrefix("* ") {
-            choice = true
+            type = .choice
             targetStr = String(rawStr.dropFirst(2))
         }
         var rawArray = (targetStr as NSString).components(separatedBy: "__")
@@ -123,6 +131,9 @@ class MessageModel {
                 reply = surfix
             } else if prefix == "q" {
                 quan = surfix
+            } else if prefix == "n" {
+                name = surfix
+                type = .others
             }
         }
     }
@@ -133,37 +144,38 @@ class MessageModel {
     
 }
 
-class UserDetail {
+class InfoModel : NSObject, NSCoding {
+
     var name = "Default"
-    var male = false
-    var age = 1
-    var job : String?
     var avatar = "Avatar"
-}
 
-class InfoModel {
-    var user : UserDetail
-    var event : String?
-
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(avatar, forKey: "avatar")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        avatar = aDecoder.decodeObject(forKey: "avatar") as! String
+    }
+    
     init(rawString:String) {
-        user = UserDetail.init()
-        let rawArray = rawString.components(separatedBy: "\n")
+        let rawArray = rawString.components(separatedBy: " ")
         for singleLine in rawArray {
-            if (singleLine == ""){
+            if singleLine == "" {
                 continue//过滤空行
             }
-            let convertedStr = rawString.replacingOccurrences(of: "：", with: ":")
+            if singleLine == " " {
+                continue
+            }
+            let convertedStr = singleLine.replacingOccurrences(of: "：", with: ":")
             let singleLineArray = convertedStr.components(separatedBy: ":")
             let prefix = singleLineArray.first!
             let surfix = singleLineArray.last!
             if prefix == "name" {
-                user.name = surfix
+                name = surfix
             } else if prefix == "avatar" {
-                event = surfix
-            } else if prefix == "job" {
-                user.job = surfix
-            } else if prefix == "age" {
-                user.age = (surfix as NSString).integerValue
+                avatar = surfix
             }
         }
     }
@@ -182,7 +194,7 @@ func transformModel(rawString:NSString) -> (info :InfoModel, array : [MessageMod
         if index == 0 {
             infoModel = InfoModel.init(rawString: singleLine)
         } else {
-            let model = MessageModel.init(rawStr: singleLine, index: index, name: infoModel!.user.name)
+            let model = MessageModel.init(rawStr: singleLine, index: index)
             resultArray.append(model)
         }
         index += 1

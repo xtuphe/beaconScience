@@ -30,13 +30,17 @@ class ChatChoiceCell: UITableViewCell {
         if model?.reply != nil {
             let replyModel = MessageModel()
             replyModel.content = model?.reply
+            replyModel.type = .normal
             _ = delay(2) {[unowned self] in
                 self.messageCenter?.delegate?.newMessageReceived(replyModel)
+                self.messageCenter?.saveMessage(message: replyModel)
                 self.messageCenter?.whatsNext()
             }
         } else {
             messageCenter?.whatsNext()
         }
+        model?.type = .chosen
+        messageCenter?.saveMessage(message: model!)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
