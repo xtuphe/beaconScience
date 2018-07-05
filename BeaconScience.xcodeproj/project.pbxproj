@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA0CFAA620E36AC60028861B /* ChatChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CFAA420E36AC60028861B /* ChatChoiceCell.swift */; };
 		DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA0CFAA520E36AC60028861B /* ChatChoiceCell.xib */; };
+		DA1A7C1820EE03A3001A8154 /* Intro3.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA1A7C1720EE03A3001A8154 /* Intro3.txt */; };
 		DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D5E35200742B000BEE807 /* AppDelegate.swift */; };
 		DA1D5E3D200742B000BEE807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA1D5E3B200742B000BEE807 /* Main.storyboard */; };
 		DA1D5E3F200742B000BEE807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1D5E3E200742B000BEE807 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		DA0CFAA420E36AC60028861B /* ChatChoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatChoiceCell.swift; sourceTree = "<group>"; };
 		DA0CFAA520E36AC60028861B /* ChatChoiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatChoiceCell.xib; sourceTree = "<group>"; };
+		DA1A7C1720EE03A3001A8154 /* Intro3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Intro3.txt; sourceTree = "<group>"; };
 		DA1D5E32200742B000BEE807 /* BeaconScience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconScience.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1D5E35200742B000BEE807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA1D5E3C200742B000BEE807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				DA1D5E62200F307200BEE807 /* Intro1.txt */,
 				DA2501BE20E4D5D2007F80FC /* Intro2.txt */,
+				DA1A7C1720EE03A3001A8154 /* Intro3.txt */,
 				DADE040E20E5DA41000007ED /* News1.txt */,
 			);
 			path = StoryLines;
@@ -270,6 +273,7 @@
 				DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */,
 				DA9C31A62043F68300E49915 /* ChatUserListCell.xib in Resources */,
 				DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */,
+				DA1A7C1820EE03A3001A8154 /* Intro3.txt in Resources */,
 				DADE040F20E5DA41000007ED /* News1.txt in Resources */,
 				DA1D5E63200F307200BEE807 /* Intro1.txt in Resources */,
 			);

@@ -159,6 +159,11 @@ class InfoModel : NSObject, NSCoding {
         avatar = aDecoder.decodeObject(forKey: "avatar") as! String
     }
     
+    init(name: String, avatar: String) {
+        self.name = name
+        self.avatar = avatar
+    }
+    
     init(rawString:String) {
         let rawArray = rawString.components(separatedBy: " ")
         for singleLine in rawArray {

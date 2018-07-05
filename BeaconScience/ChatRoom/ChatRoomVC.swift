@@ -37,6 +37,7 @@ class ChatRoomVC: UIViewController {
         leftTableView.register(UINib.init(nibName: "ChatUserListCell", bundle: nil), forCellReuseIdentifier: "ChatUserListCell")
         rightTableView.register(UINib.init(nibName: "ChatBaseCell", bundle: nil), forCellReuseIdentifier: "ChatBaseCell")
         rightTableView.register(UINib.init(nibName: "ChatChoiceCell", bundle: nil), forCellReuseIdentifier: "ChatChoiceCell")
+        rightDelegate.tableView = rightTableView
         rightDelegate.loadSaves()
     }
     
@@ -52,13 +53,38 @@ class ChatRoomVC: UIViewController {
         messageCenter.delegate = self
         rightDelegate.messageCenter = messageCenter
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        ChatListData.shared.currentConversation = nil
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ChatListData.shared.currentConversation = rightDelegate.infoModel?.name
+    }
 }
 
-extension ChatRoomVC: NewMessageDelegate {
+extension ChatRoomVC: MessageCenterDelegate {
+    
+    func newConversation(_ infoModel: InfoModel) {
+        rightDelegate.infoModel = infoModel
+    }
+
     func newMessageReceived(_ message: MessageModel) {
         //其他人的信息
         if message.name != nil {
-            //TODO
+            let index = ChatListData.shared.newConversation(name: message.name!, avatar: "Avatar")
+            
+            if index == 0 {
+                leftTableView.moveRow(at: IndexPath.init(row: index, section: 0), to: IndexPath.init(row: 1, section: 0))
+            } else if index > 0 {
+                leftTableView.insertRows(at: [IndexPath.init(row: 1, section: 0)], with: .automatic)
+            }
+            
+            // pop up message
+            // save
+            
             return
         }
         
@@ -93,7 +119,12 @@ class LeftTableViewDelegate: NSCoder, UITableViewDelegate, UITableViewDataSource
 
 class RightTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
     var data : [MessageModel] = []
-    var infoModel = ChatListData.shared.data.first
+    var tableView : UITableView?
+    var infoModel = ChatListData.shared.data.first {
+        didSet {
+            ChatListData.shared.currentConversation = infoModel?.name
+        }
+    }
     weak var messageCenter : MessageCenter?
     
     func loadSaves() {
@@ -116,6 +147,8 @@ class RightTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
             }
         }
         data = savedData
+        tableView?.reloadData()
+        tableView?.scrollToRow(at: IndexPath.init(row: data.count - 1, section: 0), at: .bottom, animated: false)
     }
     
     func savedMessageWith(index : Int) -> MessageModel {

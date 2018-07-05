@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol NewMessageDelegate: AnyObject {
+protocol MessageCenterDelegate: AnyObject {
     func newMessageReceived(_ message: MessageModel)
+    func newConversation(_ infoModel: InfoModel)
 }
 
 struct SavedMessage : Codable {
@@ -25,7 +26,7 @@ class MessageCenter {
     var infoModel : InfoModel?
     var task : Task?
     
-    weak var delegate : NewMessageDelegate?
+    weak var delegate : MessageCenterDelegate?
     
     init(index: Int, file: String) {
         self.index = index
@@ -134,6 +135,7 @@ class MessageCenter {
         let (info, contents) = transformModel(rawString: content)
         infoModel = info
         contentArray = contents
+        self.delegate?.newConversation(info)
     }
     
     func setupNotification(){

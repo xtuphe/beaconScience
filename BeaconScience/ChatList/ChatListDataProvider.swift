@@ -16,6 +16,7 @@ class ChatListData {
     var index = 0
     let fileKey = Key<String>("ChatListFileKey")
     let indexKey = Key<Int>("ChatListIndexKey")
+    var currentConversation : String?
     
     init() {
         
@@ -72,4 +73,27 @@ class ChatListData {
         Defaults.shared.set(index, for: indexKey)
     }
     
+    //返回新对话之前的位置，如果是0则为全新对话
+    func newConversation(name: String, avatar: String) -> Int {
+        var newConversation = true
+        var index = 0
+        for infoModel in data {
+            if name == infoModel.name {
+                if index == 0 {
+                    return -1
+                }
+                newConversation = false
+                data.remove(at: index)
+                data.insert(infoModel, at: 1)
+                break
+            }
+            index += 1
+        }
+        if newConversation {
+            index = 0 //表示新消息
+            let newInfo = InfoModel(name: name, avatar: "Avatar")
+            data.insert(newInfo, at: 1)
+        }
+        return index
+    }
 }

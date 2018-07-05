@@ -13,4 +13,4 @@ Is that an apple?
 * YES! __cbingo<1
 * NO
 OK, now you've completed your tutorial, great work __g3
-Now let me introduce you the best invention of beacon science - apic __fIntro2
+Now let's test file change abilities __fIntro2
