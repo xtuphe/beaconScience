@@ -150,9 +150,11 @@ class MessageCenter {
     func getContents(fileName: String){
         let content = loadContentFile(name: fileName)
         let (info, contents) = transformModel(rawString: content)
+        if infoModel != nil && info.name != infoModel?.name {
+            self.delegate?.newConversation(info)
+        }
         infoModel = info
         contentArray = contents
-        self.delegate?.newConversation(info)
     }
     
     func setupNotification(){

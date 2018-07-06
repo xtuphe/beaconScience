@@ -12,7 +12,7 @@ class ChatListData {
     static let shared = ChatListData()
     
     var data : Array<InfoModel>
-    var fileName = "Intro1"
+    var fileName = "Test1"
     var index = 0
     let fileKey = Key<String>("ChatListFileKey")
     let indexKey = Key<Int>("ChatListIndexKey")
@@ -28,7 +28,7 @@ class ChatListData {
             index = Defaults.shared.get(for: indexKey)!
         }
         
-        data = [InfoModel.init(rawString: "name:Xtuphe avatar:Avatar")]
+        data = [InfoModel(name: "Testor1", avatar: "Avatar")]
         
         let fileManager = FileManager.default
         guard let directory =

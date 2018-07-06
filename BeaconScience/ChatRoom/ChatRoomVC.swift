@@ -14,6 +14,7 @@ class ChatRoomVC: UIViewController {
     var leftDelegate = LeftTableViewDelegate()
     var rightDelegate = RightTableViewDelegate()
     var messageCenter = MessageCenter(index: ChatListData.shared.index, file: ChatListData.shared.fileName)
+    var infoModel = ChatListData.shared.data.first
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,7 @@ class ChatRoomVC: UIViewController {
         rightTableView.register(UINib.init(nibName: "ChatChoiceCell", bundle: nil), forCellReuseIdentifier: "ChatChoiceCell")
         rightDelegate.tableView = rightTableView
         rightDelegate.loadSaves()
+        leftDelegate.rightDelegate = rightDelegate
     }
     
     func setupNotification(){
@@ -68,6 +70,9 @@ class ChatRoomVC: UIViewController {
 extension ChatRoomVC: MessageCenterDelegate {
     
     func newConversation(_ infoModel: InfoModel) {
+        _ = ChatListData.shared.newConversation(name: infoModel.name, avatar: infoModel.avatar)
+        leftDelegate.data = ChatListData.shared.data
+        leftTableView.reloadData()
         rightDelegate.infoModel = infoModel
     }
 
@@ -96,6 +101,11 @@ extension ChatRoomVC: MessageCenterDelegate {
             return
         }
         
+        if infoModel?.name != messageCenter.infoModel?.name {
+            showMessage(name: (messageCenter.infoModel?.name)!, content: message.content!)
+            return
+        }
+        
         rightDelegate.data.append(message)
         rightTableView.reloadData()
         
@@ -109,11 +119,11 @@ extension ChatRoomVC: MessageCenterDelegate {
 
 class LeftTableViewDelegate: NSCoder, UITableViewDelegate, UITableViewDataSource {
     var data = ChatListData.shared.data
-
+    var rightDelegate : RightTableViewDelegate?
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatUserListCell")! as! ChatUserListCell
@@ -122,6 +132,10 @@ class LeftTableViewDelegate: NSCoder, UITableViewDelegate, UITableViewDataSource
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        rightDelegate?.data = []
+        rightDelegate?.loadSaves()
+    }
     
 }
 
