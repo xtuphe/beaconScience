@@ -3,14 +3,13 @@ Greetings
 This is the tutorial
 In this software you'll see choices like this
 Choose a ramdom number between 1 to 10
-Your number is 7 right?
+Your number is 7 right?__g2
 * YES!__abingo+1__-Great
 * NO__-Really? It's ok.
 Let's move on
-Now imagine a random fruit on your table__g2
+Now imagine a random fruit on your table
 Is that an apple?
 * How did you do that? __cbingo>0
 * YES! __cbingo<1
 * NO
-OK, now you've completed your tutorial, great work __g3
 Now let's test file change abilities __fIntro2

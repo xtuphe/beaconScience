@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22ECA0A1F10339EFA51E89DD /* Pods_BeaconScience.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384AB87D8C8214876CCB82A0 /* Pods_BeaconScience.framework */; };
 		DA0CFAA620E36AC60028861B /* ChatChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CFAA420E36AC60028861B /* ChatChoiceCell.swift */; };
 		DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA0CFAA520E36AC60028861B /* ChatChoiceCell.xib */; };
 		DA1A7C1820EE03A3001A8154 /* Intro3.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA1A7C1720EE03A3001A8154 /* Intro3.txt */; };
+		DA1A7C1A20EE0E7E001A8154 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DA1A7C1920EE0E7D001A8154 /* Podfile */; };
+		DA1A7C1C20EE0FDB001A8154 /* NotiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A7C1B20EE0FDB001A8154 /* NotiView.swift */; };
 		DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D5E35200742B000BEE807 /* AppDelegate.swift */; };
 		DA1D5E3D200742B000BEE807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA1D5E3B200742B000BEE807 /* Main.storyboard */; };
 		DA1D5E3F200742B000BEE807 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1D5E3E200742B000BEE807 /* Assets.xcassets */; };
@@ -36,9 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		297FA7280375B1A4728F0C99 /* Pods-BeaconScience.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconScience.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience.debug.xcconfig"; sourceTree = "<group>"; };
+		384AB87D8C8214876CCB82A0 /* Pods_BeaconScience.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaconScience.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA0CFAA420E36AC60028861B /* ChatChoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatChoiceCell.swift; sourceTree = "<group>"; };
 		DA0CFAA520E36AC60028861B /* ChatChoiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatChoiceCell.xib; sourceTree = "<group>"; };
 		DA1A7C1720EE03A3001A8154 /* Intro3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Intro3.txt; sourceTree = "<group>"; };
+		DA1A7C1920EE0E7D001A8154 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		DA1A7C1B20EE0FDB001A8154 /* NotiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiView.swift; sourceTree = "<group>"; };
 		DA1D5E32200742B000BEE807 /* BeaconScience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconScience.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1D5E35200742B000BEE807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA1D5E3C200742B000BEE807 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,6 +71,7 @@
 		DAA17BDF20DDF59400B9B1F7 /* ChatListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListDataProvider.swift; sourceTree = "<group>"; };
 		DADE040E20E5DA41000007ED /* News1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = News1.txt; sourceTree = "<group>"; };
 		DAEF3ADA205284800084DE1F /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
+		FF665B0156DEB42B76A78349 /* Pods-BeaconScience.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconScience.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,12 +79,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22ECA0A1F10339EFA51E89DD /* Pods_BeaconScience.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C0EA5298D1485AE4D337194 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				297FA7280375B1A4728F0C99 /* Pods-BeaconScience.debug.xcconfig */,
+				FF665B0156DEB42B76A78349 /* Pods-BeaconScience.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DA0CFAA820E377090028861B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,7 +112,10 @@
 			isa = PBXGroup;
 			children = (
 				DA1D5E34200742B000BEE807 /* BeaconScience */,
+				DA1A7C1920EE0E7D001A8154 /* Podfile */,
 				DA1D5E33200742B000BEE807 /* Products */,
+				3C0EA5298D1485AE4D337194 /* Pods */,
+				F14590F38789B21EA769F28B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,6 +198,7 @@
 			children = (
 				DAEF3ADA205284800084DE1F /* Repeater.swift */,
 				DA27C3DC2029A90C005DD70C /* Defaults.swift */,
+				DA1A7C1B20EE0FDB001A8154 /* NotiView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -207,6 +229,14 @@
 			path = MiniGames;
 			sourceTree = "<group>";
 		};
+		F14590F38789B21EA769F28B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				384AB87D8C8214876CCB82A0 /* Pods_BeaconScience.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,9 +244,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA1D5E46200742B000BEE807 /* Build configuration list for PBXNativeTarget "BeaconScience" */;
 			buildPhases = (
+				D459D783B32592E47D13A620 /* [CP] Check Pods Manifest.lock */,
 				DA1D5E2E200742B000BEE807 /* Sources */,
 				DA1D5E2F200742B000BEE807 /* Frameworks */,
 				DA1D5E30200742B000BEE807 /* Resources */,
+				AC217F9A6425A94F47A4A824 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -276,10 +308,50 @@
 				DA1A7C1820EE03A3001A8154 /* Intro3.txt in Resources */,
 				DADE040F20E5DA41000007ED /* News1.txt in Resources */,
 				DA1D5E63200F307200BEE807 /* Intro1.txt in Resources */,
+				DA1A7C1A20EE0E7E001A8154 /* Podfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AC217F9A6425A94F47A4A824 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D459D783B32592E47D13A620 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeaconScience-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DA1D5E2E200742B000BEE807 /* Sources */ = {
@@ -291,6 +363,7 @@
 				DA1D5E57200C851200BEE807 /* ChatBaseCell.swift in Sources */,
 				DA1D5E54200C83CC00BEE807 /* MeVC.swift in Sources */,
 				DA855FA7201F2076006E820F /* FileLoader.swift in Sources */,
+				DA1A7C1C20EE0FDB001A8154 /* NotiView.swift in Sources */,
 				DA1D5E4F200857E300BEE807 /* ChatRoomVC.swift in Sources */,
 				DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */,
 				DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */,
@@ -436,6 +509,7 @@
 		};
 		DA1D5E47200742B000BEE807 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 297FA7280375B1A4728F0C99 /* Pods-BeaconScience.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -452,6 +526,7 @@
 		};
 		DA1D5E48200742B000BEE807 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF665B0156DEB42B76A78349 /* Pods-BeaconScience.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -10,4 +10,7 @@ Now I'm gonna test loop and scroll ablities
 6
 * loop back__j5__-looping back
 * loop break__-loop broke
+Next, new conversation
+New conversation test__n:Testor2
+test complete
 Next, conversation change test__fIntro3

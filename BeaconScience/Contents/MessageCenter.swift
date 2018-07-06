@@ -39,50 +39,59 @@ class MessageCenter {
             guard self.index < self.contentArray.count else { return }
             //当前行消息
             let currentMessage = self.contentArray[self.index]
-            //检查是否需要更新朋友圈
-            if currentMessage.quan != nil {
+            //是否为选择
+            if currentMessage.type == .choice {
+                self.choicesCheck(message: currentMessage)
+            } else {
+                //展示当前消息
+                self.delegate?.newMessageReceived(currentMessage)
+                //本地化当前消息
+                self.saveMessage(message: currentMessage)
+                self.messageCheck(currentMessage: currentMessage)
+            }
+        }
+    }
+    
+    func messageCheck(currentMessage: MessageModel) {
+        
+        //检查是否需要更新朋友圈
+        if currentMessage.quan != nil {
             //通知发送朋友圈
+            
+        }
+        //检查是否需要载入新文件
+        if currentMessage.file != nil {
+            self.newFile(fileName: currentMessage.file!)
+            ChatListData.shared.fileName = currentMessage.file!
+            ChatListData.shared.index = 0
+            ChatListData.shared.save()
+            return
+        }
+        //检查是否需要跳转
+        if currentMessage.jump != nil {
+            self.index = currentMessage.jump! - 2
+        } else {
+            self.index += 1
+        }
+        //本地化ChatList
+        if currentMessage.type != .choice {
+            ChatListData.shared.index = self.index
+            ChatListData.shared.updateIndex()
+        }
+        //检查下条消息间隔时间
+        if currentMessage.gap != nil {
+            if currentMessage.gap! > 10 {
+                //超过10秒，注册通知
                 
-            }
-            //展示当前消息
-            self.delegate?.newMessageReceived(currentMessage)
-            //本地化当前消息
-            self.saveMessage(message: currentMessage)
-            //检查是否需要载入新文件
-            if currentMessage.file != nil {
-                self.newFile(fileName: currentMessage.file!)
-                ChatListData.shared.fileName = currentMessage.file!
-                ChatListData.shared.index = 0
-                ChatListData.shared.save()
-                return
-            }
-            //检查是否需要跳转
-            if currentMessage.jump != nil {
-                self.index = currentMessage.jump! - 2
             } else {
-                self.index += 1
-            }
-            //本地化ChatList
-            if currentMessage.type != .choice {
-                ChatListData.shared.index = self.index
-                ChatListData.shared.updateIndex()
-            }
-            //检查下条消息间隔时间
-            if currentMessage.gap != nil {
-                if currentMessage.gap! > 10 {
-                    //超过10秒，注册通知
-                    
-                } else {
-                    self.gap = currentMessage.gap!
-                    self.whatsNext()
-                }
-            } else {
-                self.gap = 0.5
+                self.gap = currentMessage.gap!
                 self.whatsNext()
             }
-            //检查接下来是否有选择
-            self.choicesCheck()
+        } else {
+            self.gap = 0.5
+            self.whatsNext()
         }
+        
     }
     
     func saveMessage(message: MessageModel) {
@@ -116,17 +125,25 @@ class MessageCenter {
         whatsNext()
     }
     
-    func choicesCheck() {
-        guard index < contentArray.count else { return }
-        let currentMessage = contentArray[index]
-        if currentMessage.type == .choice {
+    func choicesCheck(message: MessageModel) {
+        switch message.type {
+        case .choice:
             if task != nil {
                 cancel(task)
                 task = nil
             }
-            self.delegate?.newMessageReceived(currentMessage)
+            delegate?.newMessageReceived(message)
             index += 1
-            choicesCheck()
+            if index < contentArray.count {
+                let nextMessage = contentArray[index]
+                if nextMessage.type == .choice {
+                    choicesCheck(message: nextMessage)
+                } else {
+                    index -= 1
+                }
+            }
+        default:
+            break
         }
     }
     

@@ -89,7 +89,7 @@ enum MessageType : Int, Codable {
     case chosen
 }
 
-class MessageModel {
+struct MessageModel {
     var index : Int
     var content : String?
     var gap : TimeInterval?

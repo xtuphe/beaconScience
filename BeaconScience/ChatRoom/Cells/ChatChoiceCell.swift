@@ -27,20 +27,20 @@ class ChatChoiceCell: UITableViewCell {
     }
     
     @objc func tapped() {
-        if model?.reply != nil {
-            let replyModel = MessageModel()
-            replyModel.content = model?.reply
-            replyModel.type = .normal
-            _ = delay(2) {[unowned self] in
-                self.messageCenter?.delegate?.newMessageReceived(replyModel)
-                self.messageCenter?.saveMessage(message: replyModel)
-                self.messageCenter?.whatsNext()
-            }
-        } else {
-            messageCenter?.whatsNext()
-        }
         model?.type = .chosen
         messageCenter?.saveMessage(message: model!)
+        if model?.reply != nil {
+            var replyModel = MessageModel()
+            replyModel.content = model?.reply
+            replyModel.type = .normal
+            _ = delay(1) {[unowned self] in
+                self.messageCenter?.delegate?.newMessageReceived(replyModel)
+                self.messageCenter?.saveMessage(message: replyModel)
+                self.messageCenter?.messageCheck(currentMessage: self.model!)
+            }
+        } else {
+            messageCenter?.messageCheck(currentMessage: model!)
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

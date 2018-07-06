@@ -75,12 +75,20 @@ extension ChatRoomVC: MessageCenterDelegate {
         //其他人的信息
         if message.name != nil {
             let index = ChatListData.shared.newConversation(name: message.name!, avatar: "Avatar")
+            leftDelegate.data = ChatListData.shared.data
             
             if index == 0 {
-                leftTableView.moveRow(at: IndexPath.init(row: index, section: 0), to: IndexPath.init(row: 1, section: 0))
-            } else if index > 0 {
+                leftTableView.beginUpdates()
                 leftTableView.insertRows(at: [IndexPath.init(row: 1, section: 0)], with: .automatic)
+                leftTableView.endUpdates()
+            } else if index > 0 {
+                leftTableView.beginUpdates()
+                leftTableView.moveRow(at: IndexPath.init(row: index, section: 0), to: IndexPath.init(row: 1, section: 0))
+                leftTableView.endUpdates()
             }
+            
+            showMessage(name: message.name!, content: message.content!)
+            
             
             // pop up message
             // save
@@ -155,7 +163,7 @@ class RightTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
         let key = Key<SavedMessage>("\(index)")
         let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(infoModel!.name)")!)
         let savedModel = defaults.get(for: key)!
-        let messageModel = MessageModel.init()
+        var messageModel = MessageModel.init()
         messageModel.content = savedModel.content
         messageModel.type = savedModel.type
         return messageModel
