@@ -14,7 +14,7 @@ class ChatChoiceCell: UITableViewCell {
     weak var messageCenter : MessageCenter?
     var model : MessageModel? {
         didSet {
-            contentLabel.text = model?.content
+            refreshCell()
         }
     }
 
@@ -26,7 +26,20 @@ class ChatChoiceCell: UITableViewCell {
         contentLabel.isUserInteractionEnabled = true
     }
     
+    func refreshCell() {
+        switch model!.type {
+        case MessageType.chosen:
+            contentLabel.textColor = UIColor.black
+        default:
+            contentLabel.textColor = UIColor.blue
+        }
+        contentLabel.text = model?.content
+    }
+    
     @objc func tapped() {
+        if model?.type == .chosen {
+            return
+        }
         model?.type = .chosen
         messageCenter?.saveMessage(message: model!)
         if model?.reply != nil {

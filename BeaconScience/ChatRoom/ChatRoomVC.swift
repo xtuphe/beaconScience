@@ -16,7 +16,8 @@ class ChatRoomVC: UIViewController {
     var infoModel = ChatListData.shared.data[0] as! InfoModel {
         didSet {
             loadSaves()
-            
+            messageCenter.infoModel = infoModel
+            ChatListData.shared.onSightName = infoModel.name
         }
     }
     var tableData : [MessageModel] = []
@@ -28,6 +29,7 @@ class ChatRoomVC: UIViewController {
         setupNotification()
         setupMessageCenter()
         ChatListData.shared.save()
+        infoModel = ChatListData.shared.data[0] as! InfoModel
     }
     
     func setupCollectionView() {
@@ -54,7 +56,6 @@ class ChatRoomVC: UIViewController {
     }
     
     func setupMessageCenter(){
-        messageCenter.whatsNext()
         messageCenter.delegate = self
     }
     
@@ -64,6 +65,11 @@ class ChatRoomVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ChatListData.shared.onSightName = infoModel.name
     }
 }
 
@@ -80,13 +86,13 @@ extension ChatRoomVC: MessageCenterDelegate {
         //其他人的信息
         if message.name != nil {
             let index = ChatListData.shared.newConversation(name: message.name!, avatar: "Avatar")
-            newMessageHandle(index: index, content: message.content!, name: message.name!)
+            newMessageHandle(index: index, message: message, name: message.name!)
             return
         }
         
         if infoModel.name != messageCenter.infoModel?.name {
             let index = ChatListData.shared.newConversation(name: (messageCenter.infoModel?.name)!, avatar: (messageCenter.infoModel?.avatar)!)
-            newMessageHandle(index: index, content: message.content!, name: (messageCenter.infoModel?.name)!)
+            newMessageHandle(index: index, message: message, name: (messageCenter.infoModel?.name)!)
             return
         }
         
@@ -100,14 +106,16 @@ extension ChatRoomVC: MessageCenterDelegate {
         }
     }
     
-    func newMessageHandle(index: Int, content: String, name: String) {
+    func newMessageHandle(index: Int, message: MessageModel, name: String) {
         if index == 0 {
             collectionView.insertItems(at: [IndexPath.init(row: 1, section: 0)])
         } else if index > 0 {
             collectionView.moveItem(at: IndexPath.init(row: index, section: 0), to: IndexPath.init(row: 1, section: 0))
         }
-        
-        showMessage(name: name, content: content)
+        if message.type == .choice {
+            return
+        }
+        showMessage(name: name, content: message.content!)
         let unreadKey = Key<Int>("UnreadKey\(name)")
         var count = 0
         if Defaults.shared.has(unreadKey) {
@@ -134,11 +142,19 @@ extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         ChatListData.shared.selected(index: indexPath.row)
-        userData = ChatListData.shared.data
         infoModel = userData[0] as! InfoModel
-        let unreadKey = Key<Int>("UnreadKey\(infoModel.name)")
-        Defaults.shared.set(0, for: unreadKey)
+        
+        printLog(message: ".....selecting name: \(infoModel.name)")
+        
+//        let unreadKey = Key<Int>("UnreadKey\(infoModel.name)")
+//        Defaults.shared.set(0, for: unreadKey)
         collectionView.moveItem(at: indexPath, to: IndexPath.init(row: 0, section: 0))
+        printLog(message: ".....selected name: \(infoModel.name)")
+
+        if messageCenter.task == nil {
+            messageCenter.whatsNext()
+        }
+        
     }
     
 }
@@ -153,17 +169,19 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
         if Defaults.shared.has(indexKey) {
             savedIndex = Defaults.shared.get(for: indexKey)!
         } else {
+            tableData = []
+            tableView.reloadData()
             return
         }
         
         var savedData : [MessageModel] = []
         if savedIndex > 20 {
             for index in (savedIndex - 20)...savedIndex {
-                savedData.append(savedMessageWith(index: index))
+                savedData.append(getSavedMessageWith(index: index))
             }
         } else {
             for index in 1...savedIndex {
-                savedData.append(savedMessageWith(index: index))
+                savedData.append(getSavedMessageWith(index: index))
             }
         }
         tableData = savedData
@@ -171,7 +189,7 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
         tableView?.scrollToRow(at: IndexPath.init(row: tableData.count - 1, section: 0), at: .bottom, animated: false)
     }
     
-    func savedMessageWith(index : Int) -> MessageModel {
+    func getSavedMessageWith(index : Int) -> MessageModel {
         let key = Key<SavedMessage>("\(index)")
         let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(infoModel.name)")!)
         let savedModel = defaults.get(for: key)!

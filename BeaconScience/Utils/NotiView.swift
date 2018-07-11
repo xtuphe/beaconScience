@@ -15,5 +15,7 @@ func showMessage(name: String, content: String) {
     view.configureTheme(.info)
     view.configureDropShadow()
     view.configureContent(title: name, body: content)
+    view.button?.isHidden = true
+    view.iconImageView?.isHidden = true
     SwiftMessages.show(view: view)
 }

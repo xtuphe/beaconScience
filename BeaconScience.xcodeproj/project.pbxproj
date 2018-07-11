@@ -33,6 +33,7 @@
 		DA304A8020EF4F5900462048 /* NewConversationTest1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA304A7F20EF4F5900462048 /* NewConversationTest1.txt */; };
 		DA31936B20F49798004D8897 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA31936920F49798004D8897 /* ChatListCell.swift */; };
 		DA31936C20F49798004D8897 /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA31936A20F49798004D8897 /* ChatListCell.xib */; };
+		DA4BF49F20F5D742005FAB9E /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF49E20F5D742005FAB9E /* Convenient.swift */; };
 		DA855FA7201F2076006E820F /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA855FA6201F2076006E820F /* FileLoader.swift */; };
 		DA855FAB20284A40006E820F /* MessageCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA855FAA20284A40006E820F /* MessageCenter.swift */; };
 		DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C31A72043F8D200E49915 /* IBInspectable.swift */; };
@@ -71,6 +72,7 @@
 		DA304A7F20EF4F5900462048 /* NewConversationTest1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NewConversationTest1.txt; sourceTree = "<group>"; };
 		DA31936920F49798004D8897 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		DA31936A20F49798004D8897 /* ChatListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
+		DA4BF49E20F5D742005FAB9E /* Convenient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
 		DA855FA6201F2076006E820F /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 		DA855FAA20284A40006E820F /* MessageCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenter.swift; sourceTree = "<group>"; };
 		DA9C31A72043F8D200E49915 /* IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBInspectable.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				DAEF3ADA205284800084DE1F /* Repeater.swift */,
 				DA27C3DC2029A90C005DD70C /* Defaults.swift */,
 				DA1A7C1B20EE0FDB001A8154 /* NotiView.swift */,
+				DA4BF49E20F5D742005FAB9E /* Convenient.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */,
 				DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */,
 				DA1D5E5A200C999200BEE807 /* StringTransformer.swift in Sources */,
+				DA4BF49F20F5D742005FAB9E /* Convenient.swift in Sources */,
 				DA2501BD20E4BD65007F80FC /* CancelableDelay.swift in Sources */,
 				DA855FAB20284A40006E820F /* MessageCenter.swift in Sources */,
 				DA1D5E52200C833A00BEE807 /* TimeLineVC.swift in Sources */,

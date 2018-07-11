@@ -21,15 +21,27 @@ struct SavedMessage : Codable {
 class MessageCenter {
     static let shared = MessageCenter(infoModel: ChatListData.shared.data[0] as! InfoModel)
     
-    var contentArray : Array<MessageModel> = []
-    var index = 0
+    var contentArray : Array<MessageModel> = [] {
+        didSet {
+            printLog(message: ".....messageCenterCount\(contentArray.count)")
+        }
+    }
+    var index = 0 {
+        didSet{
+            printLog(message: ".....index : \(index)")
+        }
+    }
     var gap = 2.0
     var task : Task?
-    var fileName = "Test1"
+    var fileName : String?
     var infoModel : InfoModel? {
         didSet{
             if oldValue != nil && oldValue?.name != infoModel?.name {
+                
                 self.delegate?.newConversation(infoModel!)
+                printLog(message: ".....current name before refresh\(infoModel!.name)")
+                refresh(infoModel: infoModel!)
+                printLog(message: ".....current name\(infoModel!.name)")
             }
         }
     }
@@ -37,32 +49,38 @@ class MessageCenter {
     weak var delegate : MessageCenterDelegate?
     
     init(infoModel: InfoModel) {
+        if fileName == nil {
+            fileName = "Test1"
+        }
         refresh(infoModel: infoModel)
     }
     
     func refresh(infoModel: InfoModel) {
         let fileKey = Key<String>("FileKey\(infoModel.name)")
-        let indexKey = Key<Int>("IndexKey\(infoModel.name)")
-        let unreadKey = Key<Int>("UnreadKey\(infoModel.name)")
+//        let unreadKey = Key<Int>("UnreadKey\(infoModel.name)")
         
-        if Defaults.shared.has(unreadKey) {
-            let unreadCount = Defaults.shared.get(for: unreadKey)
-            if unreadCount == 0 {
-                return
-            }
-        }
+//        if Defaults.shared.has(unreadKey) {
+//            let unreadCount = Defaults.shared.get(for: unreadKey)
+//        }
         
         if Defaults.shared.has(fileKey) {
             fileName = Defaults.shared.get(for: fileKey)!
         }
         
-        getContents(fileName: fileName)
+        if fileName == nil {
+            return
+        }
+        getContents(fileName: fileName!)
+
+        let indexKey = Key<Int>("IndexKey\(fileName!)")
         
         if Defaults.shared.has(indexKey) {
             index = Defaults.shared.get(for: indexKey)!
         } else {
             index = 0
         }
+        
+        whatsNext()
     }
     
     func whatsNext(){
@@ -72,7 +90,7 @@ class MessageCenter {
             //当前行消息
             let currentMessage = self.contentArray[self.index]
             //是否为选择
-            if currentMessage.type == .choice {
+            if currentMessage.type == .choice{
                 self.choicesCheck(message: currentMessage)
             } else {
                 //展示当前消息
@@ -81,6 +99,7 @@ class MessageCenter {
                 self.saveMessage(message: currentMessage)
                 self.messageCheck(currentMessage: currentMessage)
             }
+            printLog(message: ".....currentIndex\(self.index)")
         }
     }
     
@@ -118,34 +137,43 @@ class MessageCenter {
     }
 
     func saveMessage(message: MessageModel) {
+        
+        
         switch message.type {
-        case .others, .choice, .invalid:
+        case .others:
+            let indexKey = Key<Int>("IndexKey\(infoModel!.name)")
+            Defaults.shared.set(index, for: indexKey)
+            saveMessageWith(name: message.name!, message: message)
+        case .choice, .invalid:
             break
         case .chosen://只保存选中的
             fallthrough
         default:
             let indexKey = Key<Int>("IndexKey\(infoModel!.name)")
             Defaults.shared.set(index, for: indexKey)
-            
-            let savedCountKey = Key<Int>("\(infoModel!.name)SavedIndex")
-            var savedIndex = 0
-            if Defaults.shared.has(savedCountKey) {
-                savedIndex = Defaults.shared.get(for: savedCountKey)!
-            }
-            savedIndex += 1
-            Defaults.shared.set(savedIndex, for: savedCountKey)
-            
-            let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(infoModel!.name)")!)
-            let messageKey = Key<SavedMessage>("\(savedIndex)")
-            let savedMessage = SavedMessage(content: message.content!, type: message.type)
-            Defaults.shared.set(savedMessage, for: messageKey)
-            defaults.set(savedMessage, for: messageKey)
-
+            saveMessageWith(name: infoModel!.name, message: message)
         }
+        printLog(message: ".....savedIndex\(index)")
+    }
+    
+    func saveMessageWith(name: String, message: MessageModel) {
+        let savedCountKey = Key<Int>("\(name)SavedIndex")
+        var savedIndex = 0
+        if Defaults.shared.has(savedCountKey) {
+            savedIndex = Defaults.shared.get(for: savedCountKey)!
+        }
+        savedIndex += 1
+        Defaults.shared.set(savedIndex, for: savedCountKey)
         
+        let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(name)")!)
+        let messageKey = Key<SavedMessage>("\(savedIndex)")
+        let savedMessage = SavedMessage(content: message.content!, type: message.type)
+        Defaults.shared.set(savedMessage, for: messageKey)
+        defaults.set(savedMessage, for: messageKey)
     }
     
     func newFile(fileName: String) {
+        self.fileName = fileName
         let content = loadContentFile(name: fileName)
         let (info, contents) = transformModel(rawString: content)
         if info.name != infoModel?.name {
@@ -155,11 +183,20 @@ class MessageCenter {
         let fileKey = Key<String>("FileKey\(infoModel!.name)")
         Defaults.shared.set(fileName, for: fileKey)
         index = 0
-        let indexKey = Key<Int>("IndexKey\(infoModel!.name)")
+        let indexKey = Key<Int>("IndexKey\(fileName)")
         Defaults.shared.set(index, for: indexKey)
+        index -= 1 //因为接下来检查index会+1或跳转，所以此处需要-1
     }
     
     func choicesCheck(message: MessageModel) {
+        if self.infoModel?.name != ChatListData.shared.onSightName {
+            if task != nil {
+                cancel(task)
+                task = nil
+                index -= 1
+            }
+            return
+        }
         switch message.type {
         case .choice:
             if task != nil {
@@ -184,7 +221,10 @@ class MessageCenter {
     func getContents(fileName: String){
         let content = loadContentFile(name: fileName)
         let (info, contents) = transformModel(rawString: content)
-        infoModel = info
+        if infoModel?.avatar != info.avatar {
+            //首次露面
+            infoModel = info
+        }
         contentArray = contents
     }
     

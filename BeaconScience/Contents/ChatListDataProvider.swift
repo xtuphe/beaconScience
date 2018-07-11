@@ -12,6 +12,7 @@ class ChatListData {
     static let shared = ChatListData()
     
     var data : NSMutableArray
+    var onSightName: String?
     
     init() {
 
@@ -50,7 +51,10 @@ class ChatListData {
         let fileURL = saveURL.appendingPathComponent("ChatList")
         
         NSKeyedArchiver.archiveRootObject(data, toFile: fileURL.path)
-        
+        for model in data {
+            let info = model as! InfoModel
+            printLog(message: ".....list data saved\(info.name)")
+        }
     }
         
     //返回新对话之前的位置，如果是0则为全新对话
