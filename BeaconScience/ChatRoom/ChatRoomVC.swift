@@ -9,148 +9,146 @@
 import UIKit
 
 class ChatRoomVC: UIViewController {
-    @IBOutlet weak var leftTableView: UITableView!
-    @IBOutlet weak var rightTableView: UITableView!
-    var leftDelegate = LeftTableViewDelegate()
-    var rightDelegate = RightTableViewDelegate()
-    var messageCenter = MessageCenter(index: ChatListData.shared.index, file: ChatListData.shared.fileName)
-    var infoModel = ChatListData.shared.data.first
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
+    var userData = ChatListData.shared.data
+    var messageCenter = MessageCenter.shared
+    var infoModel = ChatListData.shared.data[0] as! InfoModel {
+        didSet {
+            loadSaves()
+            
+        }
+    }
+    var tableData : [MessageModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableViews()
+        setupCollectionView()
+        setupTableView()
         setupNotification()
         setupMessageCenter()
         ChatListData.shared.save()
     }
     
-    func setupTableViews(){
-        leftTableView.delegate = leftDelegate
-        leftTableView.dataSource = leftDelegate
-        rightTableView.delegate = rightDelegate
-        rightTableView.dataSource = rightDelegate
-        leftTableView.rowHeight = UITableViewAutomaticDimension
-        rightTableView.rowHeight = UITableViewAutomaticDimension
-        leftTableView.estimatedRowHeight = 300
-        rightTableView.estimatedRowHeight = 300
-        leftTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        rightTableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        leftTableView.register(UINib.init(nibName: "ChatUserListCell", bundle: nil), forCellReuseIdentifier: "ChatUserListCell")
-        rightTableView.register(UINib.init(nibName: "ChatBaseCell", bundle: nil), forCellReuseIdentifier: "ChatBaseCell")
-        rightTableView.register(UINib.init(nibName: "ChatChoiceCell", bundle: nil), forCellReuseIdentifier: "ChatChoiceCell")
-        rightDelegate.tableView = rightTableView
-        rightDelegate.loadSaves()
-        leftDelegate.rightDelegate = rightDelegate
+    func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(UINib.init(nibName: "ChatListCell", bundle: nil), forCellWithReuseIdentifier: "ChatListCell")
+    }
+    
+    func setupTableView(){
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 300
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.register(UINib.init(nibName: "ChatBaseCell", bundle: nil), forCellReuseIdentifier: "ChatBaseCell")
+        tableView.register(UINib.init(nibName: "ChatChoiceCell", bundle: nil), forCellReuseIdentifier: "ChatChoiceCell")
     }
     
     func setupNotification(){
         NotificationCenter.default.addObserver(forName: notiName(name: "ChatRoomNeedsRefresh"), object: nil, queue: nil) { (noti) in
-            self.leftTableView.reloadData()
-            self.rightTableView.reloadData()
+            self.collectionView.reloadData()
+            self.tableView.reloadData()
         }
     }
     
     func setupMessageCenter(){
         messageCenter.whatsNext()
         messageCenter.delegate = self
-        rightDelegate.messageCenter = messageCenter
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        ChatListData.shared.currentConversation = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ChatListData.shared.currentConversation = rightDelegate.infoModel?.name
     }
 }
+
+//MARK: - 消息中心代理
 
 extension ChatRoomVC: MessageCenterDelegate {
     
     func newConversation(_ infoModel: InfoModel) {
-        _ = ChatListData.shared.newConversation(name: infoModel.name, avatar: infoModel.avatar)
-        leftDelegate.data = ChatListData.shared.data
-        leftTableView.reloadData()
-        rightDelegate.infoModel = infoModel
+
+
     }
 
     func newMessageReceived(_ message: MessageModel) {
         //其他人的信息
         if message.name != nil {
             let index = ChatListData.shared.newConversation(name: message.name!, avatar: "Avatar")
-            leftDelegate.data = ChatListData.shared.data
-            
-            if index == 0 {
-                leftTableView.beginUpdates()
-                leftTableView.insertRows(at: [IndexPath.init(row: 1, section: 0)], with: .automatic)
-                leftTableView.endUpdates()
-            } else if index > 0 {
-                leftTableView.beginUpdates()
-                leftTableView.moveRow(at: IndexPath.init(row: index, section: 0), to: IndexPath.init(row: 1, section: 0))
-                leftTableView.endUpdates()
-            }
-            
-            showMessage(name: message.name!, content: message.content!)
-            
-            
-            // pop up message
-            // save
-            
+            newMessageHandle(index: index, content: message.content!, name: message.name!)
             return
         }
         
-        if infoModel?.name != messageCenter.infoModel?.name {
-            showMessage(name: (messageCenter.infoModel?.name)!, content: message.content!)
+        if infoModel.name != messageCenter.infoModel?.name {
+            let index = ChatListData.shared.newConversation(name: (messageCenter.infoModel?.name)!, avatar: (messageCenter.infoModel?.avatar)!)
+            newMessageHandle(index: index, content: message.content!, name: (messageCenter.infoModel?.name)!)
             return
         }
         
-        rightDelegate.data.append(message)
-        rightTableView.reloadData()
+        tableData.append(message)
+        tableView.reloadData()
         
-        if rightTableView.contentOffset.y < rightTableView.contentSize.height - rightTableView.frame.size.height {
+        if tableView.contentOffset.y < tableView.contentSize.height - tableView.frame.size.height {
             _ = delay(0.1) { [unowned self] in
-                self.rightTableView.scrollToRow(at: IndexPath.init(row: self.rightDelegate.data.count - 1, section: 0), at: .bottom, animated: true)
+                self.tableView.scrollToRow(at: IndexPath.init(row: self.tableData.count - 1, section: 0), at: .bottom, animated: true)
             }
         }
+    }
+    
+    func newMessageHandle(index: Int, content: String, name: String) {
+        if index == 0 {
+            collectionView.insertItems(at: [IndexPath.init(row: 1, section: 0)])
+        } else if index > 0 {
+            collectionView.moveItem(at: IndexPath.init(row: index, section: 0), to: IndexPath.init(row: 1, section: 0))
+        }
+        
+        showMessage(name: name, content: content)
+        let unreadKey = Key<Int>("UnreadKey\(name)")
+        var count = 0
+        if Defaults.shared.has(unreadKey) {
+            count = Defaults.shared.get(for: unreadKey)!
+        }
+        count += 1
+        Defaults.shared.set(count, for: unreadKey)
     }
 }
 
-class LeftTableViewDelegate: NSCoder, UITableViewDelegate, UITableViewDataSource {
-    var data = ChatListData.shared.data
-    var rightDelegate : RightTableViewDelegate?
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+//MARK: - CollectionView 代理
+
+extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return userData.count
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatUserListCell")! as! ChatUserListCell
-        cell.model = data[indexPath.row]
-        cell.refresh()
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatListCell", for: indexPath) as! ChatListCell
+        cell.model = userData[indexPath.row] as? InfoModel
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        rightDelegate?.data = []
-        rightDelegate?.loadSaves()
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        ChatListData.shared.selected(index: indexPath.row)
+        userData = ChatListData.shared.data
+        infoModel = userData[0] as! InfoModel
+        let unreadKey = Key<Int>("UnreadKey\(infoModel.name)")
+        Defaults.shared.set(0, for: unreadKey)
+        collectionView.moveItem(at: indexPath, to: IndexPath.init(row: 0, section: 0))
     }
     
 }
 
-class RightTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
-    var data : [MessageModel] = []
-    var tableView : UITableView?
-    var infoModel = ChatListData.shared.data.first {
-        didSet {
-            ChatListData.shared.currentConversation = infoModel?.name
-        }
-    }
-    weak var messageCenter : MessageCenter?
+//MARK: - TableView 代理
+
+extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
     
     func loadSaves() {
-        let indexKey = Key<Int>("\(infoModel!.name)SavedIndex")
+        let indexKey = Key<Int>("\(infoModel.name)SavedIndex")
         var savedIndex = 0
         if Defaults.shared.has(indexKey) {
             savedIndex = Defaults.shared.get(for: indexKey)!
@@ -168,14 +166,14 @@ class RightTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
                 savedData.append(savedMessageWith(index: index))
             }
         }
-        data = savedData
+        tableData = savedData
         tableView?.reloadData()
-        tableView?.scrollToRow(at: IndexPath.init(row: data.count - 1, section: 0), at: .bottom, animated: false)
+        tableView?.scrollToRow(at: IndexPath.init(row: tableData.count - 1, section: 0), at: .bottom, animated: false)
     }
     
     func savedMessageWith(index : Int) -> MessageModel {
         let key = Key<SavedMessage>("\(index)")
-        let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(infoModel!.name)")!)
+        let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(infoModel.name)")!)
         let savedModel = defaults.get(for: key)!
         var messageModel = MessageModel.init()
         messageModel.content = savedModel.content
@@ -184,11 +182,11 @@ class RightTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return tableData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = data[indexPath.row]
+        let model = tableData[indexPath.row]
         switch model.type {
         case .choice, .chosen, .invalid:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatChoiceCell")! as! ChatChoiceCell
@@ -202,7 +200,5 @@ class RightTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSour
             return cell
         }
     }
-    
-    
 }
- 
+
