@@ -16,7 +16,6 @@ class ChatRoomVC: UIViewController {
     var infoModel = ChatListData.shared.data[0] as! InfoModel {
         didSet {
             loadSaves()
-            messageCenter.infoModel = infoModel
             ChatListData.shared.onSightName = infoModel.name
         }
     }
@@ -143,7 +142,8 @@ extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         ChatListData.shared.selected(index: indexPath.row)
         infoModel = userData[0] as! InfoModel
-        
+        messageCenter.newConversationSelected(infoModel: infoModel)
+
         printLog(message: ".....selecting name: \(infoModel.name)")
         
 //        let unreadKey = Key<Int>("UnreadKey\(infoModel.name)")

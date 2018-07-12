@@ -6,6 +6,7 @@
 //  Copyright © 2018年 Xtuphe's. All rights reserved.
 //
 
+
 import UIKit
 
 protocol MessageCenterDelegate: AnyObject {
@@ -138,7 +139,6 @@ class MessageCenter {
 
     func saveMessage(message: MessageModel) {
         
-        
         switch message.type {
         case .others:
             let indexKey = Key<Int>("IndexKey\(infoModel!.name)")
@@ -170,6 +170,19 @@ class MessageCenter {
         let savedMessage = SavedMessage(content: message.content!, type: message.type)
         Defaults.shared.set(savedMessage, for: messageKey)
         defaults.set(savedMessage, for: messageKey)
+    }
+    
+    func newConversationSelected(infoModel: InfoModel) {
+        if fileName != nil {
+            let fileKey = Key<String>("FileKey\(infoModel.name)")
+            Defaults.shared.set(fileName!, for: fileKey)
+            let indexKey = Key<Int>("IndexKey\(fileName!)")
+            Defaults.shared.set(index, for: indexKey)
+            fileName = nil
+        }
+        index = 0
+        contentArray = []
+        self.infoModel = infoModel
     }
     
     func newFile(fileName: String) {
