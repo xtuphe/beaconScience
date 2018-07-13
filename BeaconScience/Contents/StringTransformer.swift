@@ -84,9 +84,9 @@ class MathModel {
 enum MessageType : Int, Codable {
     case normal
     case choice
-    case others
-    case invalid
     case chosen
+    case invalid
+    case others
 }
 
 struct MessageModel {
@@ -144,66 +144,25 @@ struct MessageModel {
     
 }
 
-class InfoModel : NSObject, NSCoding {
-
-    var name = "Default"
-    var avatar = "Avatar"
-
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(name, forKey: "name")
-        aCoder.encode(avatar, forKey: "avatar")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        name = aDecoder.decodeObject(forKey: "name") as! String
-        avatar = aDecoder.decodeObject(forKey: "avatar") as! String
-    }
-    
-    init(name: String, avatar: String) {
-        self.name = name
-        self.avatar = avatar
-    }
-    
-    init(rawString:String) {
-        let rawArray = rawString.components(separatedBy: " ")
-        for singleLine in rawArray {
-            if singleLine == "" {
-                continue//过滤空行
-            }
-            if singleLine == " " {
-                continue
-            }
-            let convertedStr = singleLine.replacingOccurrences(of: "：", with: ":")
-            let singleLineArray = convertedStr.components(separatedBy: ":")
-            let prefix = singleLineArray.first!
-            let surfix = singleLineArray.last!
-            if prefix == "name" {
-                name = surfix
-            } else if prefix == "avatar" {
-                avatar = surfix
-            }
-        }
-    }
-}
-
-func transformModel(rawString:NSString) -> (info :InfoModel, array : [MessageModel]) {
+func transformModel(rawString:NSString) -> [MessageModel] {
     let rawArray = rawString.components(separatedBy: "\n")
-    
     var index = 0
     var resultArray : [MessageModel] = []
-    var infoModel : InfoModel?
     for singleLine in rawArray {
         if (singleLine == ""){
             continue//过滤空行
         }
-        if index == 0 {
-            infoModel = InfoModel.init(rawString: singleLine)
-        } else {
-            let model = MessageModel.init(rawStr: singleLine, index: index)
-            resultArray.append(model)
-        }
+        let model = MessageModel.init(rawStr: singleLine, index: index)
+        resultArray.append(model)
         index += 1
     }
-    return (infoModel!, resultArray)
+    return resultArray
+}
+
+func loadContentFile(name:String) -> NSString {
+    let filePath = Bundle.main.path(forResource: name, ofType: "txt")
+    let fileUrl = URL(fileURLWithPath: filePath!)
+    let fileContent = NSData.init(contentsOf: fileUrl)
+    return NSString(data: fileContent! as Data, encoding: String.Encoding.utf8.rawValue)!
 }
 

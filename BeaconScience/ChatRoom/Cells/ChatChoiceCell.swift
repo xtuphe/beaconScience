@@ -11,7 +11,6 @@ import UIKit
 class ChatChoiceCell: UITableViewCell {
 
     @IBOutlet weak var contentLabel: UILabel!
-    weak var messageCenter : MessageCenter?
     var model : MessageModel? {
         didSet {
             refreshCell()
@@ -41,18 +40,19 @@ class ChatChoiceCell: UITableViewCell {
             return
         }
         model?.type = .chosen
-        messageCenter?.saveMessage(message: model!)
+        Messages.shared.saveMessage(message: model!)
+
         if model?.reply != nil {
             var replyModel = MessageModel()
             replyModel.content = model?.reply
             replyModel.type = .normal
             _ = delay(1) {[unowned self] in
-                self.messageCenter?.delegate?.newMessageReceived(replyModel)
-                self.messageCenter?.saveMessage(message: replyModel)
-                self.messageCenter?.messageCheck(currentMessage: self.model!)
+                Messages.shared.delegate?.newMessageReceived(replyModel)
+                Messages.shared.saveMessage(message: replyModel)
+                Messages.shared.messageCheck(currentMessage: self.model!)
             }
         } else {
-            messageCenter?.messageCheck(currentMessage: model!)
+            Messages.shared.messageCheck(currentMessage: model!)
         }
     }
     

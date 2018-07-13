@@ -12,9 +12,9 @@ class ChatListCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
     
-    var model : InfoModel? {
+    var name : String? {
         didSet{
-            imageView.image = UIImage.init(named: (model?.avatar)!)
+            imageView.image = UIImage.init(named: name!)
         }
     }
     

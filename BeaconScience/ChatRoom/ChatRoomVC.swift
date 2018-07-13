@@ -11,12 +11,10 @@ import UIKit
 class ChatRoomVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
-    var userData = ChatListData.shared.data
-    var messageCenter = MessageCenter.shared
-    var infoModel = ChatListData.shared.data[0] as! InfoModel {
+    var name = Conversations.shared.data[0] as! String {
         didSet {
             loadSaves()
-            ChatListData.shared.onSightName = infoModel.name
+            Conversations.shared.onSightName = name
         }
     }
     var tableData : [MessageModel] = []
@@ -27,8 +25,7 @@ class ChatRoomVC: UIViewController {
         setupTableView()
         setupNotification()
         setupMessageCenter()
-        ChatListData.shared.save()
-        infoModel = ChatListData.shared.data[0] as! InfoModel
+        name = Conversations.shared.data[0] as! String
     }
     
     func setupCollectionView() {
@@ -55,11 +52,12 @@ class ChatRoomVC: UIViewController {
     }
     
     func setupMessageCenter(){
-        messageCenter.delegate = self
+        Messages.shared.delegate = self
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        Conversations.shared.onSightName = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,30 +66,26 @@ class ChatRoomVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        ChatListData.shared.onSightName = infoModel.name
+        Conversations.shared.onSightName = name
     }
 }
 
 //MARK: - 消息中心代理
 
-extension ChatRoomVC: MessageCenterDelegate {
+extension ChatRoomVC: MessagesDelegate {
     
-    func newConversation(_ infoModel: InfoModel) {
-
-
-    }
 
     func newMessageReceived(_ message: MessageModel) {
         //其他人的信息
         if message.name != nil {
-            let index = ChatListData.shared.newConversation(name: message.name!, avatar: "Avatar")
+            let index = Conversations.shared.newConversation(name: message.name!)
             newMessageHandle(index: index, message: message, name: message.name!)
             return
         }
         
-        if infoModel.name != messageCenter.infoModel?.name {
-            let index = ChatListData.shared.newConversation(name: (messageCenter.infoModel?.name)!, avatar: (messageCenter.infoModel?.avatar)!)
-            newMessageHandle(index: index, message: message, name: (messageCenter.infoModel?.name)!)
+        if name != Messages.shared.name {
+            let index = Conversations.shared.newConversation(name: Messages.shared.name)
+            newMessageHandle(index: index, message: message, name: Messages.shared.name)
             return
         }
         
@@ -130,29 +124,26 @@ extension ChatRoomVC: MessageCenterDelegate {
 extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return userData.count
+        return Conversations.shared.data.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatListCell", for: indexPath) as! ChatListCell
-        cell.model = userData[indexPath.row] as? InfoModel
+        cell.name = Conversations.shared.data[indexPath.row] as? String
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        ChatListData.shared.selected(index: indexPath.row)
-        infoModel = userData[0] as! InfoModel
-        messageCenter.newConversationSelected(infoModel: infoModel)
-
-        printLog(message: ".....selecting name: \(infoModel.name)")
+        Conversations.shared.selected(index: indexPath.row)
+        name = Conversations.shared.data[0] as! String
+        Messages.shared.reload(name: name)
         
-//        let unreadKey = Key<Int>("UnreadKey\(infoModel.name)")
-//        Defaults.shared.set(0, for: unreadKey)
-        collectionView.moveItem(at: indexPath, to: IndexPath.init(row: 0, section: 0))
-        printLog(message: ".....selected name: \(infoModel.name)")
+        printLog(message: ".....selecting name: \(name)")
 
-        if messageCenter.task == nil {
-            messageCenter.whatsNext()
+        collectionView.moveItem(at: indexPath, to: IndexPath.init(row: 0, section: 0))
+
+        if Messages.shared.task == nil {
+            Messages.shared.whatsNext()
         }
         
     }
@@ -164,7 +155,7 @@ extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
 extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
     
     func loadSaves() {
-        let indexKey = Key<Int>("\(infoModel.name)SavedIndex")
+        let indexKey = Key<Int>("\(name)SavedIndex")
         var savedIndex = 0
         if Defaults.shared.has(indexKey) {
             savedIndex = Defaults.shared.get(for: indexKey)!
@@ -191,7 +182,7 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
     
     func getSavedMessageWith(index : Int) -> MessageModel {
         let key = Key<SavedMessage>("\(index)")
-        let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(infoModel.name)")!)
+        let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(name)")!)
         let savedModel = defaults.get(for: key)!
         var messageModel = MessageModel.init()
         messageModel.content = savedModel.content
@@ -206,10 +197,9 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = tableData[indexPath.row]
         switch model.type {
-        case .choice, .chosen, .invalid:
+        case .choice:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatChoiceCell")! as! ChatChoiceCell
             cell.model = model
-            cell.messageCenter = messageCenter
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatBaseCell")! as! ChatBaseCell
