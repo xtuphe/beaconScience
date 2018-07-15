@@ -30,11 +30,20 @@ class Messages {
     weak var delegate : MessagesDelegate?
 
     init() {
-        
+        printLog(message: "messages init")
+        //检查是否为初次加载
+        let firstTimeKey = Key<Bool>("NotFirstTimeKey")
+        if Defaults.shared.has(firstTimeKey) {
+            reload(name: name)
+        } else {
+            reload(fileName: "Testor-1")
+            Defaults.shared.set(true, for: firstTimeKey)
+        }
     }
     
     func reload(name: String) {
         
+        self.name = name
         fileName = nil
         index = 0
         data = []
@@ -52,17 +61,17 @@ class Messages {
     }
     
     func reload(fileName: String) {
+        
+        self.fileName = fileName
         index = 0
         data = []
         
         let fileNameArray = (fileName as NSString).components(separatedBy: "-")
         name = fileNameArray.first!
         
-        if Conversations.shared.newConversation(name: name) != 0 {
-            let indexKey = Key<Int>("IndexKey\(fileName)")
-            if Defaults.shared.has(indexKey) {
-                index = Defaults.shared.get(for: indexKey)!
-            }
+        let indexKey = Key<Int>("IndexKey\(fileName)")
+        if Defaults.shared.has(indexKey) {
+            index = Defaults.shared.get(for: indexKey)!
         }
         
         let fileKey = Key<String>("FileKey\(name)")
@@ -72,7 +81,9 @@ class Messages {
             if messageBefore!.jump != nil {
                 self.index = messageBefore!.jump! - 1
             }
+            messageBefore = nil
         }
+        getData(fileName: fileName)
         whatsNext()
     }
     
@@ -84,11 +95,16 @@ class Messages {
     func whatsNext(){
         task = delay(gap){ [unowned self] in
             //防越界
-            guard self.index < self.data.count else { return }
+            if self.index >= self.data.count {
+                return
+            }
             //当前行消息
             let currentMessage = self.data[self.index]
             //是否为选择
             if currentMessage.type == .choice{
+                //保存选择的index但不保存内容, 所以当切换conversation时会从第一个选择开始加载
+                let indexKey = Key<Int>("IndexKey\(self.fileName!)")
+                Defaults.shared.set(self.index, for: indexKey)
                 self.choicesCheck(message: currentMessage)
             } else {
                 //展示当前消息
@@ -110,8 +126,13 @@ class Messages {
         }
         //检查是否需要载入新文件
         if currentMessage.file != nil {
-            reload(fileName: currentMessage.file!)
+            if index + 1 >= data.count {
+                //当前file走完的情况, 存储index, 避免重复消息
+                let indexKey = Key<Int>("IndexKey\(self.fileName!)")
+                Defaults.shared.set(self.index + 1, for: indexKey)
+            }
             messageBefore = currentMessage
+            reload(fileName: currentMessage.file!)
             return
         }
         //检查是否需要跳转
@@ -140,13 +161,13 @@ class Messages {
         
         switch message.type {
         case .others:
-            let indexKey = Key<Int>("IndexKey\(name)")
+            let indexKey = Key<Int>("IndexKey\(fileName!)")
             Defaults.shared.set(index, for: indexKey)
             saveMessageWith(name: message.name!, message: message)
         case .choice:
             break
         default:
-            let indexKey = Key<Int>("IndexKey\(name)")
+            let indexKey = Key<Int>("IndexKey\(fileName!)")
             Defaults.shared.set(index, for: indexKey)
             saveMessageWith(name: name, message: message)
         }
@@ -154,16 +175,16 @@ class Messages {
     }
     
     func saveMessageWith(name: String, message: MessageModel) {
-        let savedCountKey = Key<Int>("\(name)SavedIndex")
-        var savedIndex = 0
+        let savedCountKey = Key<Int>("\(name)SavedCount")
+        var savedCount = 0
         if Defaults.shared.has(savedCountKey) {
-            savedIndex = Defaults.shared.get(for: savedCountKey)!
+            savedCount = Defaults.shared.get(for: savedCountKey)!
         }
-        savedIndex += 1
-        Defaults.shared.set(savedIndex, for: savedCountKey)
+        savedCount += 1
+        Defaults.shared.set(savedCount, for: savedCountKey)
         
         let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(name)")!)
-        let messageKey = Key<SavedMessage>("\(savedIndex)")
+        let messageKey = Key<SavedMessage>("\(savedCount)")
         let savedMessage = SavedMessage(content: message.content!, type: message.type)
         Defaults.shared.set(savedMessage, for: messageKey)
         defaults.set(savedMessage, for: messageKey)

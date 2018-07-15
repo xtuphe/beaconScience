@@ -21,7 +21,7 @@ class ChatBaseCell: UITableViewCell {
     }
 
     func refresh() {
-        self.avatarImageView.image = UIImage.init(imageLiteralResourceName: "Avatar")
+        self.avatarImageView.image = UIImage.init(named: "Testor")
         self.contentLabel.text = self.model!.content
     }
     

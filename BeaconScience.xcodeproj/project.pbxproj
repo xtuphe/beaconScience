@@ -28,9 +28,9 @@
 		DA2501BD20E4BD65007F80FC /* CancelableDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2501BC20E4BD65007F80FC /* CancelableDelay.swift */; };
 		DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA2501BE20E4D5D2007F80FC /* Intro2.txt */; };
 		DA27C3DD2029A90C005DD70C /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA27C3DC2029A90C005DD70C /* Defaults.swift */; };
-		DA304A7C20EF4B3E00462048 /* Test1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA304A7B20EF4B3E00462048 /* Test1.txt */; };
-		DA304A7E20EF4DF900462048 /* FileTest1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA304A7D20EF4DF900462048 /* FileTest1.txt */; };
-		DA304A8020EF4F5900462048 /* NewConversationTest1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA304A7F20EF4F5900462048 /* NewConversationTest1.txt */; };
+		DA304A7C20EF4B3E00462048 /* Testor-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA304A7B20EF4B3E00462048 /* Testor-1.txt */; };
+		DA304A7E20EF4DF900462048 /* Testor-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA304A7D20EF4DF900462048 /* Testor-2.txt */; };
+		DA304A8020EF4F5900462048 /* Testor2-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA304A7F20EF4F5900462048 /* Testor2-1.txt */; };
 		DA31936B20F49798004D8897 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA31936920F49798004D8897 /* ChatListCell.swift */; };
 		DA31936C20F49798004D8897 /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA31936A20F49798004D8897 /* ChatListCell.xib */; };
 		DA48AF8920F882F600891ACC /* Conversations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48AF8820F882F600891ACC /* Conversations.swift */; };
@@ -66,9 +66,9 @@
 		DA2501BC20E4BD65007F80FC /* CancelableDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelableDelay.swift; sourceTree = "<group>"; };
 		DA2501BE20E4D5D2007F80FC /* Intro2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Intro2.txt; sourceTree = "<group>"; };
 		DA27C3DC2029A90C005DD70C /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
-		DA304A7B20EF4B3E00462048 /* Test1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Test1.txt; sourceTree = "<group>"; };
-		DA304A7D20EF4DF900462048 /* FileTest1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = FileTest1.txt; sourceTree = "<group>"; };
-		DA304A7F20EF4F5900462048 /* NewConversationTest1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NewConversationTest1.txt; sourceTree = "<group>"; };
+		DA304A7B20EF4B3E00462048 /* Testor-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Testor-1.txt"; sourceTree = "<group>"; };
+		DA304A7D20EF4DF900462048 /* Testor-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Testor-2.txt"; sourceTree = "<group>"; };
+		DA304A7F20EF4F5900462048 /* Testor2-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Testor2-1.txt"; sourceTree = "<group>"; };
 		DA31936920F49798004D8897 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		DA31936A20F49798004D8897 /* ChatListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
 		DA48AF8820F882F600891ACC /* Conversations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations.swift; sourceTree = "<group>"; };
@@ -155,9 +155,9 @@
 				DA2501BE20E4D5D2007F80FC /* Intro2.txt */,
 				DA1A7C1720EE03A3001A8154 /* Intro3.txt */,
 				DADE040E20E5DA41000007ED /* News1.txt */,
-				DA304A7B20EF4B3E00462048 /* Test1.txt */,
-				DA304A7D20EF4DF900462048 /* FileTest1.txt */,
-				DA304A7F20EF4F5900462048 /* NewConversationTest1.txt */,
+				DA304A7B20EF4B3E00462048 /* Testor-1.txt */,
+				DA304A7D20EF4DF900462048 /* Testor-2.txt */,
+				DA304A7F20EF4F5900462048 /* Testor2-1.txt */,
 			);
 			path = StoryLines;
 			sourceTree = "<group>";
@@ -299,8 +299,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA304A7E20EF4DF900462048 /* FileTest1.txt in Resources */,
-				DA304A7C20EF4B3E00462048 /* Test1.txt in Resources */,
+				DA304A7E20EF4DF900462048 /* Testor-2.txt in Resources */,
+				DA304A7C20EF4B3E00462048 /* Testor-1.txt in Resources */,
 				DA31936C20F49798004D8897 /* ChatListCell.xib in Resources */,
 				DA1D5E58200C851200BEE807 /* ChatBaseCell.xib in Resources */,
 				DA1D5E42200742B000BEE807 /* LaunchScreen.storyboard in Resources */,
@@ -309,7 +309,7 @@
 				DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */,
 				DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */,
 				DA1A7C1820EE03A3001A8154 /* Intro3.txt in Resources */,
-				DA304A8020EF4F5900462048 /* NewConversationTest1.txt in Resources */,
+				DA304A8020EF4F5900462048 /* Testor2-1.txt in Resources */,
 				DADE040F20E5DA41000007ED /* News1.txt in Resources */,
 				DA1D5E63200F307200BEE807 /* Intro1.txt in Resources */,
 				DA1A7C1A20EE0E7E001A8154 /* Podfile in Resources */,

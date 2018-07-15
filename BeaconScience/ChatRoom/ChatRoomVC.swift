@@ -26,6 +26,7 @@ class ChatRoomVC: UIViewController {
         setupNotification()
         setupMessageCenter()
         name = Conversations.shared.data[0] as! String
+        
     }
     
     func setupCollectionView() {
@@ -53,6 +54,7 @@ class ChatRoomVC: UIViewController {
     
     func setupMessageCenter(){
         Messages.shared.delegate = self
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -155,10 +157,10 @@ extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
 extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
     
     func loadSaves() {
-        let indexKey = Key<Int>("\(name)SavedIndex")
-        var savedIndex = 0
+        let indexKey = Key<Int>("\(name)SavedCount")
+        var savedCount = 0
         if Defaults.shared.has(indexKey) {
-            savedIndex = Defaults.shared.get(for: indexKey)!
+            savedCount = Defaults.shared.get(for: indexKey)!
         } else {
             tableData = []
             tableView.reloadData()
@@ -166,12 +168,12 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
         }
         
         var savedData : [MessageModel] = []
-        if savedIndex > 20 {
-            for index in (savedIndex - 20)...savedIndex {
+        if savedCount > 20 {
+            for index in (savedCount - 20)...savedCount {
                 savedData.append(getSavedMessageWith(index: index))
             }
         } else {
-            for index in 1...savedIndex {
+            for index in 1...savedCount {
                 savedData.append(getSavedMessageWith(index: index))
             }
         }
@@ -197,7 +199,7 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = tableData[indexPath.row]
         switch model.type {
-        case .choice:
+        case .choice, .chosen:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatChoiceCell")! as! ChatChoiceCell
             cell.model = model
             return cell

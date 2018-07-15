@@ -1,3 +1,0 @@
-name:Testor1 avatar:Avatar
-new file loaded
-* back to choice test__fTest1__j3

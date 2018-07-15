@@ -1,0 +1,26 @@
+Test Start
+Choice test
+* Loop test__j8
+* Gap test__j14
+* File test__j23
+* Name test__j24
+* New conversation test__j26
+Loop test
+1
+2
+3
+* loop back__j8__-looping back
+* loop break__-loop broke__j2
+Gap test__g0.1
+0.1 second__g0.1
+0.1 second__g0.1
+0.1 second__g0.1
+0.1 second__g0.1
+0.1 second__g0.1
+0.1 second__g0.1
+0.1 second__g0.1
+0.1 second__j2
+File test__fTestor-2
+Name test
+This is new name__nTestor2__j3
+OK, there you go__fTestor2-1
