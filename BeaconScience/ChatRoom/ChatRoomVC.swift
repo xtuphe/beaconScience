@@ -11,6 +11,7 @@ import UIKit
 class ChatRoomVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    var choiceView = ChoiceCardView()
     var name = Conversations.shared.data[0] as! String {
         didSet {
             loadSaves()
@@ -26,7 +27,7 @@ class ChatRoomVC: UIViewController {
         setupNotification()
         setupMessageCenter()
         name = Conversations.shared.data[0] as! String
-        
+        setupFooter()
     }
     
     func setupCollectionView() {
@@ -43,6 +44,16 @@ class ChatRoomVC: UIViewController {
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.register(UINib.init(nibName: "ChatBaseCell", bundle: nil), forCellReuseIdentifier: "ChatBaseCell")
         tableView.register(UINib.init(nibName: "ChatChoiceCell", bundle: nil), forCellReuseIdentifier: "ChatChoiceCell")
+    }
+    
+    func setupFooter(){
+        choiceView.scrollView = tableView
+        
+        var model = MessageModel()
+        model.content = "ChatChoiceCellChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell"
+        choiceView.data = [model, model, model, model, model, model, model]
+        choiceView.reloadData()
+        tableView.tableFooterView = choiceView
     }
     
     func setupNotification(){

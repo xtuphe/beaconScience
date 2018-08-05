@@ -36,6 +36,20 @@
 		DA48AF8920F882F600891ACC /* Conversations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48AF8820F882F600891ACC /* Conversations.swift */; };
 		DA48AF8B20F88D0F00891ACC /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48AF8A20F88D0F00891ACC /* Messages.swift */; };
 		DA4BF49F20F5D742005FAB9E /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF49E20F5D742005FAB9E /* Convenient.swift */; };
+		DA5A04B72114044500801C83 /* ChoiceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04B62114044500801C83 /* ChoiceCardView.swift */; };
+		DA5A04C921141ECF00801C83 /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04BD21141ECF00801C83 /* SKColor+Extensions.swift */; };
+		DA5A04CA21141ECF00801C83 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04BE21141ECF00801C83 /* CGVector+Extensions.swift */; };
+		DA5A04CB21141ECF00801C83 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04BF21141ECF00801C83 /* Int+Extensions.swift */; };
+		DA5A04CC21141ECF00801C83 /* SKTTimingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04C021141ECF00801C83 /* SKTTimingFunctions.swift */; };
+		DA5A04CD21141ECF00801C83 /* SKAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04C121141ECF00801C83 /* SKAction+Extensions.swift */; };
+		DA5A04CE21141ECF00801C83 /* SKAction+SpecialEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04C221141ECF00801C83 /* SKAction+SpecialEffects.swift */; };
+		DA5A04CF21141ECF00801C83 /* SKNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04C321141ECF00801C83 /* SKNode+Extensions.swift */; };
+		DA5A04D021141ECF00801C83 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04C421141ECF00801C83 /* CGPoint+Extensions.swift */; };
+		DA5A04D121141ECF00801C83 /* SKTEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04C521141ECF00801C83 /* SKTEffects.swift */; };
+		DA5A04D221141ECF00801C83 /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04C621141ECF00801C83 /* SKTAudio.swift */; };
+		DA5A04D321141ECF00801C83 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04C721141ECF00801C83 /* Vector3.swift */; };
+		DA5A04D421141ECF00801C83 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04C821141ECF00801C83 /* CGFloat+Extensions.swift */; };
+		DA5A04D62114244100801C83 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04D52114244100801C83 /* StringHelper.swift */; };
 		DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C31A72043F8D200E49915 /* IBInspectable.swift */; };
 		DADE040F20E5DA41000007ED /* News1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DADE040E20E5DA41000007ED /* News1.txt */; };
 		DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF3ADA205284800084DE1F /* Repeater.swift */; };
@@ -74,6 +88,20 @@
 		DA48AF8820F882F600891ACC /* Conversations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations.swift; sourceTree = "<group>"; };
 		DA48AF8A20F88D0F00891ACC /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		DA4BF49E20F5D742005FAB9E /* Convenient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
+		DA5A04B62114044500801C83 /* ChoiceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCardView.swift; sourceTree = "<group>"; };
+		DA5A04BD21141ECF00801C83 /* SKColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKColor+Extensions.swift"; sourceTree = "<group>"; };
+		DA5A04BE21141ECF00801C83 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
+		DA5A04BF21141ECF00801C83 /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		DA5A04C021141ECF00801C83 /* SKTTimingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTTimingFunctions.swift; sourceTree = "<group>"; };
+		DA5A04C121141ECF00801C83 /* SKAction+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+Extensions.swift"; sourceTree = "<group>"; };
+		DA5A04C221141ECF00801C83 /* SKAction+SpecialEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+SpecialEffects.swift"; sourceTree = "<group>"; };
+		DA5A04C321141ECF00801C83 /* SKNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKNode+Extensions.swift"; sourceTree = "<group>"; };
+		DA5A04C421141ECF00801C83 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		DA5A04C521141ECF00801C83 /* SKTEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTEffects.swift; sourceTree = "<group>"; };
+		DA5A04C621141ECF00801C83 /* SKTAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
+		DA5A04C721141ECF00801C83 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		DA5A04C821141ECF00801C83 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		DA5A04D52114244100801C83 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
 		DA9C31A72043F8D200E49915 /* IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBInspectable.swift; sourceTree = "<group>"; };
 		DADE040E20E5DA41000007ED /* News1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = News1.txt; sourceTree = "<group>"; };
 		DAEF3ADA205284800084DE1F /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
@@ -136,6 +164,7 @@
 		DA1D5E34200742B000BEE807 /* BeaconScience */ = {
 			isa = PBXGroup;
 			children = (
+				DA5A04BC21141ECF00801C83 /* SKTUtils */,
 				DA1D5E64200F32E000BEE807 /* Architecture */,
 				DAEF3AD82052761A0084DE1F /* Contents */,
 				DA1D5E66200F337A00BEE807 /* ChatRoom */,
@@ -188,6 +217,7 @@
 			children = (
 				DA0CFAA820E377090028861B /* Cells */,
 				DA1D5E4D200857E300BEE807 /* ChatRoomVC.swift */,
+				DA5A04B62114044500801C83 /* ChoiceCardView.swift */,
 			);
 			path = ChatRoom;
 			sourceTree = "<group>";
@@ -208,8 +238,28 @@
 				DA27C3DC2029A90C005DD70C /* Defaults.swift */,
 				DA1A7C1B20EE0FDB001A8154 /* NotiView.swift */,
 				DA4BF49E20F5D742005FAB9E /* Convenient.swift */,
+				DA5A04D52114244100801C83 /* StringHelper.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DA5A04BC21141ECF00801C83 /* SKTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				DA5A04BD21141ECF00801C83 /* SKColor+Extensions.swift */,
+				DA5A04BE21141ECF00801C83 /* CGVector+Extensions.swift */,
+				DA5A04BF21141ECF00801C83 /* Int+Extensions.swift */,
+				DA5A04C021141ECF00801C83 /* SKTTimingFunctions.swift */,
+				DA5A04C121141ECF00801C83 /* SKAction+Extensions.swift */,
+				DA5A04C221141ECF00801C83 /* SKAction+SpecialEffects.swift */,
+				DA5A04C321141ECF00801C83 /* SKNode+Extensions.swift */,
+				DA5A04C421141ECF00801C83 /* CGPoint+Extensions.swift */,
+				DA5A04C521141ECF00801C83 /* SKTEffects.swift */,
+				DA5A04C621141ECF00801C83 /* SKTAudio.swift */,
+				DA5A04C721141ECF00801C83 /* Vector3.swift */,
+				DA5A04C821141ECF00801C83 /* CGFloat+Extensions.swift */,
+			);
+			path = SKTUtils;
 			sourceTree = "<group>";
 		};
 		DAEF3AD82052761A0084DE1F /* Contents */ = {
@@ -362,21 +412,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA5A04CA21141ECF00801C83 /* CGVector+Extensions.swift in Sources */,
 				DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */,
+				DA5A04CC21141ECF00801C83 /* SKTTimingFunctions.swift in Sources */,
 				DA48AF8B20F88D0F00891ACC /* Messages.swift in Sources */,
+				DA5A04D321141ECF00801C83 /* Vector3.swift in Sources */,
+				DA5A04D021141ECF00801C83 /* CGPoint+Extensions.swift in Sources */,
 				DA1D5E57200C851200BEE807 /* ChatBaseCell.swift in Sources */,
 				DA31936B20F49798004D8897 /* ChatListCell.swift in Sources */,
 				DA1D5E54200C83CC00BEE807 /* MeVC.swift in Sources */,
+				DA5A04D62114244100801C83 /* StringHelper.swift in Sources */,
+				DA5A04CF21141ECF00801C83 /* SKNode+Extensions.swift in Sources */,
 				DA48AF8920F882F600891ACC /* Conversations.swift in Sources */,
+				DA5A04CE21141ECF00801C83 /* SKAction+SpecialEffects.swift in Sources */,
+				DA5A04CD21141ECF00801C83 /* SKAction+Extensions.swift in Sources */,
+				DA5A04C921141ECF00801C83 /* SKColor+Extensions.swift in Sources */,
 				DA1A7C1C20EE0FDB001A8154 /* NotiView.swift in Sources */,
 				DA1D5E4F200857E300BEE807 /* ChatRoomVC.swift in Sources */,
+				DA5A04D421141ECF00801C83 /* CGFloat+Extensions.swift in Sources */,
 				DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */,
+				DA5A04D121141ECF00801C83 /* SKTEffects.swift in Sources */,
 				DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */,
 				DA1D5E5A200C999200BEE807 /* StringTransformer.swift in Sources */,
+				DA5A04B72114044500801C83 /* ChoiceCardView.swift in Sources */,
 				DA4BF49F20F5D742005FAB9E /* Convenient.swift in Sources */,
 				DA2501BD20E4BD65007F80FC /* CancelableDelay.swift in Sources */,
 				DA1D5E52200C833A00BEE807 /* TimeLineVC.swift in Sources */,
 				DA1D5E6A2015F28C00BEE807 /* NotificationCenterX.swift in Sources */,
+				DA5A04CB21141ECF00801C83 /* Int+Extensions.swift in Sources */,
+				DA5A04D221141ECF00801C83 /* SKTAudio.swift in Sources */,
 				DA0CFAA620E36AC60028861B /* ChatChoiceCell.swift in Sources */,
 				DA27C3DD2029A90C005DD70C /* Defaults.swift in Sources */,
 			);
