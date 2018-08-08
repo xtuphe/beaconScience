@@ -10,6 +10,7 @@ import Foundation
 
 protocol MessagesDelegate: AnyObject {
     func newMessageReceived(_ message: MessageModel)
+    func presentChoiceView()
 }
 
 struct SavedMessage : Codable {
@@ -213,10 +214,31 @@ class Messages {
                     choicesCheck(message: nextMessage)
                 } else {
                     index -= 1
+                    delegate?.presentChoiceView()
                 }
+            } else {
+                delegate?.presentChoiceView()
             }
         default:
             break
+        }
+    }
+    
+    func choiceSelected(model: MessageModel) {
+//        model.type = .chosen
+        saveMessage(message: model)
+        
+        if model.reply != nil {
+            var replyModel = MessageModel()
+            replyModel.content = model.reply
+            replyModel.type = .normal
+            _ = delay(1) { [unowned self] in
+                self.delegate?.newMessageReceived(replyModel)
+                self.saveMessage(message: replyModel)
+                self.messageCheck(currentMessage: model)
+            }
+        } else {
+            messageCheck(currentMessage: model)
         }
     }
 }

@@ -48,18 +48,21 @@ class ChatRoomVC: UIViewController {
     
     func setupFooter(){
         choiceView.scrollView = tableView
-        
-        var model = MessageModel()
-        model.content = "ChatChoiceCellChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell ChatChoiceCell"
-        choiceView.data = [model, model, model, model, model, model, model]
-        choiceView.reloadData()
-        tableView.tableFooterView = choiceView
     }
     
     func setupNotification(){
         NotificationCenter.default.addObserver(forName: notiName(name: "ChatRoomNeedsRefresh"), object: nil, queue: nil) { (noti) in
             self.collectionView.reloadData()
             self.tableView.reloadData()
+        }
+        NotificationCenter.default.addObserver(forName: notiName(name: "ChoiceViewShouldDismiss"), object: nil, queue: nil) { (noti) in
+            self.tableView.tableFooterView = nil
+            self.choiceView.data = []
+            for view in self.choiceView.subviews {
+                view.removeFromSuperview()
+            }
+            self.choiceView.cards = []
+            self.choiceView.state = .normal
         }
     }
     
@@ -86,7 +89,10 @@ class ChatRoomVC: UIViewController {
 //MARK: - 消息中心代理
 
 extension ChatRoomVC: MessagesDelegate {
-    
+    func presentChoiceView() {
+        choiceView.reloadData()
+        tableView.tableFooterView = choiceView
+    }
 
     func newMessageReceived(_ message: MessageModel) {
         //其他人的信息
@@ -100,6 +106,10 @@ extension ChatRoomVC: MessagesDelegate {
             let index = Conversations.shared.newConversation(name: Messages.shared.name)
             newMessageHandle(index: index, message: message, name: Messages.shared.name)
             return
+        }
+        
+        if message.type == .choice {
+            choiceView.data.append(message)
         }
         
         tableData.append(message)
@@ -130,6 +140,8 @@ extension ChatRoomVC: MessagesDelegate {
         count += 1
         Defaults.shared.set(count, for: unreadKey)
     }
+    
+    
 }
 
 //MARK: - CollectionView 代理
