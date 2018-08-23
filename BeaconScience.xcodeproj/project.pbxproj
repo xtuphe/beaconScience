@@ -320,6 +320,7 @@
 				DA1D5E2F200742B000BEE807 /* Frameworks */,
 				DA1D5E30200742B000BEE807 /* Resources */,
 				AC217F9A6425A94F47A4A824 /* [CP] Embed Pods Frameworks */,
+				C10714E783758E78FABAD981 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -397,15 +398,32 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMPopTip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C10714E783758E78FABAD981 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D459D783B32592E47D13A620 /* [CP] Check Pods Manifest.lock */ = {

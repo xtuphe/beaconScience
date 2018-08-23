@@ -21,7 +21,7 @@ class ChatChosenCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
     }
 
     func refresh() {

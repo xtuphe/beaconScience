@@ -7,5 +7,6 @@ target 'BeaconScience' do
 
   # Pods for BeaconScience
     pod 'SwiftMessages'
-
+    pod 'AMPopTip'
+    
 end

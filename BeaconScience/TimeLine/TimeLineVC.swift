@@ -20,9 +20,9 @@ class TimeLineVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //修改StatusBar为黑色
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
     }
 
     // MARK: - Table view data source

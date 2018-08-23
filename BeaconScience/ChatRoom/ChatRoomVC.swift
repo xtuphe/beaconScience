@@ -86,6 +86,11 @@ class ChatRoomVC: UIViewController {
         super.viewDidAppear(animated)
         Conversations.shared.onSightName = name
     }
+    
+    //修改StatusBar为白色
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 //MARK: - 消息中心代理
