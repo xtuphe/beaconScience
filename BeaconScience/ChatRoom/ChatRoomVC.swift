@@ -11,7 +11,8 @@ import UIKit
 class ChatRoomVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
-    var choiceView = ChoiceCardView()
+    var choiceView: ChoiceTableView = ChoiceTableView()
+    
     var name = Conversations.shared.data[0] as! String {
         didSet {
             loadSaves()
@@ -28,6 +29,7 @@ class ChatRoomVC: UIViewController {
         setupMessageCenter()
         name = Conversations.shared.data[0] as! String
         setupFooter()
+        choiceView.setup()
     }
     
     func setupCollectionView() {
@@ -44,10 +46,12 @@ class ChatRoomVC: UIViewController {
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.register(UINib.init(nibName: "ChatBaseCell", bundle: nil), forCellReuseIdentifier: "ChatBaseCell")
         tableView.register(UINib.init(nibName: "ChatChoiceCell", bundle: nil), forCellReuseIdentifier: "ChatChoiceCell")
+        tableView.register(UINib.init(nibName: "ChatChosenCell", bundle: nil), forCellReuseIdentifier: "ChatChosenCell")
+        tableView.backgroundColor = UIColor.init(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1)
     }
     
     func setupFooter(){
-        choiceView.scrollView = tableView
+        
     }
     
     func setupNotification(){
@@ -56,13 +60,11 @@ class ChatRoomVC: UIViewController {
             self.tableView.reloadData()
         }
         NotificationCenter.default.addObserver(forName: notiName(name: "ChoiceViewShouldDismiss"), object: nil, queue: nil) { (noti) in
-            self.tableView.tableFooterView = nil
-            self.choiceView.data = []
-            for view in self.choiceView.subviews {
-                view.removeFromSuperview()
-            }
-            self.choiceView.cards = []
-            self.choiceView.state = .normal
+            //            self.tableView.scrollToRow(at: IndexPath.init(row: self.tableData.count - 1, section: 0), at: .bottom, animated: true)
+            _ = delay(1, task: { [unowned self] in
+                self.choiceView.data = []
+                self.tableView.tableFooterView = nil
+            })
         }
     }
     
@@ -89,11 +91,14 @@ class ChatRoomVC: UIViewController {
 //MARK: - 消息中心代理
 
 extension ChatRoomVC: MessagesDelegate {
+
     func presentChoiceView() {
         choiceView.reloadData()
+        choiceView.frame = CGRect.init(x: 0, y: 0, width: screenWidth(), height: choiceView.contentSize.height)
         tableView.tableFooterView = choiceView
+        tableView.setContentOffset(CGPoint.init(x:0, y:tableView.contentSize.height - (screenHeight() - collectionView.frame.size.height - tabBarHeight())), animated: true)
     }
-
+    
     func newMessageReceived(_ message: MessageModel) {
         //其他人的信息
         if message.name != nil {
@@ -110,6 +115,7 @@ extension ChatRoomVC: MessagesDelegate {
         
         if message.type == .choice {
             choiceView.data.append(message)
+            return
         }
         
         tableData.append(message)
@@ -222,8 +228,12 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = tableData[indexPath.row]
         switch model.type {
-        case .choice, .chosen:
+        case .choice:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatChoiceCell")! as! ChatChoiceCell
+            cell.model = model
+            return cell
+        case .chosen:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatChosenCell")! as! ChatChosenCell
             cell.model = model
             return cell
         default:

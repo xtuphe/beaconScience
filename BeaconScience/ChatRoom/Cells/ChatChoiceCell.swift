@@ -11,6 +11,8 @@ import UIKit
 class ChatChoiceCell: UITableViewCell {
 
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var button: PMSuperButton!
+    
     var model : MessageModel? {
         didSet {
             refreshCell()
@@ -20,27 +22,16 @@ class ChatChoiceCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapped))
-        contentLabel.addGestureRecognizer(tap)
-        contentLabel.isUserInteractionEnabled = true
     }
     
-    func refreshCell() {
-        switch model!.type {
-        case MessageType.chosen:
-            contentLabel.textColor = UIColor.black
-        default:
-            contentLabel.textColor = UIColor.blue
-        }
-        contentLabel.text = model?.content
-    }
-    
-    @objc func tapped() {
+    @IBAction func buttonPressed(_ sender: Any) {
         if model?.type == .chosen {
             return
         }
         model?.type = .chosen
+        Messages.shared.delegate?.newMessageReceived(model!)
         Messages.shared.saveMessage(message: model!)
+        NotificationCenter.default.post(name: notiName(name: "ChoiceViewShouldDismiss"), object: nil)
 
         if model?.reply != nil {
             var replyModel = MessageModel()
@@ -54,6 +45,16 @@ class ChatChoiceCell: UITableViewCell {
         } else {
             Messages.shared.messageCheck(currentMessage: model!)
         }
+    }
+    
+    func refreshCell() {
+        switch model!.type {
+        case MessageType.chosen:
+            contentLabel.textColor = UIColor.black
+        default:
+            contentLabel.textColor = UIColor.blue
+        }
+        contentLabel.text = model?.content
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

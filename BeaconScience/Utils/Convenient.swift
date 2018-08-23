@@ -26,6 +26,14 @@ func screenHeight() -> CGFloat{
     return UIScreen.main.bounds.height
 }
 
+func statusBarHeight() -> CGFloat{
+    return UIApplication.shared.statusBarFrame.size.height
+}
+
+func tabBarHeight() -> CGFloat{
+    return UITabBarController().tabBar.frame.size.height
+}
+
 extension UIView {
     class func loadFromNib(nibName:String) -> UIView?{
         return UINib(nibName: nibName, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? UIView

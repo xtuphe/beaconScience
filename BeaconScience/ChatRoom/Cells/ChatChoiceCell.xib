@@ -22,6 +22,27 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9b-rg-ShO">
                         <rect key="frame" x="5" y="5" width="310" height="55.5"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIB-eo-2QC" customClass="PMSuperButton" customModule="BeaconScience" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="55.5"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.015811048448085785" green="0.011896423995494843" blue="0.0035513828042894602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="animatedScaleWhenHighlighted">
+                                        <real key="value" value="0.90000000000000002"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="ripple" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                        <color key="value" white="0.54212782118055558" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fBQ-ss-e2d"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Meh-xR-voy">
                                 <rect key="frame" x="5" y="5" width="300" height="45.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -33,8 +54,12 @@
                         <constraints>
                             <constraint firstItem="Meh-xR-voy" firstAttribute="leading" secondItem="z9b-rg-ShO" secondAttribute="leading" constant="5" id="7Wm-5t-9gY"/>
                             <constraint firstItem="Meh-xR-voy" firstAttribute="top" secondItem="z9b-rg-ShO" secondAttribute="top" constant="5" id="Q7P-4k-2UB"/>
+                            <constraint firstItem="QIB-eo-2QC" firstAttribute="leading" secondItem="z9b-rg-ShO" secondAttribute="leading" id="RZR-wK-RfP"/>
                             <constraint firstAttribute="bottom" secondItem="Meh-xR-voy" secondAttribute="bottom" constant="5" id="Ui3-RB-5Zi"/>
+                            <constraint firstAttribute="bottom" secondItem="QIB-eo-2QC" secondAttribute="bottom" id="bfW-Hp-an4"/>
+                            <constraint firstAttribute="trailing" secondItem="QIB-eo-2QC" secondAttribute="trailing" id="jA6-Cb-ckc"/>
                             <constraint firstAttribute="trailing" secondItem="Meh-xR-voy" secondAttribute="trailing" constant="5" id="jKl-I3-5uk"/>
+                            <constraint firstItem="QIB-eo-2QC" firstAttribute="top" secondItem="z9b-rg-ShO" secondAttribute="top" id="ygb-eh-6Vy"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -47,6 +72,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="button" destination="QIB-eo-2QC" id="Peb-91-lHo"/>
                 <outlet property="contentLabel" destination="Meh-xR-voy" id="4Lz-hl-zJC"/>
             </connections>
             <point key="canvasLocation" x="34" y="140"/>

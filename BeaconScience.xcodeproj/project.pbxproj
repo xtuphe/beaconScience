@@ -31,6 +31,8 @@
 		DA304A7C20EF4B3E00462048 /* Testor-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA304A7B20EF4B3E00462048 /* Testor-1.txt */; };
 		DA304A7E20EF4DF900462048 /* Testor-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA304A7D20EF4DF900462048 /* Testor-2.txt */; };
 		DA304A8020EF4F5900462048 /* Testor2-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA304A7F20EF4F5900462048 /* Testor2-1.txt */; };
+		DA306241211D2A0C0082F52D /* PMSuperButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA306240211D2A0C0082F52D /* PMSuperButton.swift */; };
+		DA306244211D38500082F52D /* ChoiceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA306243211D38500082F52D /* ChoiceTableView.swift */; };
 		DA31936B20F49798004D8897 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA31936920F49798004D8897 /* ChatListCell.swift */; };
 		DA31936C20F49798004D8897 /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA31936A20F49798004D8897 /* ChatListCell.xib */; };
 		DA48AF8920F882F600891ACC /* Conversations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48AF8820F882F600891ACC /* Conversations.swift */; };
@@ -50,6 +52,8 @@
 		DA5A04D321141ECF00801C83 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04C721141ECF00801C83 /* Vector3.swift */; };
 		DA5A04D421141ECF00801C83 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04C821141ECF00801C83 /* CGFloat+Extensions.swift */; };
 		DA5A04D62114244100801C83 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04D52114244100801C83 /* StringHelper.swift */; };
+		DA749D3E212AC9D60065AEAF /* ChatChosenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA749D3C212AC9D60065AEAF /* ChatChosenCell.swift */; };
+		DA749D3F212AC9D60065AEAF /* ChatChosenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA749D3D212AC9D60065AEAF /* ChatChosenCell.xib */; };
 		DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C31A72043F8D200E49915 /* IBInspectable.swift */; };
 		DADE040F20E5DA41000007ED /* News1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DADE040E20E5DA41000007ED /* News1.txt */; };
 		DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF3ADA205284800084DE1F /* Repeater.swift */; };
@@ -83,6 +87,8 @@
 		DA304A7B20EF4B3E00462048 /* Testor-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Testor-1.txt"; sourceTree = "<group>"; };
 		DA304A7D20EF4DF900462048 /* Testor-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Testor-2.txt"; sourceTree = "<group>"; };
 		DA304A7F20EF4F5900462048 /* Testor2-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Testor2-1.txt"; sourceTree = "<group>"; };
+		DA306240211D2A0C0082F52D /* PMSuperButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMSuperButton.swift; sourceTree = "<group>"; };
+		DA306243211D38500082F52D /* ChoiceTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceTableView.swift; sourceTree = "<group>"; };
 		DA31936920F49798004D8897 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		DA31936A20F49798004D8897 /* ChatListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
 		DA48AF8820F882F600891ACC /* Conversations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations.swift; sourceTree = "<group>"; };
@@ -102,6 +108,8 @@
 		DA5A04C721141ECF00801C83 /* Vector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
 		DA5A04C821141ECF00801C83 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		DA5A04D52114244100801C83 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
+		DA749D3C212AC9D60065AEAF /* ChatChosenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatChosenCell.swift; sourceTree = "<group>"; };
+		DA749D3D212AC9D60065AEAF /* ChatChosenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatChosenCell.xib; sourceTree = "<group>"; };
 		DA9C31A72043F8D200E49915 /* IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBInspectable.swift; sourceTree = "<group>"; };
 		DADE040E20E5DA41000007ED /* News1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = News1.txt; sourceTree = "<group>"; };
 		DAEF3ADA205284800084DE1F /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
@@ -138,6 +146,8 @@
 				DA1D5E56200C851200BEE807 /* ChatBaseCell.xib */,
 				DA31936920F49798004D8897 /* ChatListCell.swift */,
 				DA31936A20F49798004D8897 /* ChatListCell.xib */,
+				DA749D3C212AC9D60065AEAF /* ChatChosenCell.swift */,
+				DA749D3D212AC9D60065AEAF /* ChatChosenCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -164,7 +174,6 @@
 		DA1D5E34200742B000BEE807 /* BeaconScience */ = {
 			isa = PBXGroup;
 			children = (
-				DA5A04BC21141ECF00801C83 /* SKTUtils */,
 				DA1D5E64200F32E000BEE807 /* Architecture */,
 				DAEF3AD82052761A0084DE1F /* Contents */,
 				DA1D5E66200F337A00BEE807 /* ChatRoom */,
@@ -172,6 +181,7 @@
 				DAEF3AD9205276A00084DE1F /* MiniGames */,
 				DA1D5E68200F33A400BEE807 /* Utils */,
 				DA1D5E5B200F280D00BEE807 /* StoryLines */,
+				DA306242211D377D0082F52D /* Recycle Bin */,
 				DA1D5E65200F331A00BEE807 /* Resources */,
 			);
 			path = BeaconScience;
@@ -217,7 +227,7 @@
 			children = (
 				DA0CFAA820E377090028861B /* Cells */,
 				DA1D5E4D200857E300BEE807 /* ChatRoomVC.swift */,
-				DA5A04B62114044500801C83 /* ChoiceCardView.swift */,
+				DA306243211D38500082F52D /* ChoiceTableView.swift */,
 			);
 			path = ChatRoom;
 			sourceTree = "<group>";
@@ -234,6 +244,8 @@
 		DA1D5E68200F33A400BEE807 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DA5A04BC21141ECF00801C83 /* SKTUtils */,
+				DA306240211D2A0C0082F52D /* PMSuperButton.swift */,
 				DAEF3ADA205284800084DE1F /* Repeater.swift */,
 				DA27C3DC2029A90C005DD70C /* Defaults.swift */,
 				DA1A7C1B20EE0FDB001A8154 /* NotiView.swift */,
@@ -241,6 +253,14 @@
 				DA5A04D52114244100801C83 /* StringHelper.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DA306242211D377D0082F52D /* Recycle Bin */ = {
+			isa = PBXGroup;
+			children = (
+				DA5A04B62114044500801C83 /* ChoiceCardView.swift */,
+			);
+			path = "Recycle Bin";
 			sourceTree = "<group>";
 		};
 		DA5A04BC21141ECF00801C83 /* SKTUtils */ = {
@@ -358,6 +378,7 @@
 				DA1D5E3D200742B000BEE807 /* Main.storyboard in Resources */,
 				DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */,
 				DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */,
+				DA749D3F212AC9D60065AEAF /* ChatChosenCell.xib in Resources */,
 				DA1A7C1820EE03A3001A8154 /* Intro3.txt in Resources */,
 				DA304A8020EF4F5900462048 /* Testor2-1.txt in Resources */,
 				DADE040F20E5DA41000007ED /* News1.txt in Resources */,
@@ -415,6 +436,7 @@
 				DA5A04CA21141ECF00801C83 /* CGVector+Extensions.swift in Sources */,
 				DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */,
 				DA5A04CC21141ECF00801C83 /* SKTTimingFunctions.swift in Sources */,
+				DA306244211D38500082F52D /* ChoiceTableView.swift in Sources */,
 				DA48AF8B20F88D0F00891ACC /* Messages.swift in Sources */,
 				DA5A04D321141ECF00801C83 /* Vector3.swift in Sources */,
 				DA5A04D021141ECF00801C83 /* CGPoint+Extensions.swift in Sources */,
@@ -426,6 +448,7 @@
 				DA48AF8920F882F600891ACC /* Conversations.swift in Sources */,
 				DA5A04CE21141ECF00801C83 /* SKAction+SpecialEffects.swift in Sources */,
 				DA5A04CD21141ECF00801C83 /* SKAction+Extensions.swift in Sources */,
+				DA749D3E212AC9D60065AEAF /* ChatChosenCell.swift in Sources */,
 				DA5A04C921141ECF00801C83 /* SKColor+Extensions.swift in Sources */,
 				DA1A7C1C20EE0FDB001A8154 /* NotiView.swift in Sources */,
 				DA1D5E4F200857E300BEE807 /* ChatRoomVC.swift in Sources */,
@@ -434,6 +457,7 @@
 				DA5A04D121141ECF00801C83 /* SKTEffects.swift in Sources */,
 				DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */,
 				DA1D5E5A200C999200BEE807 /* StringTransformer.swift in Sources */,
+				DA306241211D2A0C0082F52D /* PMSuperButton.swift in Sources */,
 				DA5A04B72114044500801C83 /* ChoiceCardView.swift in Sources */,
 				DA4BF49F20F5D742005FAB9E /* Convenient.swift in Sources */,
 				DA2501BD20E4BD65007F80FC /* CancelableDelay.swift in Sources */,

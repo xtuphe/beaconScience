@@ -18,6 +18,7 @@ class ChatBaseCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+
     }
 
     func refresh() {

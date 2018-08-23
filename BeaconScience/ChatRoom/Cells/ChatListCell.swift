@@ -11,10 +11,12 @@ import UIKit
 class ChatListCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     var name : String? {
         didSet{
             imageView.image = UIImage.init(named: name!)
+            nameLabel.text = name!
         }
     }
     
