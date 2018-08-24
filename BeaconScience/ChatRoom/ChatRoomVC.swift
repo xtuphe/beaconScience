@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AMPopTip
 
 class ChatRoomVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,6 +21,7 @@ class ChatRoomVC: UIViewController {
         }
     }
     var tableData : [MessageModel] = []
+    let popTip = PopTip()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +30,8 @@ class ChatRoomVC: UIViewController {
         setupNotification()
         setupMessageCenter()
         name = Conversations.shared.data[0] as! String
-        setupFooter()
         choiceView.setup()
+        setupPoptip()
     }
     
     func setupCollectionView() {
@@ -50,8 +52,9 @@ class ChatRoomVC: UIViewController {
         tableView.backgroundColor = UIColor.init(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1)
     }
     
-    func setupFooter(){
-        
+    func setupPoptip() {
+        popTip.bubbleColor = UIColor.init(red: 40/255.0, green: 40/255.0, blue: 43/255.0, alpha: 1)
+        popTip.textColor = UIColor.white
     }
     
     func setupNotification(){
@@ -142,7 +145,9 @@ extension ChatRoomVC: MessagesDelegate {
         if message.type == .choice {
             return
         }
-        showMessage(name: name, content: message.content!)
+        let cell = collectionView.cellForItem(at: IndexPath.init(row: index, section: 0))!
+        let frame = cell.convert(cell.bounds, to: view)
+        popTip.show(text: message.content!, direction: .down, maxWidth: 250, in: view, from: frame)
         let unreadKey = Key<Int>("UnreadKey\(name)")
         var count = 0
         if Defaults.shared.has(unreadKey) {

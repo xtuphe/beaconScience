@@ -77,16 +77,19 @@ class MathModel {
  g gap      与下条间隔时间
  f file     文件
  - reply    只在假选择中，假选择的回复
- q quan     朋友圈
+ q quan     发送朋友圈
+ i image    图片
+ w writings 文章
  n name     名字, 如果有名字，说明不是当前聊天对象
  */
 
 enum MessageType : Int, Codable {
-    case normal
-    case choice
-    case chosen
-    case invalid
-    case others
+    case normal     //普通文本
+    case choice     //选择
+    case chosen     //已发送
+    case others     //其他人
+    case article    //文章
+    case image      //图片
 }
 
 struct MessageModel {
@@ -98,9 +101,11 @@ struct MessageModel {
     var jump : Int?
     var file : String?
     var reply : String?
-    var quan : String?
+    var quan : Bool = false
     var name : String?
     var type = MessageType.normal
+    var article : String?
+    var image : String?
     
     init(rawStr:String, index: Int) {
         self.index = index
@@ -130,10 +135,16 @@ struct MessageModel {
             } else if prefix == "-" {
                 reply = surfix
             } else if prefix == "q" {
-                quan = surfix
+                quan = true
             } else if prefix == "n" {
                 name = surfix
                 type = .others
+            } else if prefix == "i" {
+                image = surfix
+                type = .image
+            } else if prefix == "w" {
+                article = surfix
+                type = .article
             }
         }
     }

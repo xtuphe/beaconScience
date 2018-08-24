@@ -11,7 +11,6 @@
 		DA0CFAA620E36AC60028861B /* ChatChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0CFAA420E36AC60028861B /* ChatChoiceCell.swift */; };
 		DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA0CFAA520E36AC60028861B /* ChatChoiceCell.xib */; };
 		DA1A7C1820EE03A3001A8154 /* Intro3.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA1A7C1720EE03A3001A8154 /* Intro3.txt */; };
-		DA1A7C1A20EE0E7E001A8154 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DA1A7C1920EE0E7D001A8154 /* Podfile */; };
 		DA1A7C1C20EE0FDB001A8154 /* NotiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A7C1B20EE0FDB001A8154 /* NotiView.swift */; };
 		DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D5E35200742B000BEE807 /* AppDelegate.swift */; };
 		DA1D5E3D200742B000BEE807 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA1D5E3B200742B000BEE807 /* Main.storyboard */; };
@@ -35,6 +34,8 @@
 		DA306244211D38500082F52D /* ChoiceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA306243211D38500082F52D /* ChoiceTableView.swift */; };
 		DA31936B20F49798004D8897 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA31936920F49798004D8897 /* ChatListCell.swift */; };
 		DA31936C20F49798004D8897 /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA31936A20F49798004D8897 /* ChatListCell.xib */; };
+		DA43CA60212F3E2300AACDB3 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA43CA5E212F3E2300AACDB3 /* ArticleCell.swift */; };
+		DA43CA61212F3E2300AACDB3 /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA43CA5F212F3E2300AACDB3 /* ArticleCell.xib */; };
 		DA48AF8920F882F600891ACC /* Conversations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48AF8820F882F600891ACC /* Conversations.swift */; };
 		DA48AF8B20F88D0F00891ACC /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48AF8A20F88D0F00891ACC /* Messages.swift */; };
 		DA4BF49F20F5D742005FAB9E /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF49E20F5D742005FAB9E /* Convenient.swift */; };
@@ -65,7 +66,6 @@
 		DA0CFAA420E36AC60028861B /* ChatChoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatChoiceCell.swift; sourceTree = "<group>"; };
 		DA0CFAA520E36AC60028861B /* ChatChoiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatChoiceCell.xib; sourceTree = "<group>"; };
 		DA1A7C1720EE03A3001A8154 /* Intro3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Intro3.txt; sourceTree = "<group>"; };
-		DA1A7C1920EE0E7D001A8154 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DA1A7C1B20EE0FDB001A8154 /* NotiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiView.swift; sourceTree = "<group>"; };
 		DA1D5E32200742B000BEE807 /* BeaconScience.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconScience.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1D5E35200742B000BEE807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +91,8 @@
 		DA306243211D38500082F52D /* ChoiceTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceTableView.swift; sourceTree = "<group>"; };
 		DA31936920F49798004D8897 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		DA31936A20F49798004D8897 /* ChatListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
+		DA43CA5E212F3E2300AACDB3 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
+		DA43CA5F212F3E2300AACDB3 /* ArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
 		DA48AF8820F882F600891ACC /* Conversations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations.swift; sourceTree = "<group>"; };
 		DA48AF8A20F88D0F00891ACC /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		DA4BF49E20F5D742005FAB9E /* Convenient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
@@ -156,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				DA1D5E34200742B000BEE807 /* BeaconScience */,
-				DA1A7C1920EE0E7D001A8154 /* Podfile */,
 				DA1D5E33200742B000BEE807 /* Products */,
 				3C0EA5298D1485AE4D337194 /* Pods */,
 				F14590F38789B21EA769F28B /* Frameworks */,
@@ -237,6 +238,8 @@
 			children = (
 				DA1D5E51200C833A00BEE807 /* TimeLineVC.swift */,
 				DA1D5E53200C83CC00BEE807 /* MeVC.swift */,
+				DA43CA5E212F3E2300AACDB3 /* ArticleCell.swift */,
+				DA43CA5F212F3E2300AACDB3 /* ArticleCell.xib */,
 			);
 			path = TimeLine;
 			sourceTree = "<group>";
@@ -383,8 +386,8 @@
 				DA1A7C1820EE03A3001A8154 /* Intro3.txt in Resources */,
 				DA304A8020EF4F5900462048 /* Testor2-1.txt in Resources */,
 				DADE040F20E5DA41000007ED /* News1.txt in Resources */,
+				DA43CA61212F3E2300AACDB3 /* ArticleCell.xib in Resources */,
 				DA1D5E63200F307200BEE807 /* Intro1.txt in Resources */,
-				DA1A7C1A20EE0E7E001A8154 /* Podfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +472,7 @@
 				DA749D3E212AC9D60065AEAF /* ChatChosenCell.swift in Sources */,
 				DA5A04C921141ECF00801C83 /* SKColor+Extensions.swift in Sources */,
 				DA1A7C1C20EE0FDB001A8154 /* NotiView.swift in Sources */,
+				DA43CA60212F3E2300AACDB3 /* ArticleCell.swift in Sources */,
 				DA1D5E4F200857E300BEE807 /* ChatRoomVC.swift in Sources */,
 				DA5A04D421141ECF00801C83 /* CGFloat+Extensions.swift in Sources */,
 				DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */,
