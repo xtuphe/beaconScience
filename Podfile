@@ -8,5 +8,7 @@ target 'BeaconScience' do
   # Pods for BeaconScience
     pod 'SwiftMessages'
     pod 'AMPopTip'
+    pod 'SKPhotoBrowser'
+    pod 'MarkdownView'
     
 end

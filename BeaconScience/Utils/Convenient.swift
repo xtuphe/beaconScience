@@ -34,6 +34,17 @@ func tabBarHeight() -> CGFloat{
     return UITabBarController().tabBar.frame.size.height
 }
 
+extension UIColor {
+    class func rgb(hex:UInt) -> UIColor {
+        return UIColor(
+            red:    CGFloat((hex & 0xFF0000) >> 16) / 255.0,
+            green:  CGFloat((hex & 0x00FF00) >> 8) / 255.0,
+            blue:   CGFloat(hex & 0x0000FF) / 255.0,
+            alpha:  CGFloat(1.0)
+        )
+    }
+}
+
 extension UIView {
     class func loadFromNib(nibName:String) -> UIView?{
         return UINib(nibName: nibName, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? UIView

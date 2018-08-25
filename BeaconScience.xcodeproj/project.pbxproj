@@ -56,6 +56,10 @@
 		DA749D3E212AC9D60065AEAF /* ChatChosenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA749D3C212AC9D60065AEAF /* ChatChosenCell.swift */; };
 		DA749D3F212AC9D60065AEAF /* ChatChosenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA749D3D212AC9D60065AEAF /* ChatChosenCell.xib */; };
 		DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9C31A72043F8D200E49915 /* IBInspectable.swift */; };
+		DAD023A021305D7F00D587F1 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0239E21305D7F00D587F1 /* ImageCell.swift */; };
+		DAD023A121305D7F00D587F1 /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD0239F21305D7F00D587F1 /* ImageCell.xib */; };
+		DAD023A4213061EA00D587F1 /* PlainTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD023A2213061EA00D587F1 /* PlainTextCell.swift */; };
+		DAD023A5213061EA00D587F1 /* PlainTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD023A3213061EA00D587F1 /* PlainTextCell.xib */; };
 		DADE040F20E5DA41000007ED /* News1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DADE040E20E5DA41000007ED /* News1.txt */; };
 		DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF3ADA205284800084DE1F /* Repeater.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +117,10 @@
 		DA749D3C212AC9D60065AEAF /* ChatChosenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatChosenCell.swift; sourceTree = "<group>"; };
 		DA749D3D212AC9D60065AEAF /* ChatChosenCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatChosenCell.xib; sourceTree = "<group>"; };
 		DA9C31A72043F8D200E49915 /* IBInspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBInspectable.swift; sourceTree = "<group>"; };
+		DAD0239E21305D7F00D587F1 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		DAD0239F21305D7F00D587F1 /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
+		DAD023A2213061EA00D587F1 /* PlainTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextCell.swift; sourceTree = "<group>"; };
+		DAD023A3213061EA00D587F1 /* PlainTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlainTextCell.xib; sourceTree = "<group>"; };
 		DADE040E20E5DA41000007ED /* News1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = News1.txt; sourceTree = "<group>"; };
 		DAEF3ADA205284800084DE1F /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
 		FF665B0156DEB42B76A78349 /* Pods-BeaconScience.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconScience.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience.release.xcconfig"; sourceTree = "<group>"; };
@@ -240,6 +248,10 @@
 				DA1D5E53200C83CC00BEE807 /* MeVC.swift */,
 				DA43CA5E212F3E2300AACDB3 /* ArticleCell.swift */,
 				DA43CA5F212F3E2300AACDB3 /* ArticleCell.xib */,
+				DAD0239E21305D7F00D587F1 /* ImageCell.swift */,
+				DAD0239F21305D7F00D587F1 /* ImageCell.xib */,
+				DAD023A2213061EA00D587F1 /* PlainTextCell.swift */,
+				DAD023A3213061EA00D587F1 /* PlainTextCell.xib */,
 			);
 			path = TimeLine;
 			sourceTree = "<group>";
@@ -323,7 +335,6 @@
 				DA1D5E2F200742B000BEE807 /* Frameworks */,
 				DA1D5E30200742B000BEE807 /* Resources */,
 				AC217F9A6425A94F47A4A824 /* [CP] Embed Pods Frameworks */,
-				C10714E783758E78FABAD981 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -374,7 +385,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA304A7E20EF4DF900462048 /* Testor-2.txt in Resources */,
+				DAD023A121305D7F00D587F1 /* ImageCell.xib in Resources */,
 				DA304A7C20EF4B3E00462048 /* Testor-1.txt in Resources */,
+				DAD023A5213061EA00D587F1 /* PlainTextCell.xib in Resources */,
 				DA31936C20F49798004D8897 /* ChatListCell.xib in Resources */,
 				DA1D5E58200C851200BEE807 /* ChatBaseCell.xib in Resources */,
 				DA1D5E42200742B000BEE807 /* LaunchScreen.storyboard in Resources */,
@@ -402,31 +415,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
+				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
+				"${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMPopTip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKPhotoBrowser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C10714E783758E78FABAD981 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D459D783B32592E47D13A620 /* [CP] Check Pods Manifest.lock */ = {
@@ -473,6 +475,7 @@
 				DA5A04C921141ECF00801C83 /* SKColor+Extensions.swift in Sources */,
 				DA1A7C1C20EE0FDB001A8154 /* NotiView.swift in Sources */,
 				DA43CA60212F3E2300AACDB3 /* ArticleCell.swift in Sources */,
+				DAD023A4213061EA00D587F1 /* PlainTextCell.swift in Sources */,
 				DA1D5E4F200857E300BEE807 /* ChatRoomVC.swift in Sources */,
 				DA5A04D421141ECF00801C83 /* CGFloat+Extensions.swift in Sources */,
 				DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */,
@@ -483,6 +486,7 @@
 				DA5A04B72114044500801C83 /* ChoiceCardView.swift in Sources */,
 				DA4BF49F20F5D742005FAB9E /* Convenient.swift in Sources */,
 				DA2501BD20E4BD65007F80FC /* CancelableDelay.swift in Sources */,
+				DAD023A021305D7F00D587F1 /* ImageCell.swift in Sources */,
 				DA1D5E52200C833A00BEE807 /* TimeLineVC.swift in Sources */,
 				DA1D5E6A2015F28C00BEE807 /* NotificationCenterX.swift in Sources */,
 				DA5A04CB21141ECF00801C83 /* Int+Extensions.swift in Sources */,
