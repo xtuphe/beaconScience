@@ -78,6 +78,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="articleBackgroundView" destination="Kql-Tk-1Hk" id="oZI-lq-SdL"/>
                 <outlet property="avatarImageView" destination="pIr-mb-tRO" id="jyg-IY-dw4"/>
                 <outlet property="nameLabel" destination="Dia-3z-UlI" id="Ggb-g9-ToQ"/>
                 <outlet property="thumbnail" destination="Q49-bC-Fhi" id="SPF-7f-NBL"/>
