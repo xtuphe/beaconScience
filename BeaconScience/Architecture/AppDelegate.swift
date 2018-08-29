@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        printLog(message: "沙盒路径：\(path)")
         
         
         let center = UNUserNotificationCenter.current()

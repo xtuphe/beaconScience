@@ -132,4 +132,8 @@ public final class Defaults {
         }
     }
     
+    class func reset() {
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+    }
+    
 }

@@ -38,6 +38,10 @@
 		DA43CA61212F3E2300AACDB3 /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA43CA5F212F3E2300AACDB3 /* ArticleCell.xib */; };
 		DA48AF8920F882F600891ACC /* Conversations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48AF8820F882F600891ACC /* Conversations.swift */; };
 		DA48AF8B20F88D0F00891ACC /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48AF8A20F88D0F00891ACC /* Messages.swift */; };
+		DA4A1B8121367C7E0014FF89 /* MeAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4A1B7F21367C7E0014FF89 /* MeAvatarCell.swift */; };
+		DA4A1B8221367C7E0014FF89 /* MeAvatarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA4A1B8021367C7E0014FF89 /* MeAvatarCell.xib */; };
+		DA4A1B8521367E9D0014FF89 /* MeItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4A1B8321367E9D0014FF89 /* MeItemCell.swift */; };
+		DA4A1B8621367E9D0014FF89 /* MeItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA4A1B8421367E9D0014FF89 /* MeItemCell.xib */; };
 		DA4BF49F20F5D742005FAB9E /* Convenient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4BF49E20F5D742005FAB9E /* Convenient.swift */; };
 		DA5A04B72114044500801C83 /* ChoiceCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04B62114044500801C83 /* ChoiceCardView.swift */; };
 		DA5A04C921141ECF00801C83 /* SKColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5A04BD21141ECF00801C83 /* SKColor+Extensions.swift */; };
@@ -102,6 +106,10 @@
 		DA43CA5F212F3E2300AACDB3 /* ArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
 		DA48AF8820F882F600891ACC /* Conversations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations.swift; sourceTree = "<group>"; };
 		DA48AF8A20F88D0F00891ACC /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		DA4A1B7F21367C7E0014FF89 /* MeAvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeAvatarCell.swift; sourceTree = "<group>"; };
+		DA4A1B8021367C7E0014FF89 /* MeAvatarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeAvatarCell.xib; sourceTree = "<group>"; };
+		DA4A1B8321367E9D0014FF89 /* MeItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeItemCell.swift; sourceTree = "<group>"; };
+		DA4A1B8421367E9D0014FF89 /* MeItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeItemCell.xib; sourceTree = "<group>"; };
 		DA4BF49E20F5D742005FAB9E /* Convenient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convenient.swift; sourceTree = "<group>"; };
 		DA5A04B62114044500801C83 /* ChoiceCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceCardView.swift; sourceTree = "<group>"; };
 		DA5A04BD21141ECF00801C83 /* SKColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -313,6 +321,10 @@
 			isa = PBXGroup;
 			children = (
 				DA1D5E53200C83CC00BEE807 /* MeVC.swift */,
+				DA4A1B7F21367C7E0014FF89 /* MeAvatarCell.swift */,
+				DA4A1B8021367C7E0014FF89 /* MeAvatarCell.xib */,
+				DA4A1B8321367E9D0014FF89 /* MeItemCell.swift */,
+				DA4A1B8421367E9D0014FF89 /* MeItemCell.xib */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -429,6 +441,8 @@
 				DA1D5E3D200742B000BEE807 /* Main.storyboard in Resources */,
 				DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */,
 				DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */,
+				DA4A1B8621367E9D0014FF89 /* MeItemCell.xib in Resources */,
+				DA4A1B8221367C7E0014FF89 /* MeAvatarCell.xib in Resources */,
 				DA749D3F212AC9D60065AEAF /* ChatChosenCell.xib in Resources */,
 				DA1A7C1820EE03A3001A8154 /* Intro3.txt in Resources */,
 				DA304A8020EF4F5900462048 /* Testor2-1.txt in Resources */,
@@ -496,6 +510,7 @@
 				DA306244211D38500082F52D /* ChoiceTableView.swift in Sources */,
 				DA48AF8B20F88D0F00891ACC /* Messages.swift in Sources */,
 				DA5A04D321141ECF00801C83 /* Vector3.swift in Sources */,
+				DA4A1B8121367C7E0014FF89 /* MeAvatarCell.swift in Sources */,
 				DAD023AA2133FF5700D587F1 /* Router.swift in Sources */,
 				DA5A04D021141ECF00801C83 /* CGPoint+Extensions.swift in Sources */,
 				DA1D5E57200C851200BEE807 /* ChatBaseCell.swift in Sources */,
@@ -517,6 +532,7 @@
 				DA5A04D121141ECF00801C83 /* SKTEffects.swift in Sources */,
 				DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */,
 				DA1D5E5A200C999200BEE807 /* StringTransformer.swift in Sources */,
+				DA4A1B8521367E9D0014FF89 /* MeItemCell.swift in Sources */,
 				DA306241211D2A0C0082F52D /* PMSuperButton.swift in Sources */,
 				DA5A04B72114044500801C83 /* ChoiceCardView.swift in Sources */,
 				DA4BF49F20F5D742005FAB9E /* Convenient.swift in Sources */,

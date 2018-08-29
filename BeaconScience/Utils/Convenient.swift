@@ -43,6 +43,11 @@ extension UIColor {
             alpha:  CGFloat(1.0)
         )
     }
+    
+    class func background(num:Int) -> UIColor {
+        let d = CGFloat(num)
+        return UIColor.init(red: d/255.0, green: d/255.0, blue: d/255.0, alpha: 1)
+    }
 }
 
 extension UIView {

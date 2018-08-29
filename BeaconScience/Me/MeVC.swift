@@ -8,19 +8,22 @@
 
 //  头像 姓名
 //  资金
+//  通知（关键日志）
+//  模拟器
+//  reset
 
 import UIKit
 
 class MeVC: UITableViewController {
 
+    var data : Array<Array<String>>!
+    var avatarCell : MeAvatarCell!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        setupTableView()
+        setupInfoCell()
+        data = [["头像姓名"], ["钱包"], ["重置"]]
     }
 
     //修改StatusBar为黑色
@@ -28,72 +31,72 @@ class MeVC: UITableViewController {
         return .default
     }
 
+    func setupTableView() {
+        tableView.register(UINib.init(nibName: "MeItemCell", bundle: nil), forCellReuseIdentifier: "MeItemCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = UIColor.background(num: 240)
+        tableView.separatorStyle = .none
+    }
 
-    // MARK: - Table view data source
+    func setupInfoCell() {
+        let nib = UINib.init(nibName: "MeAvatarCell", bundle: nil)
+        avatarCell = nib.instantiate(withOwner: self, options: nil).first as! MeAvatarCell
+        // load name
+        avatarCell.avatarImageView.image = UIImage.init(named: "BeaconNight")
+        // load avatar
+        avatarCell.nameLabel.text = "灯塔科技"
+        
+    }
+    
+}
 
+extension MeVC {
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return data.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        let array = data[section]
+        return array.count
     }
-
-    /*
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 100
+        }
+        return 44
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let separator = UIView()
+        separator.backgroundColor = UIColor.clear
+        return separator
+    }
+    
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 20
+//    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        if indexPath.section == 0 {
+            return avatarCell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MeItemCell") as! MeItemCell
+        let array = data[indexPath.section]
+        let title = array[indexPath.row]
+        cell.itemLabel.text = title
+        cell.itemImageView.image = UIImage.init(named: title)
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

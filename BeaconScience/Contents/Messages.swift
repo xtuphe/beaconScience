@@ -121,7 +121,7 @@ class Messages {
     func messageCheck(currentMessage: MessageModel) {
         
         //检查是否需要更新朋友圈
-        if currentMessage.quan != nil {
+        if currentMessage.quan {
             //通知发送朋友圈
             
         }
