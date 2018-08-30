@@ -46,7 +46,7 @@ class ChoiceCard : UIView {
         self.model = model
         self.index = index
         self.cardsView = cardsView
-        self.originalFrame = CGRect.init(x: gap, y: insetTop + CGFloat(index) * previewHeight, width: screenWidth() - gap * 2, height: height(string: model.content!, font: font, width: screenWidth() - gap * 4) + 30)
+        self.originalFrame = CGRect.init(x: gap, y: insetTop + CGFloat(index) * previewHeight, width: screenWidth() - gap * 2, height: strHeight(string: model.content!, font: font, width: screenWidth() - gap * 4) + 30)
         super.init(frame:originalFrame)
         setupLabel()
         backgroundColor = UIColor.init(red: CGFloat.random(min: 0.3, max: 0.6), green: CGFloat.random(min: 0.3, max: 0.6), blue: CGFloat.random(min: 0.3, max: 0.6), alpha: 1)

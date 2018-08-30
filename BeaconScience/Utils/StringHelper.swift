@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
-func height(string:String, font:UIFont, width:CGFloat) -> CGFloat {
+func strHeight(string:String, font:UIFont, width:CGFloat) -> CGFloat {
     return string.boundingRect(with: CGSize.init(width: width, height: 8888), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:font], context: nil).height
 }
+
+

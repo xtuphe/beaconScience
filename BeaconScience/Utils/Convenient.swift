@@ -48,6 +48,20 @@ extension UIColor {
         let d = CGFloat(num)
         return UIColor.init(red: d/255.0, green: d/255.0, blue: d/255.0, alpha: 1)
     }
+    
+    class func random() -> UIColor {
+        return UIColor.init(red: CGFloat(Int.random(256))/255.0,
+                            green: CGFloat(Int.random(256))/255.0,
+                            blue: CGFloat(Int.random(256))/255.0,
+                            alpha: 1)
+    }
+    
+    class func randomDark() -> UIColor {
+        return UIColor.init(red: CGFloat(Int.random(min: 0, max: 200))/255.0,
+                            green: CGFloat(Int.random(min: 0, max: 200))/255.0,
+                            blue: CGFloat(Int.random(min: 0, max: 200))/255.0,
+                            alpha: 1)
+    }
 }
 
 extension UIView {

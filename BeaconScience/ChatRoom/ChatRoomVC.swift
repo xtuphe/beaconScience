@@ -41,6 +41,7 @@ class ChatRoomVC: UIViewController {
     }
     
     func setupTableView(){
+        tableView.tintColor = UIColor.clear
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -49,11 +50,11 @@ class ChatRoomVC: UIViewController {
         tableView.register(UINib.init(nibName: "ChatBaseCell", bundle: nil), forCellReuseIdentifier: "ChatBaseCell")
         tableView.register(UINib.init(nibName: "ChatChoiceCell", bundle: nil), forCellReuseIdentifier: "ChatChoiceCell")
         tableView.register(UINib.init(nibName: "ChatChosenCell", bundle: nil), forCellReuseIdentifier: "ChatChosenCell")
-        tableView.backgroundColor = UIColor.init(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1)
+        tableView.backgroundColor = UIColor.background(num: 240)
     }
     
     func setupPoptip() {
-        popTip.bubbleColor = UIColor.init(red: 40/255.0, green: 40/255.0, blue: 43/255.0, alpha: 1)
+        popTip.bubbleColor = UIColor.background(num: 40)
         popTip.textColor = UIColor.white
     }
     
@@ -101,8 +102,11 @@ class ChatRoomVC: UIViewController {
 extension ChatRoomVC: MessagesDelegate {
 
     func presentChoiceView() {
-        choiceView.reloadData()
         choiceView.frame = CGRect.init(x: 0, y: 0, width: screenWidth(), height: choiceView.contentSize.height)
+
+        choiceView.reloadData()
+        printLog(message: "height: \(choiceView.contentSize.height)")
+        choiceView.frame = CGRect.init(x: 0, y: 0, width: screenWidth(), height: choiceView.height() + 10)
         tableView.tableFooterView = choiceView
         tableView.setContentOffset(CGPoint.init(x:0, y:tableView.contentSize.height - (screenHeight() - collectionView.frame.size.height - tabBarHeight())), animated: true)
     }

@@ -48,12 +48,17 @@ class ChatChoiceCell: UITableViewCell {
     }
     
     func refreshCell() {
-        switch model!.type {
-        case MessageType.chosen:
-            contentLabel.textColor = UIColor.black
-        default:
-            contentLabel.textColor = UIColor.blue
-        }
+        button.gradientStartColor = UIColor.randomDark()
+        button.gradientEndColor = UIColor.randomDark()
+        button.gradientEnabled = true
+        button.gradientHorizontal = true
+
+//        button.setTitleColor(UIColor.white, for: .normal)
+//        button.setTitle(model?.content, for: .normal)
+//
+//        button.titleLabel?.numberOfLines = 0
+        
+        contentLabel.textColor = UIColor.white
         contentLabel.text = model?.content
     }
     

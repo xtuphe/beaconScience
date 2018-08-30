@@ -16,7 +16,20 @@ class ChoiceTableView: UITableView {
         isScrollEnabled = false
         delegate = self
         dataSource = self
+        separatorStyle = .none
+        tintColor = UIColor.clear
+        rowHeight = UITableViewAutomaticDimension
+        estimatedRowHeight = UITableViewAutomaticDimension
+        backgroundColor = UIColor.background(num: 240)
         register(UINib.init(nibName: "ChatChoiceCell", bundle: nil), forCellReuseIdentifier: "ChatChoiceCell")
+    }
+    
+    func height() -> CGFloat{
+        var height = 30 * CGFloat(data.count)
+        for model in data {
+            height += strHeight(string: model.content!, font: UIFont.systemFont(ofSize: 17), width: screenWidth() - 30)
+        }
+        return height
     }
     
 }
