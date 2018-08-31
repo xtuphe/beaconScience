@@ -50,6 +50,9 @@ class ChatRoomVC: UIViewController {
         tableView.register(UINib.init(nibName: "ChatBaseCell", bundle: nil), forCellReuseIdentifier: "ChatBaseCell")
         tableView.register(UINib.init(nibName: "ChatChoiceCell", bundle: nil), forCellReuseIdentifier: "ChatChoiceCell")
         tableView.register(UINib.init(nibName: "ChatChosenCell", bundle: nil), forCellReuseIdentifier: "ChatChosenCell")
+        tableView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "ImageCell")
+        tableView.register(UINib.init(nibName: "ArticleCell", bundle: nil), forCellReuseIdentifier: "ArticleCell")
+
         tableView.backgroundColor = UIColor.background(num: 240)
     }
     
@@ -244,6 +247,9 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
         var messageModel = MessageModel.init()
         messageModel.content = savedModel.content
         messageModel.type = savedModel.type
+        if savedModel.type == .image {
+            messageModel.image = savedModel.content
+        }
         return messageModel
     }
     
@@ -260,6 +266,10 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
             return cell
         case .chosen:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatChosenCell")! as! ChatChosenCell
+            cell.model = model
+            return cell
+        case .image:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell")! as! ImageCell
             cell.model = model
             return cell
         default:
