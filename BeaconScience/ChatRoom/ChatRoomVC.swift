@@ -64,7 +64,9 @@ class ChatRoomVC: UIViewController {
             self.tableView.reloadData()
         }
         NotificationCenter.default.addObserver(forName: notiName(name: "ChoiceViewShouldDismiss"), object: nil, queue: nil) { (noti) in
-            //            self.tableView.scrollToRow(at: IndexPath.init(row: self.tableData.count - 1, section: 0), at: .bottom, animated: true)
+            //防止手快
+            self.choiceView.isUserInteractionEnabled = false
+            self.tableView.scrollToRow(at: IndexPath.init(row: self.tableData.count - 1, section: 0), at: .bottom, animated: true)
             _ = delay(1, task: { [unowned self] in
                 self.choiceView.data = []
                 self.tableView.tableFooterView = nil
@@ -103,9 +105,8 @@ extension ChatRoomVC: MessagesDelegate {
 
     func presentChoiceView() {
         choiceView.frame = CGRect.init(x: 0, y: 0, width: screenWidth(), height: choiceView.contentSize.height)
-
         choiceView.reloadData()
-        printLog(message: "height: \(choiceView.contentSize.height)")
+        choiceView.isUserInteractionEnabled = true
         choiceView.frame = CGRect.init(x: 0, y: 0, width: screenWidth(), height: choiceView.height() + 10)
         tableView.tableFooterView = choiceView
         tableView.setContentOffset(CGPoint.init(x:0, y:tableView.contentSize.height - (screenHeight() - collectionView.frame.size.height - tabBarHeight())), animated: true)
@@ -149,6 +150,14 @@ extension ChatRoomVC: MessagesDelegate {
         if message.type == .choice {
             return
         }
+        
+        _ = delay(0.3, task: { [unowned self] in
+            //暂时固定其他人的消息在1的位置
+            self.popTipMessage(message: message, index: 1)
+        })
+    }
+    
+    func popTipMessage(message:MessageModel, index: Int) {
         let cell = collectionView.cellForItem(at: IndexPath.init(row: index, section: 0))!
         let frame = cell.convert(cell.bounds, to: view)
         popTip.show(text: message.content!, direction: .down, maxWidth: 250, in: view, from: frame)
@@ -160,7 +169,6 @@ extension ChatRoomVC: MessagesDelegate {
         count += 1
         Defaults.shared.set(count, for: unreadKey)
     }
-    
     
 }
 
@@ -179,6 +187,10 @@ extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //首先清空choice view
+        choiceView.data = []
+        choiceView.reloadData()
+        
         Conversations.shared.selected(index: indexPath.row)
         name = Conversations.shared.data[0] as! String
         Messages.shared.reload(name: name)
