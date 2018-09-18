@@ -15,6 +15,8 @@ class Router: NSObject {
         rootVC?.show(controller, sender: nil)
     }
     
-    
+    class func rootVC() -> UIViewController {
+        return (UIApplication.shared.keyWindow?.rootViewController!)!
+    }
 
 }

@@ -270,6 +270,7 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
             return cell
         case .image:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell")! as! ImageCell
+            cell.chatType()
             cell.model = model
             return cell
         default:

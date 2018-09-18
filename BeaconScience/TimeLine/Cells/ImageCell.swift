@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SKPhotoBrowser
 
 class ImageCell: UITableViewCell {
 
@@ -23,9 +24,32 @@ class ImageCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
+        imageSetup()
     }
 
+    func imageSetup() {
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(ImageCell.imageTapped))
+        contentImage.addGestureRecognizer(tap)
+        contentImage.isUserInteractionEnabled = true
+    }
+    
+    @objc func imageTapped() {
+        var images = [SKPhoto]()
+        let photo = SKPhoto.photoWithImage(UIImage.init(named: model!.image!)!)
+        images.append(photo)
+        let browser = SKPhotoBrowser(originImage: contentImage.image ?? UIImage(), photos: images, animatedFromView: contentImage)
+        browser.initializePageIndex(0)
+        SKPhotoBrowserOptions.displayAction = false
+        SKPhotoBrowserOptions.displayStatusbar = true
+        Router.rootVC().present(browser, animated: true, completion: {})
+    }
+    
+    func chatType() {
+        backgroundColor = UIColor.background(num: 240)
+        nameHeight.constant = 0
+    }
+    
     func refreshCell() {
         contentImage.image = UIImage.init(named: (model?.image!)!)
     }
