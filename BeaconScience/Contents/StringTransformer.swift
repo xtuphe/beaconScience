@@ -71,15 +71,15 @@ enum MessageType : Int, Codable {
 
 struct MessageModel {
     var index : Int
-    var content : String?
+    var content : String!
+    var name : String!
+    var type = MessageType.normal
     var gap : TimeInterval?
     var action : ActionModel?
     var condition : ConditionModel?
     var jump : Int?
     var file : String?
     var reply : String?
-    var name : String!
-    var type = MessageType.normal
     
     init(rawStr:String, index: Int, name:String) {
         self.index = index

@@ -273,7 +273,8 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
             return cell
         case .article:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell")! as! ArticleCell
-            
+            cell.chatType()
+            cell.model = model
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatBaseCell")! as! ChatBaseCell

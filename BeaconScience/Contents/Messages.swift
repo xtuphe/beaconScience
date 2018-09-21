@@ -187,7 +187,7 @@ class Messages {
         let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(name)")!)
         let messageKey = Key<SavedMessage>("\(savedCount)")
         
-        let savedMessage = SavedMessage(content: message.content!, type: message.type, name:message.name)
+        let savedMessage = SavedMessage(content: message.content, type: message.type, name:message.name)
         Defaults.shared.set(savedMessage, for: messageKey)
         defaults.set(savedMessage, for: messageKey)
     }

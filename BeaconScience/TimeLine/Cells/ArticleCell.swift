@@ -32,6 +32,7 @@ class ArticleCell: UITableViewCell {
     func chatType() {
         titleHeight.constant = 0
         backgroundColor = UIColor.background(num: 240)
+        articleBackgroundView.backgroundColor = UIColor.white
     }
     
     func refreshCell() {
