@@ -36,7 +36,7 @@ class ImageCell: UITableViewCell {
     
     @objc func imageTapped() {
         var images = [SKPhoto]()
-        let photo = SKPhoto.photoWithImage(UIImage.init(named: model!.image!)!)
+        let photo = SKPhoto.photoWithImage(UIImage.init(named: model!.content!)!)
         images.append(photo)
         let browser = SKPhotoBrowser(originImage: contentImage.image ?? UIImage(), photos: images, animatedFromView: contentImage)
         browser.initializePageIndex(0)
@@ -51,7 +51,9 @@ class ImageCell: UITableViewCell {
     }
     
     func refreshCell() {
-        contentImage.image = UIImage.init(named: (model?.image!)!)
+        avatarImage.image = UIImage.init(named: (model?.name)!)
+        contentImage.image = UIImage.init(named: (model?.content!)!)
+        nameLabel.text = model?.name
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

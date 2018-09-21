@@ -116,13 +116,13 @@ extension ChatRoomVC: MessagesDelegate {
     }
     
     func newMessageReceived(_ message: MessageModel) {
-        //其他人的信息
-        if message.name != nil {
-            let index = Conversations.shared.newConversation(name: message.name!)
-            newMessageHandle(index: index, message: message, name: message.name!)
+        //当前聊天页面其他人信息
+        if message.type == .others {
+            let index = Conversations.shared.newConversation(name: message.name)
+            newMessageHandle(index: index, message: message, name: message.name)
             return
         }
-        
+        //其他人页面当前聊天人信息
         if name != Messages.shared.name {
             let index = Conversations.shared.newConversation(name: Messages.shared.name)
             newMessageHandle(index: index, message: message, name: Messages.shared.name)
@@ -226,8 +226,8 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
         }
         
         var savedData : [MessageModel] = []
-        if savedCount > 20 {
-            for index in (savedCount - 20)...savedCount {
+        if savedCount > 50 {
+            for index in (savedCount - 50)...savedCount {
                 savedData.append(getSavedMessageWith(index: index))
             }
         } else {
@@ -247,9 +247,7 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
         var messageModel = MessageModel.init()
         messageModel.content = savedModel.content
         messageModel.type = savedModel.type
-        if savedModel.type == .image {
-            messageModel.image = savedModel.content
-        }
+        messageModel.name = savedModel.name
         return messageModel
     }
     
@@ -272,6 +270,10 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell")! as! ImageCell
             cell.chatType()
             cell.model = model
+            return cell
+        case .article:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell")! as! ArticleCell
+            
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChatBaseCell")! as! ChatBaseCell

@@ -16,6 +16,7 @@ protocol MessagesDelegate: AnyObject {
 struct SavedMessage : Codable {
     let content : String
     let type : MessageType
+    let name : String
 }
 
 class Messages {
@@ -90,7 +91,8 @@ class Messages {
     
     func getData(fileName: String){
         let content = loadContentFile(name: fileName)
-        data = transformModel(rawString: content)
+        let npcName = fileName.components(separatedBy: "-").first!
+        data = transformModel(rawString: content, name: npcName)
     }
     
     func whatsNext(){
@@ -121,10 +123,8 @@ class Messages {
     func messageCheck(currentMessage: MessageModel) {
         
         //检查是否需要更新朋友圈
-        if currentMessage.quan {
-            //通知发送朋友圈
-            
-        }
+        
+        
         //检查是否需要载入新文件
         if currentMessage.file != nil {
             if index + 1 >= data.count {
@@ -164,7 +164,7 @@ class Messages {
         case .others:
             let indexKey = Key<Int>("IndexKey\(fileName!)")
             Defaults.shared.set(index, for: indexKey)
-            saveMessageWith(name: message.name!, message: message)
+            saveMessageWith(name: message.name, message: message)
         case .choice:
             break
         default:
@@ -186,14 +186,8 @@ class Messages {
         
         let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(name)")!)
         let messageKey = Key<SavedMessage>("\(savedCount)")
-        var content : String!
-        switch message.type {
-        case .image:
-            content = message.image!
-        default:
-            content = message.content!
-        }
-        let savedMessage = SavedMessage(content: content, type: message.type)
+        
+        let savedMessage = SavedMessage(content: message.content!, type: message.type, name:message.name)
         Defaults.shared.set(savedMessage, for: messageKey)
         defaults.set(savedMessage, for: messageKey)
     }

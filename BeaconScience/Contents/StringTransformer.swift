@@ -8,32 +8,25 @@
 
 import UIKit
 
-enum ChatActionType{
-    case Property
-    case Game
-    case News
-    case PayCheck //获得报酬
-}
-
-class ActionModel {
-    var type : ChatActionType?
-    var gameName : String?
-    var mathModel : MathModel?
+struct ActionModel {
+    var name = "错误计数"
+    var theOperator = "+"
+    var value = 1.0
     
     init(rawStr:String){
-        let prefix = rawStr.first
-        let content = String(rawStr.dropFirst())
-        if prefix == "0" {
-            type = ChatActionType.Property
-            mathModel = MathModel.init(rawStr: content)
-        } else if prefix == "1" {
-            type = ChatActionType.Game
-            gameName = content
+        let operators = ["+", "-", "*", "/", "%", "="]
+        for oprtr in operators {
+            if rawStr.contains(oprtr) {
+                theOperator = oprtr
+                var rawArray = (rawStr as NSString).components(separatedBy: oprtr)
+                name = rawArray[0]
+                value = Double(rawArray[1])!
+            }
         }
     }
 }
 
-class ConditionModel  {
+struct ConditionModel  {
     var name : String?
     var theOperator : String?
     var value : String?
@@ -52,24 +45,6 @@ class ConditionModel  {
     }
 }
 
-class MathModel {
-    var name : String?
-    var theOperator : String?
-    var value : String?
-    
-    init(rawStr:String){
-        let operators = ["+", "-", "*", "/", "%"]
-        for oprtr in operators {
-            if rawStr.contains(oprtr) {
-                theOperator = oprtr
-                var rawArray = (rawStr as NSString).components(separatedBy: oprtr)
-                name = rawArray[0]
-                value = rawArray[1]
-            }
-        }
-    }
-}
-
 /*
  a action   动作
  c condition条件
@@ -77,7 +52,6 @@ class MathModel {
  g gap      与下条间隔时间
  f file     文件
  - reply    只在假选择中，假选择的回复
- q quan     发送朋友圈
  i image    图片
  w writings 文章
  n name     名字, 如果有名字，说明不是当前聊天对象
@@ -90,25 +64,26 @@ enum MessageType : Int, Codable {
     case others     //其他人
     case article    //文章
     case image      //图片
+    case quanImage  //朋友圈图片
+    case quanArticle//朋友圈文章
+    case quan       //朋友圈文本
 }
 
 struct MessageModel {
     var index : Int
     var content : String?
     var gap : TimeInterval?
-    var actions : Array<ActionModel>?
-    var conditions : Array<ConditionModel>?
+    var action : ActionModel?
+    var condition : ConditionModel?
     var jump : Int?
     var file : String?
     var reply : String?
-    var quan : Bool = false
-    var name : String?
+    var name : String!
     var type = MessageType.normal
-    var article : String?
-    var image : String?
     
-    init(rawStr:String, index: Int) {
+    init(rawStr:String, index: Int, name:String) {
         self.index = index
+        self.name = name
         var targetStr = rawStr
         if rawStr.hasPrefix("* ") {
             type = .choice
@@ -121,11 +96,9 @@ struct MessageModel {
             let prefix = singleLine.first
             let surfix = String(singleLine.dropFirst())
             if prefix == "a" {
-                let action = ActionModel.init(rawStr: surfix)
-                actions?.append(action)
+                action = ActionModel.init(rawStr: surfix)
             } else if prefix == "c" {
-                let condition = ConditionModel.init(rawStr: surfix)
-                conditions?.append(condition)
+                condition = ConditionModel.init(rawStr: surfix)
             } else if prefix == "g" {
                 gap = (surfix as NSString).doubleValue
             } else if prefix == "j" {
@@ -134,17 +107,26 @@ struct MessageModel {
                 file = surfix
             } else if prefix == "-" {
                 reply = surfix
-            } else if prefix == "q" {
-                quan = true
             } else if prefix == "n" {
-                name = surfix
-                type = .others
+                self.name = surfix
+                if type == .normal {
+                    //因为朋友圈也需要人名信息，只有在不是其他情况的情况下将其认为是其他人的信息
+                    type = .others
+                }
             } else if prefix == "i" {
-                image = surfix
-                type = .image
+                if surfix == "q" {
+                    type = .quanImage
+                } else if surfix == "c" {
+                    type = .image
+                }
             } else if prefix == "w" {
-                article = surfix
-                type = .article
+                if surfix == "q" {
+                    type = .quanArticle
+                } else {
+                    type = .article
+                }
+            } else if prefix == "q" {
+                type = .quan
             }
         }
     }
@@ -155,7 +137,7 @@ struct MessageModel {
     
 }
 
-func transformModel(rawString:NSString) -> [MessageModel] {
+func transformModel(rawString:NSString, name:String) -> [MessageModel] {
     let rawArray = rawString.components(separatedBy: "\n")
     var index = 0
     var resultArray : [MessageModel] = []
@@ -163,7 +145,7 @@ func transformModel(rawString:NSString) -> [MessageModel] {
         if (singleLine == ""){
             continue//过滤空行
         }
-        let model = MessageModel.init(rawStr: singleLine, index: index)
+        let model = MessageModel.init(rawStr: singleLine, index: index, name:name)
         resultArray.append(model)
         index += 1
     }

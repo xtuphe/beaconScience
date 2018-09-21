@@ -17,12 +17,29 @@ class ArticleCell: UITableViewCell {
     @IBOutlet weak var articleBackgroundView: UIView!
     @IBOutlet weak var titleHeight: NSLayoutConstraint!
     
+    var model : MessageModel? {
+        didSet {
+            refreshCell()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(ArticleCell.tapped))
         articleBackgroundView.addGestureRecognizer(tap)
     }
 
+    func chatType() {
+        titleHeight.constant = 0
+        backgroundColor = UIColor.background(num: 240)
+    }
+    
+    func refreshCell() {
+        avatarImageView.image = UIImage.init(named: (model?.name)!)
+        nameLabel.text = model?.name
+        titleLabel.text = model?.content
+    }
+    
     @objc func tapped() {
         let articleVC = ArticleDetailVC()
         Router.show(controller: articleVC)
