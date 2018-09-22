@@ -34,6 +34,7 @@ class PlainTextCell: UITableViewCell {
     func refreshCell() {
         avatarImage.image = UIImage.init(named: (model?.name)!)
         nameLabel.text = model?.name
+        contentLabel.text = model?.content
     }
 
 }

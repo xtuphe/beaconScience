@@ -103,12 +103,17 @@ class Messages {
             }
             //当前行消息
             let currentMessage = self.data[self.index]
-            //是否为选择
-            if currentMessage.type == .choice{
+            //选择 or 朋友圈 or 消息
+            if currentMessage.type == .choice {
                 //保存选择的index但不保存内容, 所以当切换conversation时会从第一个选择开始加载
                 let indexKey = Key<Int>("IndexKey\(self.fileName!)")
                 Defaults.shared.set(self.index, for: indexKey)
                 self.choicesCheck(message: currentMessage)
+            } else if currentMessage.type == .quan
+                || currentMessage.type == .quanArticle
+                || currentMessage.type == .quanImage {
+                TimeLine.shared.newData(message: currentMessage)
+                self.messageCheck(currentMessage: currentMessage)
             } else {
                 //展示当前消息
                 self.delegate?.newMessageReceived(currentMessage)
@@ -121,10 +126,6 @@ class Messages {
     }
     
     func messageCheck(currentMessage: MessageModel) {
-        
-        //检查是否需要更新朋友圈
-        
-        
         //检查是否需要载入新文件
         if currentMessage.file != nil {
             if index + 1 >= data.count {

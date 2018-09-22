@@ -9,15 +9,15 @@
 import UIKit
 
 class TimeLineVC: UITableViewController {
+    
+    @IBOutlet weak var headerAvatar: UIImageView!
+    @IBOutlet weak var headerBackground: UIImageView!
+    
+    var data : Array<MessageModel> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        setupTableView()
     }
 
     //修改StatusBar为黑色
@@ -25,27 +25,49 @@ class TimeLineVC: UITableViewController {
         return .default
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        data = TimeLine.shared.data
+        tableView.reloadData()
+    }
+    
+    func setupTableView() {
+        
+        tableView.register(UINib.init(nibName: "ArticleCell", bundle: nil), forCellReuseIdentifier: "ArticleCell")
+        tableView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "ImageCell")
+        tableView.register(UINib.init(nibName: "PlainTextCell", bundle: nil), forCellReuseIdentifier: "PlainTextCell")
+
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return data.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        let model = data[indexPath.row]
+        switch model.type {
+        case .quanImage:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! ImageCell
+            cell.model = model
+            return cell
+        case .quanArticle:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! ArticleCell
+            cell.model = model
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PlainTextCell", for: indexPath) as! PlainTextCell
+            cell.model = model
+            return cell
+        }
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
