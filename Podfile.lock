@@ -1,5 +1,6 @@
 PODS:
   - AMPopTip (3.3.0)
+  - Google-Mobile-Ads-SDK (7.34.0)
   - MarkdownView (1.3.0)
   - SKPhotoBrowser (5.1.0)
   - SwiftMessages (4.1.4):
@@ -8,6 +9,7 @@ PODS:
 
 DEPENDENCIES:
   - AMPopTip
+  - Google-Mobile-Ads-SDK
   - MarkdownView
   - SKPhotoBrowser
   - SwiftMessages
@@ -15,16 +17,18 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AMPopTip
+    - Google-Mobile-Ads-SDK
     - MarkdownView
     - SKPhotoBrowser
     - SwiftMessages
 
 SPEC CHECKSUMS:
   AMPopTip: 45f3f87362d76abe59b971d35e33eff4e56ac2ad
+  Google-Mobile-Ads-SDK: a1cbce28c0c78ca1fb0b6c4f213485f55527c99f
   MarkdownView: 6cee6c558eed4a012005405066071ef16a042d17
   SKPhotoBrowser: c20c1da34d737b4e3e101feead6c8dd92ebf860a
   SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
 
-PODFILE CHECKSUM: f9bbab4cc9d8fe49bd6360ecc123d6b35fd8f077
+PODFILE CHECKSUM: 41c29d4b6d0fd711f3ac270898698a0f92918743
 
 COCOAPODS: 1.5.3

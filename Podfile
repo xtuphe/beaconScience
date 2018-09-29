@@ -10,5 +10,6 @@ target 'BeaconScience' do
     pod 'AMPopTip'
     pod 'SKPhotoBrowser'
     pod 'MarkdownView'
+    pod 'Google-Mobile-Ads-SDK'
     
 end
