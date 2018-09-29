@@ -54,7 +54,7 @@ struct ConditionModel  {
  - reply    只在假选择中，假选择的回复
  i image    图片
  w writings 文章
- n name     名字, 如果有名字，说明不是当前聊天对象
+ n name     名字
  */
 
 enum MessageType : Int, Codable {
@@ -146,6 +146,7 @@ func transformModel(rawString:NSString, name:String) -> [MessageModel] {
             continue//过滤空行
         }
         let model = MessageModel.init(rawStr: singleLine, index: index, name:name)
+        print("..........\(model.name ?? "Noooooooooooo")")
         resultArray.append(model)
         index += 1
     }

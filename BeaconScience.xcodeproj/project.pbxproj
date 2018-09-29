@@ -68,8 +68,13 @@
 		DAD023A82133EF8900D587F1 /* 新员工手册.md in Resources */ = {isa = PBXBuildFile; fileRef = DAD023A72133EF8900D587F1 /* 新员工手册.md */; };
 		DAD023AA2133FF5700D587F1 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD023A92133FF5700D587F1 /* Router.swift */; };
 		DAD023AE2134025800D587F1 /* ArticleDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD023AD2134025800D587F1 /* ArticleDetailVC.swift */; };
+		DAD026A8215C6F7300B3DB53 /* BonusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD026A6215C6F7300B3DB53 /* BonusVC.swift */; };
+		DAD026A9215C6F7300B3DB53 /* BonusVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD026A7215C6F7300B3DB53 /* BonusVC.xib */; };
+		DAD026AB215C705100B3DB53 /* BeaconScience语法.md in Resources */ = {isa = PBXBuildFile; fileRef = DAD026AA215C705100B3DB53 /* BeaconScience语法.md */; };
 		DADE040F20E5DA41000007ED /* News1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DADE040E20E5DA41000007ED /* News1.txt */; };
 		DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF3ADA205284800084DE1F /* Repeater.swift */; };
+		DAFBAA59215B680800539CDD /* BonusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBAA57215B680800539CDD /* BonusCell.swift */; };
+		DAFBAA5A215B680800539CDD /* BonusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAFBAA58215B680800539CDD /* BonusCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,8 +142,13 @@
 		DAD023A72133EF8900D587F1 /* 新员工手册.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "新员工手册.md"; sourceTree = "<group>"; };
 		DAD023A92133FF5700D587F1 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		DAD023AD2134025800D587F1 /* ArticleDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailVC.swift; sourceTree = "<group>"; };
+		DAD026A6215C6F7300B3DB53 /* BonusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusVC.swift; sourceTree = "<group>"; };
+		DAD026A7215C6F7300B3DB53 /* BonusVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BonusVC.xib; sourceTree = "<group>"; };
+		DAD026AA215C705100B3DB53 /* BeaconScience语法.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "BeaconScience语法.md"; sourceTree = "<group>"; };
 		DADE040E20E5DA41000007ED /* News1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = News1.txt; sourceTree = "<group>"; };
 		DAEF3ADA205284800084DE1F /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
+		DAFBAA57215B680800539CDD /* BonusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusCell.swift; sourceTree = "<group>"; };
+		DAFBAA58215B680800539CDD /* BonusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BonusCell.xib; sourceTree = "<group>"; };
 		FF665B0156DEB42B76A78349 /* Pods-BeaconScience.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconScience.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +184,8 @@
 				DA31936A20F49798004D8897 /* ChatListCell.xib */,
 				DA749D3C212AC9D60065AEAF /* ChatChosenCell.swift */,
 				DA749D3D212AC9D60065AEAF /* ChatChosenCell.xib */,
+				DAFBAA57215B680800539CDD /* BonusCell.swift */,
+				DAFBAA58215B680800539CDD /* BonusCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -256,6 +268,8 @@
 				DA0CFAA820E377090028861B /* Cells */,
 				DA1D5E4D200857E300BEE807 /* ChatRoomVC.swift */,
 				DA306243211D38500082F52D /* ChoiceTableView.swift */,
+				DAD026A6215C6F7300B3DB53 /* BonusVC.swift */,
+				DAD026A7215C6F7300B3DB53 /* BonusVC.xib */,
 			);
 			path = ChatRoom;
 			sourceTree = "<group>";
@@ -314,6 +328,7 @@
 		DAD023A62133EF7500D587F1 /* Articles */ = {
 			isa = PBXGroup;
 			children = (
+				DAD026AA215C705100B3DB53 /* BeaconScience语法.md */,
 				DAD023A72133EF8900D587F1 /* 新员工手册.md */,
 			);
 			path = Articles;
@@ -435,7 +450,9 @@
 				DA304A7E20EF4DF900462048 /* Testor-2.txt in Resources */,
 				DAD023A121305D7F00D587F1 /* ImageCell.xib in Resources */,
 				DA304A7C20EF4B3E00462048 /* Testor-1.txt in Resources */,
+				DAD026AB215C705100B3DB53 /* BeaconScience语法.md in Resources */,
 				DAD023A82133EF8900D587F1 /* 新员工手册.md in Resources */,
+				DAD026A9215C6F7300B3DB53 /* BonusVC.xib in Resources */,
 				DAD023A5213061EA00D587F1 /* PlainTextCell.xib in Resources */,
 				DA31936C20F49798004D8897 /* ChatListCell.xib in Resources */,
 				DA1D5E58200C851200BEE807 /* ChatBaseCell.xib in Resources */,
@@ -446,6 +463,7 @@
 				DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */,
 				DA4A1B8621367E9D0014FF89 /* MeItemCell.xib in Resources */,
 				DA4A1B8221367C7E0014FF89 /* MeAvatarCell.xib in Resources */,
+				DAFBAA5A215B680800539CDD /* BonusCell.xib in Resources */,
 				DA749D3F212AC9D60065AEAF /* ChatChosenCell.xib in Resources */,
 				DA1A7C1820EE03A3001A8154 /* Intro3.txt in Resources */,
 				DA304A8020EF4F5900462048 /* Testor2-1.txt in Resources */,
@@ -535,10 +553,12 @@
 				DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */,
 				DA5A04D121141ECF00801C83 /* SKTEffects.swift in Sources */,
 				DA9C31A82043F8D200E49915 /* IBInspectable.swift in Sources */,
+				DAD026A8215C6F7300B3DB53 /* BonusVC.swift in Sources */,
 				DA1D5E5A200C999200BEE807 /* StringTransformer.swift in Sources */,
 				DA4A1B8521367E9D0014FF89 /* MeItemCell.swift in Sources */,
 				DA306241211D2A0C0082F52D /* PMSuperButton.swift in Sources */,
 				DA5A04B72114044500801C83 /* ChoiceCardView.swift in Sources */,
+				DAFBAA59215B680800539CDD /* BonusCell.swift in Sources */,
 				DA4BF49F20F5D742005FAB9E /* Convenient.swift in Sources */,
 				DA2501BD20E4BD65007F80FC /* CancelableDelay.swift in Sources */,
 				DAD023A021305D7F00D587F1 /* ImageCell.swift in Sources */,

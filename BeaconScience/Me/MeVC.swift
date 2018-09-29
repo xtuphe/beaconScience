@@ -21,9 +21,11 @@ class MeVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        definesPresentationContext = true
+        modalPresentationStyle = .currentContext
         setupTableView()
         setupInfoCell()
-        data = [["头像姓名"], ["钱包"], ["重置"]]
+        data = [["头像姓名"], ["钱包"], ["重置"], ["Bonus$"]]
     }
 
     //修改StatusBar为黑色
@@ -41,7 +43,7 @@ class MeVC: UITableViewController {
 
     func setupInfoCell() {
         let nib = UINib.init(nibName: "MeAvatarCell", bundle: nil)
-        avatarCell = nib.instantiate(withOwner: self, options: nil).first as! MeAvatarCell
+        avatarCell = nib.instantiate(withOwner: self, options: nil).first as? MeAvatarCell
         // load name
         avatarCell.avatarImageView.image = UIImage.init(named: "BeaconNight")
         // load avatar

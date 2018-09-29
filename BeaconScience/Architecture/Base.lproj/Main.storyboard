@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -194,13 +194,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Avatar" width="122" height="122"/>
-        <image name="BeaconNight" width="450" height="450"/>
-        <image name="Chat" width="20" height="20"/>
-        <image name="Chatc" width="20" height="20"/>
-        <image name="Me" width="20" height="20"/>
-        <image name="Mec" width="20" height="20"/>
-        <image name="Navi" width="20" height="20"/>
-        <image name="Navic" width="20" height="20"/>
+        <image name="Avatar" width="245" height="245"/>
+        <image name="BeaconNight" width="900" height="900"/>
+        <image name="Chat" width="60" height="60"/>
+        <image name="Chatc" width="60" height="60"/>
+        <image name="Me" width="60" height="60"/>
+        <image name="Mec" width="60" height="60"/>
+        <image name="Navi" width="60" height="60"/>
+        <image name="Navic" width="60" height="60"/>
     </resources>
 </document>

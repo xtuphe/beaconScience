@@ -23,6 +23,9 @@ class MeItemCell: UITableViewCell {
         if itemLabel.text == "重置" {
             Defaults.reset()
         }
+        if itemLabel.text == "Bonus$" {
+            Router.presentBonus(amount: 9999)
+        }
     }
     
 }

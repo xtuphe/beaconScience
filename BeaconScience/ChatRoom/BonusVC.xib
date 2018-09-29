@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BonusVC" customModule="BeaconScience" customModuleProvider="target">
+            <connections>
+                <outlet property="amountLabel" destination="yPN-LW-drb" id="v2b-3n-mdp"/>
+                <outlet property="closeButton" destination="ydz-9y-U0d" id="bkq-tQ-qEE"/>
+                <outlet property="openButton" destination="adD-GB-M37" id="vM7-dr-YMP"/>
+                <outlet property="upperLid" destination="2Ap-wW-XGu" id="Skq-Rk-DhI"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOB-Da-7dC">
+                    <rect key="frame" x="47.5" y="198.5" width="280" height="350"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bonus" translatesAutoresizingMaskIntoConstraints="NO" id="dQk-sJ-wVk">
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="350"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bonus$" translatesAutoresizingMaskIntoConstraints="NO" id="adD-GB-M37">
+                            <rect key="frame" x="93" y="103.5" width="94" height="97"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="94" id="ieX-Hq-IwO"/>
+                                <constraint firstAttribute="height" constant="97" id="jTC-lj-uyR"/>
+                            </constraints>
+                        </imageView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获得$200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPN-LW-drb">
+                            <rect key="frame" x="84.5" y="137.5" width="111.5" height="29"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                            <color key="textColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydz-9y-U0d">
+                            <rect key="frame" x="115" y="270" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="XIX-D7-GV4"/>
+                                <constraint firstAttribute="height" constant="50" id="Zvl-No-jjB"/>
+                            </constraints>
+                            <state key="normal" image="Close"/>
+                            <connections>
+                                <action selector="closeButtonPressed:" destination="-1" eventType="touchUpInside" id="4T0-Kc-1Rm"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="adD-GB-M37" firstAttribute="centerX" secondItem="XOB-Da-7dC" secondAttribute="centerX" id="70n-YK-BUg"/>
+                        <constraint firstItem="dQk-sJ-wVk" firstAttribute="top" secondItem="XOB-Da-7dC" secondAttribute="top" id="BzP-Ph-FMn"/>
+                        <constraint firstItem="adD-GB-M37" firstAttribute="centerY" secondItem="XOB-Da-7dC" secondAttribute="centerY" constant="-23" id="Dug-fg-fLK"/>
+                        <constraint firstAttribute="width" constant="280" id="FYK-yD-25O"/>
+                        <constraint firstItem="yPN-LW-drb" firstAttribute="centerX" secondItem="adD-GB-M37" secondAttribute="centerX" id="HkW-eX-zaR"/>
+                        <constraint firstAttribute="height" constant="350" id="Iyu-mB-oHg"/>
+                        <constraint firstItem="yPN-LW-drb" firstAttribute="centerY" secondItem="adD-GB-M37" secondAttribute="centerY" id="WWu-F8-3PR"/>
+                        <constraint firstAttribute="bottom" secondItem="ydz-9y-U0d" secondAttribute="bottom" constant="30" id="Xq0-0j-24q"/>
+                        <constraint firstAttribute="bottom" secondItem="dQk-sJ-wVk" secondAttribute="bottom" id="Zbv-Xe-RPc"/>
+                        <constraint firstItem="ydz-9y-U0d" firstAttribute="centerX" secondItem="XOB-Da-7dC" secondAttribute="centerX" id="inU-RM-joG"/>
+                        <constraint firstItem="dQk-sJ-wVk" firstAttribute="leading" secondItem="XOB-Da-7dC" secondAttribute="leading" id="urP-ud-lAw"/>
+                        <constraint firstAttribute="trailing" secondItem="dQk-sJ-wVk" secondAttribute="trailing" id="vHE-Ld-rKQ"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BonusUp" translatesAutoresizingMaskIntoConstraints="NO" id="2Ap-wW-XGu">
+                    <rect key="frame" x="47.5" y="146.5" width="280" height="104"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="104" id="Knv-su-r4N"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="XOB-Da-7dC" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="40" id="2b5-Pz-Q1k"/>
+                <constraint firstItem="2Ap-wW-XGu" firstAttribute="top" secondItem="XOB-Da-7dC" secondAttribute="top" constant="-52" id="JIE-k2-AUP"/>
+                <constraint firstItem="2Ap-wW-XGu" firstAttribute="width" secondItem="XOB-Da-7dC" secondAttribute="width" id="eE8-BY-YoR"/>
+                <constraint firstItem="2Ap-wW-XGu" firstAttribute="centerX" secondItem="XOB-Da-7dC" secondAttribute="centerX" id="iYp-Dc-CvC"/>
+                <constraint firstItem="XOB-Da-7dC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zWa-yE-uml"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Bonus" width="280" height="350"/>
+        <image name="Bonus$" width="93.5" height="97"/>
+        <image name="BonusUp" width="280" height="104"/>
+        <image name="Close" width="100" height="100"/>
+    </resources>
+</document>
