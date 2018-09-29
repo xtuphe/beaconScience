@@ -71,6 +71,7 @@
 		DAD026A8215C6F7300B3DB53 /* BonusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD026A6215C6F7300B3DB53 /* BonusVC.swift */; };
 		DAD026A9215C6F7300B3DB53 /* BonusVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD026A7215C6F7300B3DB53 /* BonusVC.xib */; };
 		DAD026AB215C705100B3DB53 /* BeaconScience语法.md in Resources */ = {isa = PBXBuildFile; fileRef = DAD026AA215C705100B3DB53 /* BeaconScience语法.md */; };
+		DAD026AD215F89DB00B3DB53 /* GoogleAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD026AC215F89DB00B3DB53 /* GoogleAds.swift */; };
 		DADE040F20E5DA41000007ED /* News1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DADE040E20E5DA41000007ED /* News1.txt */; };
 		DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF3ADA205284800084DE1F /* Repeater.swift */; };
 		DAFBAA59215B680800539CDD /* BonusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBAA57215B680800539CDD /* BonusCell.swift */; };
@@ -145,6 +146,7 @@
 		DAD026A6215C6F7300B3DB53 /* BonusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusVC.swift; sourceTree = "<group>"; };
 		DAD026A7215C6F7300B3DB53 /* BonusVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BonusVC.xib; sourceTree = "<group>"; };
 		DAD026AA215C705100B3DB53 /* BeaconScience语法.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "BeaconScience语法.md"; sourceTree = "<group>"; };
+		DAD026AC215F89DB00B3DB53 /* GoogleAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAds.swift; sourceTree = "<group>"; };
 		DADE040E20E5DA41000007ED /* News1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = News1.txt; sourceTree = "<group>"; };
 		DAEF3ADA205284800084DE1F /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
 		DAFBAA57215B680800539CDD /* BonusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusCell.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				DA9C31A72043F8D200E49915 /* IBInspectable.swift */,
 				DA2501BC20E4BD65007F80FC /* CancelableDelay.swift */,
 				DAD023A92133FF5700D587F1 /* Router.swift */,
+				DAD026AC215F89DB00B3DB53 /* GoogleAds.swift */,
 			);
 			path = Architecture;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				DA5A04D021141ECF00801C83 /* CGPoint+Extensions.swift in Sources */,
 				DA1D5E57200C851200BEE807 /* ChatBaseCell.swift in Sources */,
 				DA31936B20F49798004D8897 /* ChatListCell.swift in Sources */,
+				DAD026AD215F89DB00B3DB53 /* GoogleAds.swift in Sources */,
 				DA1D5E54200C83CC00BEE807 /* MeVC.swift in Sources */,
 				DA5A04D62114244100801C83 /* StringHelper.swift in Sources */,
 				DA5A04CF21141ECF00801C83 /* SKNode+Extensions.swift in Sources */,

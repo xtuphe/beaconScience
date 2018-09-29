@@ -26,6 +26,9 @@ class MeItemCell: UITableViewCell {
         if itemLabel.text == "Bonus$" {
             Router.presentBonus(amount: 9999)
         }
+        if itemLabel.text == "Advertisement" {
+            GoogleAds.shared.presentInterstitial()
+        }
     }
     
 }

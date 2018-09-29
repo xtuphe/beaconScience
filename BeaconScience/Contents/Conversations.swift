@@ -29,6 +29,15 @@ class Conversations {
             _ = try? fileManager.removeItem(at: url)
         }
         
+        /*
+        for name in data {
+            if name as! String == "Ad man" {
+                //preload ad
+                _ = GoogleAds.shared
+                break
+            }
+        }
+        */
     }
     
     func save() {

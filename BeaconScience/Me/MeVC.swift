@@ -25,7 +25,9 @@ class MeVC: UITableViewController {
         modalPresentationStyle = .currentContext
         setupTableView()
         setupInfoCell()
-        data = [["头像姓名"], ["钱包"], ["重置"], ["Bonus$"]]
+        data = [["头像姓名"], ["钱包"], ["重置"], ["Bonus$", "Advertisement"]]
+        
+        _ = GoogleAds.shared
     }
 
     //修改StatusBar为黑色
