@@ -14,7 +14,7 @@ struct ActionModel {
     var value = 1.0
     
     init(rawStr:String){
-        let operators = ["+", "-", "*", "/", "%", "="]
+        let operators = ["+", "-", "*", "/", "="]
         for oprtr in operators {
             if rawStr.contains(oprtr) {
                 theOperator = oprtr
@@ -27,11 +27,14 @@ struct ActionModel {
 }
 
 struct ConditionModel  {
-    var name : String?
-    var theOperator : String?
-    var value : String?
+    var name : String
+    var theOperator : String
+    var value : String
     
     init(rawStr:String){
+        name = "error"
+        theOperator = "+"
+        value = "1"
         let operators = [">=", "<=", ">", "<", "!=", "="]
         for oprtr in operators {
             if rawStr.contains(oprtr) {
@@ -80,6 +83,7 @@ struct MessageModel {
     var jump : Int?
     var file : String?
     var reply : String?
+    var money : Double?
     
     init(rawStr:String, index: Int, name:String) {
         self.index = index
@@ -127,6 +131,8 @@ struct MessageModel {
                 }
             } else if prefix == "q" {
                 type = .quan
+            } else if prefix == "m" {
+                money = Double(surfix)
             }
         }
     }

@@ -30,9 +30,11 @@ class Messages {
     var task : Task?
     var messageBefore : MessageModel?//触发file跳转的message
     weak var delegate : MessagesDelegate?
+    let properties : Defaults
 
     init() {
         printLog(message: "messages init")
+        properties = Defaults.init(userDefaults: UserDefaults.init(suiteName: "BeaconScienceProperty")!)
         //检查是否为初次加载
         let firstTimeKey = Key<Bool>("NotFirstTimeKey")
         if Defaults.shared.has(firstTimeKey) {
@@ -103,6 +105,17 @@ class Messages {
             }
             //当前行消息
             let currentMessage = self.data[self.index]
+            
+            //condition check
+            if self.conditionCheck(currentMessage: currentMessage) {
+                self.whatsNext()
+                return
+            }
+            if currentMessage.action != nil && currentMessage.type != .choice {
+                //action check
+                self.actionCheck(currentMessage: currentMessage)
+            }
+            
             //选择 or 朋友圈 or 消息
             if currentMessage.type == .choice {
                 //保存选择的index但不保存内容, 所以当切换conversation时会从第一个选择开始加载
@@ -159,6 +172,66 @@ class Messages {
         
     }
     
+    func conditionCheck(currentMessage: MessageModel) -> Bool {
+        //返回true时代表 不符合条件
+        if currentMessage.condition != nil {
+            //检查是否已有该属性
+            let key = Key<Double>((currentMessage.condition?.name)!)
+            var savedValue : Double
+            let value = Double(currentMessage.condition!.value) ?? 1
+            var bool = false
+            if self.properties.has(key) {
+                savedValue = self.properties.get(for: key)!
+                let theOperator = currentMessage.condition?.theOperator
+                switch theOperator {
+                case ">":
+                    bool = savedValue > value
+                case "<":
+                    bool = savedValue < value
+                case ">=":
+                    bool = savedValue >= value
+                case "<=":
+                    bool = savedValue <= value
+                case "=":
+                    bool = savedValue == value
+                default :
+                    bool = false
+                }
+            } else {
+                return true
+            }
+            return !bool
+        }
+        return false
+    }
+    
+    func actionCheck(currentMessage: MessageModel) {
+        let action = currentMessage.action!
+        let key = Key<Double>(action.name)
+        let value = action.value
+        var savedValue : Double
+        if self.properties.has(key) {
+            savedValue = self.properties.get(for: key)!
+        } else {
+            savedValue = 0
+        }
+        switch action.theOperator {
+        case "+":
+            savedValue += value
+        case "-":
+            savedValue -= value
+        case "*":
+            savedValue *= value
+        case "/":
+            savedValue /= value
+        case "=":
+            savedValue = value
+        default :
+            savedValue += 1
+        }
+        self.properties.set(savedValue, for: key)
+    }
+    
     func saveMessage(message: MessageModel) {
         
         switch message.type {
@@ -208,7 +281,9 @@ class Messages {
                 cancel(task)
                 task = nil
             }
-            delegate?.newMessageReceived(message)
+            if !conditionCheck(currentMessage: message) {
+                delegate?.newMessageReceived(message)
+            }
             index += 1
             if index < data.count {
                 let nextMessage = data[index]

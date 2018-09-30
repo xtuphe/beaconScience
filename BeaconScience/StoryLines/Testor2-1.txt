@@ -1,9 +1,5 @@
 this is new conversation with available avatar
 this is testor2
 * back to choice test__fTestor-1__j2
-* 朋友圈纯文本__j7
-* 朋友圈图片__j8
-* 朋友圈文章__j9
-长篇长度朋友圈纯文本测试，长篇长度朋友圈纯文本测试，长篇长度朋友圈纯文本测试，长篇长度朋友圈纯文本测试，长篇长度朋友圈纯文本测试，长篇长度朋友圈纯文本测试，长篇长度朋友圈纯文本测试，长篇长度朋友圈纯文本测试，长篇长度朋友圈纯文本测试__q__j3
-钱包__iq__nTestor2__j3
-新员工手册__wq__nTestor__j3
+* 点击三次开启第三个选项__acount+1__j2
+* 隐藏选项__ccount>2__j2

@@ -29,9 +29,12 @@ class ChatChoiceCell: UITableViewCell {
             return
         }
         model?.type = .chosen
+        if model!.action != nil {
+            Messages.shared.actionCheck(currentMessage: model!)
+        }
         Messages.shared.delegate?.newMessageReceived(model!)
         Messages.shared.saveMessage(message: model!)
-
+        
         if model?.reply != nil {
             var replyModel = MessageModel()
             replyModel.content = model?.reply
