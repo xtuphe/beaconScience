@@ -152,7 +152,6 @@ func transformModel(rawString:NSString, name:String) -> [MessageModel] {
             continue//过滤空行
         }
         let model = MessageModel.init(rawStr: singleLine, index: index, name:name)
-        print("..........\(model.name ?? "Noooooooooooo")")
         resultArray.append(model)
         index += 1
     }
