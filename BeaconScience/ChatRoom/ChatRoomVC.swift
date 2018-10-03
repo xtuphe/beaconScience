@@ -194,6 +194,10 @@ extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            //当前会话
+            return
+        }
         //首先清空choice view
         choiceView.data = []
         choiceView.reloadData()

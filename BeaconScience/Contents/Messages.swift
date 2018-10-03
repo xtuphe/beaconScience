@@ -8,6 +8,8 @@
 
 import Foundation
 
+let defaultGap : Double = 1
+
 protocol MessagesDelegate: AnyObject {
     func newMessageReceived(_ message: MessageModel)
     func presentChoiceView()
@@ -167,7 +169,7 @@ class Messages {
                 self.whatsNext()
             }
         } else {
-            self.gap = 0.5
+            self.gap = defaultGap
             self.whatsNext()
         }
         
