@@ -14,7 +14,7 @@ class ChatRoomVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var choiceView: ChoiceTableView = ChoiceTableView()
     
-    var name = Conversations.shared.data[0] as! String {
+    var name = Conversations.shared.data[0] {
         didSet {
             loadSaves()
             Conversations.shared.onSightName = name
@@ -29,7 +29,7 @@ class ChatRoomVC: UIViewController {
         setupTableView()
         setupNotification()
         setupMessageCenter()
-        name = Conversations.shared.data[0] as! String
+        name = Conversations.shared.data[0]
         choiceView.setup()
         setupPoptip()
     }
@@ -70,10 +70,14 @@ class ChatRoomVC: UIViewController {
             //防止手快
             self.choiceView.isUserInteractionEnabled = false
             self.tableView.scrollToRow(at: IndexPath.init(row: self.tableData.count - 1, section: 0), at: .bottom, animated: true)
-            _ = delay(1, task: { [unowned self] in
-                self.choiceView.data = []
-                self.tableView.tableFooterView = nil
-            })
+            
+            self.choiceView.data = []
+            self.tableView.tableFooterView = nil
+            
+//            _ = delay(1, task: { [unowned self] in
+//                self.choiceView.data = []
+//                self.tableView.tableFooterView = nil
+//            })
         }
     }
     
@@ -185,7 +189,7 @@ extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChatListCell", for: indexPath) as! ChatListCell
-        cell.name = Conversations.shared.data[indexPath.row] as? String
+        cell.name = Conversations.shared.data[indexPath.row]
         return cell
     }
 
@@ -195,7 +199,7 @@ extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
         choiceView.reloadData()
         
         Conversations.shared.selected(index: indexPath.row)
-        name = Conversations.shared.data[0] as! String
+        name = Conversations.shared.data[0]
         Messages.shared.reload(name: name)
         
         printLog(message: ".....selecting name: \(name)")

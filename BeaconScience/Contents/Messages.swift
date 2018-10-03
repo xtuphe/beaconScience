@@ -25,7 +25,7 @@ class Messages {
     var data : Array<MessageModel> = []
     var index = 0
     var gap = 2.0
-    var name = Conversations.shared.data[0] as! String
+    var name = Conversations.shared.data[0]
     var fileName : String?
     var task : Task?
     var messageBefore : MessageModel?//触发file跳转的message

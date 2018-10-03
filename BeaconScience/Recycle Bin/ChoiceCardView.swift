@@ -136,7 +136,7 @@ class ChoiceCard : UIView {
     required init?(coder aDecoder: NSCoder) {
         self.model = MessageModel()
         self.originalFrame = CGRect.zero
-        self.cardsView = ChoiceCardView()
+        self.cardsView = ChoiceCardView().copy() as! ChoiceCardView
         super.init(coder: aDecoder)
     }
     

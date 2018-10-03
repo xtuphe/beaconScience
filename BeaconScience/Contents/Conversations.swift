@@ -10,11 +10,10 @@ import Foundation
 
 class Conversations {
     static let shared = Conversations()
-    var data : NSMutableArray
+    var data : Array<String> = []
     var onSightName: String?
     
     init() {
-        data = NSMutableArray.init(object: "Testor")
         
         let fileManager = FileManager.default
         guard let directory =
@@ -25,8 +24,10 @@ class Conversations {
             "SavedGames/Conversations")
         
         if fileManager.fileExists(atPath: url.path) {
-            data = NSMutableArray.init(array: NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as! NSArray)
+            data = NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as! Array<String>
             _ = try? fileManager.removeItem(at: url)
+        } else {
+            data = ["马建国"]
         }
         
         /*
@@ -60,24 +61,24 @@ class Conversations {
         
         NSKeyedArchiver.archiveRootObject(data, toFile: fileURL.path)
         for obj in data {
-            let name = obj as! String
+            let name = obj
             printLog(message: ".....list data saved\(name)")
         }
     }
     
     //返回新对话之前的位置，如果是0则为全新对话
     func newConversation(name: String) -> Int {
-        if name == data[0] as! String {
+        if name == data[0] {
             return -1
         }
         var newConversation = true
         var index = 0
         for obj in data {
-            let object = obj as! String
+            let object = obj
             
             if name == object {
                 newConversation = false
-                data.removeObject(at: index)
+                data.remove(at: index)
                 data.insert(object, at: 1)
                 break
             }
@@ -93,7 +94,7 @@ class Conversations {
     
     func selected(index: Int) {
         let model = data[index]
-        data.removeObject(at: index)
+        data.remove(at: index)
         data.insert(model, at: 0)
         save()
     }

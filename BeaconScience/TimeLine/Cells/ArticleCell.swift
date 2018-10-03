@@ -25,6 +25,7 @@ class ArticleCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(ArticleCell.tapped))
         articleBackgroundView.addGestureRecognizer(tap)
     }
