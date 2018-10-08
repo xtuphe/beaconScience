@@ -74,6 +74,10 @@
 		DAD026AD215F89DB00B3DB53 /* GoogleAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD026AC215F89DB00B3DB53 /* GoogleAds.swift */; };
 		DAD026B121649F5300B3DB53 /* 马建国-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DAD026B021649F5300B3DB53 /* 马建国-1.txt */; };
 		DAD026B62164E53300B3DB53 /* 小云-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DAD026B52164E53300B3DB53 /* 小云-1.txt */; };
+		DAD026BB2165A13D00B3DB53 /* 邵山红-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DAD026BA2165A13D00B3DB53 /* 邵山红-1.txt */; };
+		DAD026BE2166F8C900B3DB53 /* EnrollmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD026BC2166F8C900B3DB53 /* EnrollmentVC.swift */; };
+		DAD026BF2166F8C900B3DB53 /* EnrollmentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD026BD2166F8C900B3DB53 /* EnrollmentVC.xib */; };
+		DAD026C2216718C900B3DB53 /* 邵山红-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DAD026C1216718C900B3DB53 /* 邵山红-2.txt */; };
 		DADE040F20E5DA41000007ED /* News1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DADE040E20E5DA41000007ED /* News1.txt */; };
 		DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF3ADA205284800084DE1F /* Repeater.swift */; };
 		DAFBAA59215B680800539CDD /* BonusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBAA57215B680800539CDD /* BonusCell.swift */; };
@@ -151,6 +155,10 @@
 		DAD026AC215F89DB00B3DB53 /* GoogleAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAds.swift; sourceTree = "<group>"; };
 		DAD026B021649F5300B3DB53 /* 马建国-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "马建国-1.txt"; sourceTree = "<group>"; };
 		DAD026B52164E53300B3DB53 /* 小云-1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "小云-1.txt"; sourceTree = "<group>"; };
+		DAD026BA2165A13D00B3DB53 /* 邵山红-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "邵山红-1.txt"; sourceTree = "<group>"; };
+		DAD026BC2166F8C900B3DB53 /* EnrollmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentVC.swift; sourceTree = "<group>"; };
+		DAD026BD2166F8C900B3DB53 /* EnrollmentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnrollmentVC.xib; sourceTree = "<group>"; };
+		DAD026C1216718C900B3DB53 /* 邵山红-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "邵山红-2.txt"; sourceTree = "<group>"; };
 		DADE040E20E5DA41000007ED /* News1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = News1.txt; sourceTree = "<group>"; };
 		DAEF3ADA205284800084DE1F /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
 		DAFBAA57215B680800539CDD /* BonusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusCell.swift; sourceTree = "<group>"; };
@@ -234,6 +242,7 @@
 		DA1D5E5B200F280D00BEE807 /* StoryLines */ = {
 			isa = PBXGroup;
 			children = (
+				DAD026B92165A0B500B3DB53 /* 支线 */,
 				DAD026B22164E3D900B3DB53 /* 小云 */,
 				DAD026AF216465B300B3DB53 /* Boss */,
 				DAD026AE2164657A00B3DB53 /* Tests */,
@@ -392,6 +401,15 @@
 			path = "小云";
 			sourceTree = "<group>";
 		};
+		DAD026B92165A0B500B3DB53 /* 支线 */ = {
+			isa = PBXGroup;
+			children = (
+				DAD026BA2165A13D00B3DB53 /* 邵山红-1.txt */,
+				DAD026C1216718C900B3DB53 /* 邵山红-2.txt */,
+			);
+			path = "支线";
+			sourceTree = "<group>";
+		};
 		DAEF3AD82052761A0084DE1F /* Contents */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +425,8 @@
 		DAEF3AD9205276A00084DE1F /* MiniGames */ = {
 			isa = PBXGroup;
 			children = (
+				DAD026BC2166F8C900B3DB53 /* EnrollmentVC.swift */,
+				DAD026BD2166F8C900B3DB53 /* EnrollmentVC.xib */,
 			);
 			path = MiniGames;
 			sourceTree = "<group>";
@@ -486,6 +506,7 @@
 				DAD026AB215C705100B3DB53 /* BeaconScience语法.md in Resources */,
 				DAD023A82133EF8900D587F1 /* 新员工手册.md in Resources */,
 				DAD026A9215C6F7300B3DB53 /* BonusVC.xib in Resources */,
+				DAD026C2216718C900B3DB53 /* 邵山红-2.txt in Resources */,
 				DAD023A5213061EA00D587F1 /* PlainTextCell.xib in Resources */,
 				DA31936C20F49798004D8897 /* ChatListCell.xib in Resources */,
 				DA1D5E58200C851200BEE807 /* ChatBaseCell.xib in Resources */,
@@ -495,12 +516,14 @@
 				DA1D5E3D200742B000BEE807 /* Main.storyboard in Resources */,
 				DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */,
 				DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */,
+				DAD026BF2166F8C900B3DB53 /* EnrollmentVC.xib in Resources */,
 				DA4A1B8621367E9D0014FF89 /* MeItemCell.xib in Resources */,
 				DA4A1B8221367C7E0014FF89 /* MeAvatarCell.xib in Resources */,
 				DAD026B121649F5300B3DB53 /* 马建国-1.txt in Resources */,
 				DAFBAA5A215B680800539CDD /* BonusCell.xib in Resources */,
 				DA749D3F212AC9D60065AEAF /* ChatChosenCell.xib in Resources */,
 				DA1A7C1820EE03A3001A8154 /* Intro3.txt in Resources */,
+				DAD026BB2165A13D00B3DB53 /* 邵山红-1.txt in Resources */,
 				DA304A8020EF4F5900462048 /* Testor2-1.txt in Resources */,
 				DADE040F20E5DA41000007ED /* News1.txt in Resources */,
 				DA43CA61212F3E2300AACDB3 /* ArticleCell.xib in Resources */,
@@ -602,6 +625,7 @@
 				DA1D5E6A2015F28C00BEE807 /* NotificationCenterX.swift in Sources */,
 				DA5A04CB21141ECF00801C83 /* Int+Extensions.swift in Sources */,
 				DA5A04D221141ECF00801C83 /* SKTAudio.swift in Sources */,
+				DAD026BE2166F8C900B3DB53 /* EnrollmentVC.swift in Sources */,
 				DAD023AE2134025800D587F1 /* ArticleDetailVC.swift in Sources */,
 				DA0CFAA620E36AC60028861B /* ChatChoiceCell.swift in Sources */,
 				DA27C3DD2029A90C005DD70C /* Defaults.swift in Sources */,
