@@ -28,7 +28,7 @@ class TimeLine {
         if Defaults.shared.has(countKey) {
             let count = Defaults.shared.get(for: countKey)
             for index in 1...count! {
-                data.append(getSavedMessageWith(index: index))
+                data.insert(getSavedMessageWith(index: index), at: 0)
             }
         }
     }
@@ -46,7 +46,7 @@ class TimeLine {
     }
 
     func newData(message:MessageModel) {
-        data.append(message)
+        data.insert(message, at: 0)
         save(message: message)
         //tabbar 红点提醒
     }
@@ -56,5 +56,7 @@ class TimeLine {
         let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.TimeLine")!)
         let saveModel = SavedMessage(content: message.content, type: message.type, name: message.name)
         defaults.set(saveModel, for: key)
+        let countKey = Key<Int>("TimeLineCountKey")
+        Defaults.shared.set(data.count, for: countKey)
     }
 }

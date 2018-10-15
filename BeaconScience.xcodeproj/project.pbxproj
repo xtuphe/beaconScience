@@ -24,6 +24,9 @@
 		DA1D5E5A200C999200BEE807 /* StringTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D5E59200C999200BEE807 /* StringTransformer.swift */; };
 		DA1D5E63200F307200BEE807 /* Intro1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA1D5E62200F307200BEE807 /* Intro1.txt */; };
 		DA1D5E6A2015F28C00BEE807 /* NotificationCenterX.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1D5E692015F28C00BEE807 /* NotificationCenterX.swift */; };
+		DA203573216D817200C64D3C /* WeWantYou.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DA203572216D817200C64D3C /* WeWantYou.jpeg */; };
+		DA203575216DDBFD00C64D3C /* 李子轩.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA203574216DDBFD00C64D3C /* 李子轩.txt */; };
+		DA2035772174349700C64D3C /* 李子轩-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA2035762174349700C64D3C /* 李子轩-1.txt */; };
 		DA2501BD20E4BD65007F80FC /* CancelableDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2501BC20E4BD65007F80FC /* CancelableDelay.swift */; };
 		DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA2501BE20E4D5D2007F80FC /* Intro2.txt */; };
 		DA27C3DD2029A90C005DD70C /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA27C3DC2029A90C005DD70C /* Defaults.swift */; };
@@ -105,6 +108,9 @@
 		DA1D5E59200C999200BEE807 /* StringTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformer.swift; sourceTree = "<group>"; };
 		DA1D5E62200F307200BEE807 /* Intro1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Intro1.txt; sourceTree = "<group>"; };
 		DA1D5E692015F28C00BEE807 /* NotificationCenterX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterX.swift; sourceTree = "<group>"; };
+		DA203572216D817200C64D3C /* WeWantYou.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WeWantYou.jpeg; sourceTree = "<group>"; };
+		DA203574216DDBFD00C64D3C /* 李子轩.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "李子轩.txt"; sourceTree = "<group>"; };
+		DA2035762174349700C64D3C /* 李子轩-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "李子轩-1.txt"; sourceTree = "<group>"; };
 		DA2501BC20E4BD65007F80FC /* CancelableDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelableDelay.swift; sourceTree = "<group>"; };
 		DA2501BE20E4D5D2007F80FC /* Intro2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Intro2.txt; sourceTree = "<group>"; };
 		DA27C3DC2029A90C005DD70C /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
@@ -242,6 +248,7 @@
 		DA1D5E5B200F280D00BEE807 /* StoryLines */ = {
 			isa = PBXGroup;
 			children = (
+				DA203570216C938200C64D3C /* Killer */,
 				DAD026B92165A0B500B3DB53 /* 支线 */,
 				DAD026B22164E3D900B3DB53 /* 小云 */,
 				DAD026AF216465B300B3DB53 /* Boss */,
@@ -269,6 +276,7 @@
 		DA1D5E65200F331A00BEE807 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DA203571216D816200C64D3C /* Images */,
 				DA1D5E3E200742B000BEE807 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -308,6 +316,23 @@
 				DA5A04D52114244100801C83 /* StringHelper.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DA203570216C938200C64D3C /* Killer */ = {
+			isa = PBXGroup;
+			children = (
+				DA203574216DDBFD00C64D3C /* 李子轩.txt */,
+				DA2035762174349700C64D3C /* 李子轩-1.txt */,
+			);
+			path = Killer;
+			sourceTree = "<group>";
+		};
+		DA203571216D816200C64D3C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DA203572216D817200C64D3C /* WeWantYou.jpeg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		DA306242211D377D0082F52D /* Recycle Bin */ = {
@@ -500,6 +525,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA203575216DDBFD00C64D3C /* 李子轩.txt in Resources */,
 				DA304A7E20EF4DF900462048 /* Testor-2.txt in Resources */,
 				DAD023A121305D7F00D587F1 /* ImageCell.xib in Resources */,
 				DA304A7C20EF4B3E00462048 /* Testor-1.txt in Resources */,
@@ -508,6 +534,7 @@
 				DAD026A9215C6F7300B3DB53 /* BonusVC.xib in Resources */,
 				DAD026C2216718C900B3DB53 /* 邵山红-2.txt in Resources */,
 				DAD023A5213061EA00D587F1 /* PlainTextCell.xib in Resources */,
+				DA2035772174349700C64D3C /* 李子轩-1.txt in Resources */,
 				DA31936C20F49798004D8897 /* ChatListCell.xib in Resources */,
 				DA1D5E58200C851200BEE807 /* ChatBaseCell.xib in Resources */,
 				DAD026B62164E53300B3DB53 /* 小云-1.txt in Resources */,
@@ -528,6 +555,7 @@
 				DADE040F20E5DA41000007ED /* News1.txt in Resources */,
 				DA43CA61212F3E2300AACDB3 /* ArticleCell.xib in Resources */,
 				DA1D5E63200F307200BEE807 /* Intro1.txt in Resources */,
+				DA203573216D817200C64D3C /* WeWantYou.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
