@@ -26,12 +26,12 @@ class Messages {
     static let shared = Messages()
     
     var data : Array<MessageModel> = []
+    var marked : Array<MessageModel> = []
     var index = 0
     var gap = 2.0
     var name = Conversations.shared.data[0]
     var fileName : String?
     var task : Task?
-    var messageBefore : MessageModel?//触发file跳转的message
     weak var delegate : MessagesDelegate?
     let properties : Defaults
 
@@ -44,7 +44,6 @@ class Messages {
             reload(name: name)
         } else {
             reload(fileName:defaultFile)
-//            reload(fileName: "Testor-1")
             Defaults.shared.set(true, for: firstTimeKey)
         }
     }
@@ -85,12 +84,6 @@ class Messages {
         let fileKey = Key<String>("FileKey\(name)")
         Defaults.shared.set(fileName, for: fileKey)
         
-        if messageBefore != nil {
-            if messageBefore!.jump != nil {
-                self.index = messageBefore!.jump! - 1
-            }
-            messageBefore = nil
-        }
         getData(fileName: fileName)
         whatsNext()
     }
@@ -98,7 +91,7 @@ class Messages {
     func getData(fileName: String){
         let content = loadContentFile(name: fileName)
         let npcName = fileName.components(separatedBy: "-").first!
-        data = transformModel(rawString: content, name: npcName)
+        (data, marked) = transformModel(rawString: content, name: npcName)
     }
     
     func whatsNext(){
@@ -150,13 +143,16 @@ class Messages {
                 let indexKey = Key<Int>("IndexKey\(self.fileName!)")
                 Defaults.shared.set(self.index + 1, for: indexKey)
             }
-            messageBefore = currentMessage
             reload(fileName: currentMessage.file!)
-            return
         }
         //检查是否需要跳转
         if currentMessage.jump != nil {
-            self.index = currentMessage.jump! - 1
+            for nextMessage in marked {
+                if nextMessage.mark == currentMessage.jump {
+                    self.index = nextMessage.index
+                    break
+                }
+            }
         } else {
             self.index += 1
         }

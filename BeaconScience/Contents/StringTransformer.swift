@@ -51,6 +51,7 @@ struct ConditionModel  {
 /*
  a action   动作
  c condition条件
+ m mark     标记
  j jump     跳转
  g gap      与下条间隔时间
  f file     文件
@@ -58,6 +59,7 @@ struct ConditionModel  {
  i image    图片
  w writings 文章
  n name     名字
+ q quan     朋友圈
  */
 
 enum MessageType : Int, Codable {
@@ -70,6 +72,7 @@ enum MessageType : Int, Codable {
     case quanImage  //朋友圈图片
     case quanArticle//朋友圈文章
     case quan       //朋友圈文本
+    
 }
 
 struct MessageModel {
@@ -80,7 +83,8 @@ struct MessageModel {
     var gap : TimeInterval?
     var action : ActionModel?
     var condition : ConditionModel?
-    var jump : Int?
+    var jump : String?
+    var mark : String?
     var file : String?
     var reply : String?
     var money : Double?
@@ -104,9 +108,9 @@ struct MessageModel {
             } else if prefix == "c" {
                 condition = ConditionModel.init(rawStr: surfix)
             } else if prefix == "g" {
-                gap = (surfix as NSString).doubleValue
+                gap = Double(surfix)
             } else if prefix == "j" {
-                jump = (surfix as NSString).integerValue
+                jump = surfix
             } else if prefix == "f" {
                 file = surfix
             } else if prefix == "-" {
@@ -131,8 +135,10 @@ struct MessageModel {
                 }
             } else if prefix == "q" {
                 type = .quan
-            } else if prefix == "m" {
+            } else if prefix == "r" {
                 money = Double(surfix)
+            } else if prefix == "m" {
+                mark = surfix
             }
         }
     }
@@ -143,19 +149,23 @@ struct MessageModel {
     
 }
 
-func transformModel(rawString:NSString, name:String) -> [MessageModel] {
+func transformModel(rawString:NSString, name:String) -> ([MessageModel], [MessageModel]) {
     let rawArray = rawString.components(separatedBy: "\n")
     var index = 0
     var resultArray : [MessageModel] = []
+    var markedArray : [MessageModel] = []
     for singleLine in rawArray {
         if (singleLine == ""){
             continue//过滤空行
         }
         let model = MessageModel.init(rawStr: singleLine, index: index, name:name)
+        if model.mark != nil {
+            markedArray.append(model)
+        }
         resultArray.append(model)
         index += 1
     }
-    return resultArray
+    return (resultArray, markedArray)
 }
 
 func loadContentFile(name:String) -> NSString {
