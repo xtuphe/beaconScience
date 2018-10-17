@@ -69,15 +69,8 @@ class ChatRoomVC: UIViewController {
         NotificationCenter.default.addObserver(forName: notiName(name: "ChoiceViewShouldDismiss"), object: nil, queue: nil) { (noti) in
             //防止手快
             self.choiceView.isUserInteractionEnabled = false
-            self.tableView.scrollToRow(at: IndexPath.init(row: self.tableData.count - 1, section: 0), at: .bottom, animated: true)
-            
             self.choiceView.data = []
             self.tableView.tableFooterView = nil
-            
-//            _ = delay(1, task: { [unowned self] in
-//                self.choiceView.data = []
-//                self.tableView.tableFooterView = nil
-//            })
         }
     }
     
@@ -116,7 +109,9 @@ extension ChatRoomVC: MessagesDelegate {
         choiceView.isUserInteractionEnabled = true
         choiceView.frame = CGRect.init(x: 0, y: 0, width: screenWidth(), height: choiceView.height() + 10)
         tableView.tableFooterView = choiceView
-        tableView.setContentOffset(CGPoint.init(x:0, y:tableView.contentSize.height - (screenHeight() - collectionView.frame.size.height - tabBarHeight())), animated: true)
+        if tableView.contentOffset.y < tableView.contentSize.height - tableView.frame.size.height {
+            tableView.setContentOffset(CGPoint.init(x:0, y:tableView.contentSize.height - (screenHeight() - collectionView.frame.size.height - tabBarHeight())), animated: true)
+        }
     }
     
     func newMessageReceived(_ message: MessageModel) {
@@ -140,8 +135,15 @@ extension ChatRoomVC: MessagesDelegate {
         
         tableData.append(message)
         tableView.reloadData()
+
+        if message.type == .chosen  {
+            _ = delay(0.25) { [unowned self] in
+            self.tableView.scrollToRow(at: IndexPath.init(row: self.tableData.count - 1, section: 0), at: .bottom, animated: false)
+            }
+            return
+        }
         
-        if tableView.contentOffset.y < tableView.contentSize.height - tableView.frame.size.height {
+        if tableView.contentOffset.y < tableView.contentSize.height - tableView.frame.size.height{
             _ = delay(0.1) { [unowned self] in
                 self.tableView.scrollToRow(at: IndexPath.init(row: self.tableData.count - 1, section: 0), at: .bottom, animated: true)
             }
