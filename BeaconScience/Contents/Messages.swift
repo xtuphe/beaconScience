@@ -88,6 +88,19 @@ class Messages {
         whatsNext()
     }
     
+    func reloadFile(fileName: String) {
+        self.fileName = fileName
+        data = []
+        
+        let fileNameArray = (fileName as NSString).components(separatedBy: "-")
+        name = fileNameArray.first!
+
+        let fileKey = Key<String>("FileKey\(name)")
+        Defaults.shared.set(fileName, for: fileKey)
+        
+        getData(fileName: fileName)
+    }
+    
     func getData(fileName: String){
         let content = loadContentFile(name: fileName)
         let npcName = fileName.components(separatedBy: "-").first!
@@ -143,7 +156,9 @@ class Messages {
                 let indexKey = Key<Int>("IndexKey\(self.fileName!)")
                 Defaults.shared.set(self.index + 1, for: indexKey)
             }
-            reload(fileName: currentMessage.file!)
+            //加载新file默认首行开始 接下来要么跳转修正index, 要么+1
+            reloadFile(fileName: currentMessage.file!)
+            index = -1
         }
         //检查是否需要跳转
         if currentMessage.jump != nil {
