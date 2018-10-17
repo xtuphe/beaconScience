@@ -9,6 +9,7 @@
 import Foundation
 
 let defaultGap : Double = 1
+let defaultFile : String = "李子轩-1"
 
 protocol MessagesDelegate: AnyObject {
     func newMessageReceived(_ message: MessageModel)
@@ -42,7 +43,7 @@ class Messages {
         if Defaults.shared.has(firstTimeKey) {
             reload(name: name)
         } else {
-            reload(fileName: "马建国-1")
+            reload(fileName:defaultFile)
 //            reload(fileName: "Testor-1")
             Defaults.shared.set(true, for: firstTimeKey)
         }

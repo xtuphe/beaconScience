@@ -27,6 +27,10 @@
 		DA203573216D817200C64D3C /* WeWantYou.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DA203572216D817200C64D3C /* WeWantYou.jpeg */; };
 		DA203575216DDBFD00C64D3C /* 李子轩.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA203574216DDBFD00C64D3C /* 李子轩.txt */; };
 		DA2035772174349700C64D3C /* 李子轩-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA2035762174349700C64D3C /* 李子轩-1.txt */; };
+		DA20357921758F7600C64D3C /* 小云-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA20357821758F7600C64D3C /* 小云-2.txt */; };
+		DA20357B217594BB00C64D3C /* 马建国-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA20357A217594BB00C64D3C /* 马建国-2.txt */; };
+		DA20357D2175B4A100C64D3C /* 李子轩-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA20357C2175B4A100C64D3C /* 李子轩-2.txt */; };
+		DA20357F2176C86800C64D3C /* 邢小雨-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA20357E2176C86800C64D3C /* 邢小雨-1.txt */; };
 		DA2501BD20E4BD65007F80FC /* CancelableDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2501BC20E4BD65007F80FC /* CancelableDelay.swift */; };
 		DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA2501BE20E4D5D2007F80FC /* Intro2.txt */; };
 		DA27C3DD2029A90C005DD70C /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA27C3DC2029A90C005DD70C /* Defaults.swift */; };
@@ -111,6 +115,10 @@
 		DA203572216D817200C64D3C /* WeWantYou.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WeWantYou.jpeg; sourceTree = "<group>"; };
 		DA203574216DDBFD00C64D3C /* 李子轩.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "李子轩.txt"; sourceTree = "<group>"; };
 		DA2035762174349700C64D3C /* 李子轩-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "李子轩-1.txt"; sourceTree = "<group>"; };
+		DA20357821758F7600C64D3C /* 小云-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "小云-2.txt"; sourceTree = "<group>"; };
+		DA20357A217594BB00C64D3C /* 马建国-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "马建国-2.txt"; sourceTree = "<group>"; };
+		DA20357C2175B4A100C64D3C /* 李子轩-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "李子轩-2.txt"; sourceTree = "<group>"; };
+		DA20357E2176C86800C64D3C /* 邢小雨-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "邢小雨-1.txt"; sourceTree = "<group>"; };
 		DA2501BC20E4BD65007F80FC /* CancelableDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelableDelay.swift; sourceTree = "<group>"; };
 		DA2501BE20E4D5D2007F80FC /* Intro2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Intro2.txt; sourceTree = "<group>"; };
 		DA27C3DC2029A90C005DD70C /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
@@ -323,6 +331,8 @@
 			children = (
 				DA203574216DDBFD00C64D3C /* 李子轩.txt */,
 				DA2035762174349700C64D3C /* 李子轩-1.txt */,
+				DA20357C2175B4A100C64D3C /* 李子轩-2.txt */,
+				DA20357E2176C86800C64D3C /* 邢小雨-1.txt */,
 			);
 			path = Killer;
 			sourceTree = "<group>";
@@ -414,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD026B021649F5300B3DB53 /* 马建国-1.txt */,
+				DA20357A217594BB00C64D3C /* 马建国-2.txt */,
 			);
 			path = Boss;
 			sourceTree = "<group>";
@@ -422,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD026B52164E53300B3DB53 /* 小云-1.txt */,
+				DA20357821758F7600C64D3C /* 小云-2.txt */,
 			);
 			path = "小云";
 			sourceTree = "<group>";
@@ -530,8 +542,11 @@
 				DAD023A121305D7F00D587F1 /* ImageCell.xib in Resources */,
 				DA304A7C20EF4B3E00462048 /* Testor-1.txt in Resources */,
 				DAD026AB215C705100B3DB53 /* BeaconScience语法.md in Resources */,
+				DA20357F2176C86800C64D3C /* 邢小雨-1.txt in Resources */,
 				DAD023A82133EF8900D587F1 /* 新员工手册.md in Resources */,
 				DAD026A9215C6F7300B3DB53 /* BonusVC.xib in Resources */,
+				DA20357D2175B4A100C64D3C /* 李子轩-2.txt in Resources */,
+				DA20357B217594BB00C64D3C /* 马建国-2.txt in Resources */,
 				DAD026C2216718C900B3DB53 /* 邵山红-2.txt in Resources */,
 				DAD023A5213061EA00D587F1 /* PlainTextCell.xib in Resources */,
 				DA2035772174349700C64D3C /* 李子轩-1.txt in Resources */,
@@ -546,6 +561,7 @@
 				DAD026BF2166F8C900B3DB53 /* EnrollmentVC.xib in Resources */,
 				DA4A1B8621367E9D0014FF89 /* MeItemCell.xib in Resources */,
 				DA4A1B8221367C7E0014FF89 /* MeAvatarCell.xib in Resources */,
+				DA20357921758F7600C64D3C /* 小云-2.txt in Resources */,
 				DAD026B121649F5300B3DB53 /* 马建国-1.txt in Resources */,
 				DAFBAA5A215B680800539CDD /* BonusCell.xib in Resources */,
 				DA749D3F212AC9D60065AEAF /* ChatChosenCell.xib in Resources */,

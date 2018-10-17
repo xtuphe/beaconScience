@@ -8,6 +8,9 @@
 
 import Foundation
 
+//首次加载的session
+let defSession = "李子轩"
+
 class Conversations {
     static let shared = Conversations()
     var data : Array<String> = []
@@ -27,7 +30,7 @@ class Conversations {
             data = NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as! Array<String>
             _ = try? fileManager.removeItem(at: url)
         } else {
-            data = ["马建国"]
+            data = [defSession]
         }
         
         /*
