@@ -118,6 +118,7 @@ class Messages {
             
             //condition check
             if self.conditionCheck(currentMessage: currentMessage) {
+                self.index += 1
                 self.whatsNext()
                 return
             }
