@@ -22,7 +22,7 @@ class ChatBaseCell: UITableViewCell {
     }
 
     func refresh() {
-        self.avatarImageView.image = UIImage.init(named: "Testor")
+        self.avatarImageView.image = UIImage.init(named: self.model!.name)
         self.contentLabel.text = self.model!.content
     }
     
