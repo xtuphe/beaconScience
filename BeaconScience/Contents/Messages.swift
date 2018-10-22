@@ -10,6 +10,8 @@ import Foundation
 
 let defaultGap : Double = 1
 let defaultFile : String = "李子轩-1"
+let mainLineKey : String = "MainLine"
+let sideLines = ["RPG", "Invest"]
 
 protocol MessagesDelegate: AnyObject {
     func newMessageReceived(_ message: MessageModel)
@@ -41,7 +43,9 @@ class Messages {
         //检查是否为初次加载
         let firstTimeKey = Key<Bool>("NotFirstTimeKey")
         if Defaults.shared.has(firstTimeKey) {
-            reload(name: name)
+            if safeToLoad(name: name) {
+                reload(name: name)
+            }
         } else {
             reload(fileName:defaultFile)
             Defaults.shared.set(true, for: firstTimeKey)
@@ -76,6 +80,8 @@ class Messages {
         let fileNameArray = (fileName as NSString).components(separatedBy: "-")
         name = fileNameArray.first!
         
+        saveMainLine(name: name)
+        
         let indexKey = Key<Int>("IndexKey\(fileName)")
         if Defaults.shared.has(indexKey) {
             index = Defaults.shared.get(for: indexKey)!
@@ -98,7 +104,38 @@ class Messages {
         let fileKey = Key<String>("FileKey\(name)")
         Defaults.shared.set(fileName, for: fileKey)
         
+        saveMainLine(name: name)
+        
         getData(fileName: fileName)
+    }
+    
+    func saveMainLine(name: String) {
+        if sideLines.contains(name) {
+            return
+        }
+        let mainLine = Key<String>(mainLineKey)
+        Defaults.shared.set(name, for: mainLine)
+    }
+    
+    func isMainLine(name: String) -> Bool {
+        let mainLine = Key<String>(mainLineKey)
+        if Defaults.shared.has(mainLine) {
+            let savedName = Defaults.shared.get(for: mainLine)
+            if savedName == name {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func safeToLoad(name: String) -> Bool {
+        if isMainLine(name: name) {
+            return true
+        }
+        if sideLines.contains(name) {
+            return true
+        }
+        return false
     }
     
     func getData(fileName: String){

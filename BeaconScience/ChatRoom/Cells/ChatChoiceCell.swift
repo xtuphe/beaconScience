@@ -38,6 +38,7 @@ class ChatChoiceCell: UITableViewCell {
         if model?.reply != nil {
             var replyModel = MessageModel()
             replyModel.content = model?.reply
+            replyModel.name = model!.name
             replyModel.type = .normal
             _ = delay(1) {[unowned self] in
                 Messages.shared.delegate?.newMessageReceived(replyModel)
@@ -47,7 +48,7 @@ class ChatChoiceCell: UITableViewCell {
         } else {
             Messages.shared.messageCheck(currentMessage: model!)
         }
-        NotificationCenter.default.post(name: notiName(name: "ChoiceViewShouldDismiss"), object: nil)
+        NotificationCenter.default.post(name: notiName(name: "ChoiceViewShouldDismiss"), object: model)
 
     }
     

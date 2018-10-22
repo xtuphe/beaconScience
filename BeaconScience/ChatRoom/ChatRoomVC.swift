@@ -13,7 +13,7 @@ class ChatRoomVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     var choiceView: ChoiceTableView = ChoiceTableView()
-    
+    var choiceCache: [String] = []
     var name = Conversations.shared.data[0] {
         didSet {
             loadSaves()
@@ -71,6 +71,14 @@ class ChatRoomVC: UIViewController {
             self.choiceView.isUserInteractionEnabled = false
             self.choiceView.data = []
             self.tableView.tableFooterView = nil
+            //缓存已选
+            let model = noti.object as! MessageModel
+            let combinedStr = model.content + String(model.index)
+            self.choiceCache.append(combinedStr)
+            if self.choiceCache.count > 20 {
+                self.choiceCache.remove(at: 0)
+            }
+
         }
     }
     
@@ -129,7 +137,7 @@ extension ChatRoomVC: MessagesDelegate {
         }
         
         if message.type == .choice {
-            choiceView.data.append(message)
+            oneMoreChoice(message: message)
             return
         }
         
@@ -148,6 +156,14 @@ extension ChatRoomVC: MessagesDelegate {
                 self.tableView.scrollToRow(at: IndexPath.init(row: self.tableData.count - 1, section: 0), at: .bottom, animated: true)
             }
         }
+    }
+    
+    func oneMoreChoice(message: MessageModel) {
+        let combinedStr = message.content! + String(message.index)
+        if choiceCache.contains(combinedStr) {
+            return
+        }
+        choiceView.data.append(message)
     }
     
     func newMessageHandle(index: Int, message: MessageModel, name: String) {
@@ -203,21 +219,21 @@ extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
         //首先清空choice view
         choiceView.data = []
         choiceView.reloadData()
+        tableView.tableFooterView = nil
         
         Conversations.shared.selected(index: indexPath.row)
         name = Conversations.shared.data[0]
-        Messages.shared.reload(name: name)
-        
         printLog(message: ".....selecting name: \(name)")
 
         collectionView.moveItem(at: indexPath, to: IndexPath.init(row: 0, section: 0))
 
-        if Messages.shared.task == nil {
-            Messages.shared.whatsNext()
+        if Messages.shared.safeToLoad(name: name) {
+            Messages.shared.reload(name: name)
+            if Messages.shared.task == nil {
+                Messages.shared.whatsNext()
+            }
         }
-        
     }
-    
 }
 
 //MARK: - TableView 代理
