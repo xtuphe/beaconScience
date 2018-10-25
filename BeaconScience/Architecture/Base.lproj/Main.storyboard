@@ -41,6 +41,27 @@
                                 <rect key="frame" x="0.0" y="110" width="375" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ul2-C0-2Bu">
+                                <rect key="frame" x="185" y="60" width="180" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="线索 : 干冰" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Meo-9L-pKX">
+                                        <rect key="frame" x="40" y="0.0" width="140" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.15680322051048279" green="0.15664780139923096" blue="0.16906821727752686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="GTT-Fw-Q5a"/>
+                                    <constraint firstItem="Meo-9L-pKX" firstAttribute="top" secondItem="Ul2-C0-2Bu" secondAttribute="top" id="WJy-kN-ks8"/>
+                                    <constraint firstAttribute="trailing" secondItem="Meo-9L-pKX" secondAttribute="trailing" id="YT9-yN-txa"/>
+                                    <constraint firstAttribute="bottom" secondItem="Meo-9L-pKX" secondAttribute="bottom" id="wqt-jv-rTd"/>
+                                    <constraint firstAttribute="height" constant="40" id="yz1-E0-PlK"/>
+                                    <constraint firstItem="Meo-9L-pKX" firstAttribute="leading" secondItem="Ul2-C0-2Bu" secondAttribute="leading" constant="40" id="zKJ-dp-IGt"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oZT-KW-dzc">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                 <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,7 +91,9 @@
                             <constraint firstItem="7Fs-Y8-dDZ" firstAttribute="top" secondItem="oZT-KW-dzc" secondAttribute="bottom" id="DHj-7a-HCS"/>
                             <constraint firstItem="7Fs-Y8-dDZ" firstAttribute="leading" secondItem="9jk-f8-pc8" secondAttribute="leading" id="Iwe-Rt-Fdt"/>
                             <constraint firstItem="9jk-f8-pc8" firstAttribute="trailing" secondItem="7Fs-Y8-dDZ" secondAttribute="trailing" id="MwD-FF-vBO"/>
+                            <constraint firstItem="Ul2-C0-2Bu" firstAttribute="top" secondItem="oZT-KW-dzc" secondAttribute="bottom" constant="-50" id="SJ0-Ua-pi2"/>
                             <constraint firstItem="oZT-KW-dzc" firstAttribute="leading" secondItem="9jk-f8-pc8" secondAttribute="leading" id="XRG-YT-wgk"/>
+                            <constraint firstItem="9jk-f8-pc8" firstAttribute="trailing" secondItem="Ul2-C0-2Bu" secondAttribute="trailing" constant="10" id="tuD-bt-BMf"/>
                             <constraint firstItem="oZT-KW-dzc" firstAttribute="top" secondItem="SZV-gW-jCa" secondAttribute="top" id="wbE-H2-yw9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9jk-f8-pc8"/>
@@ -79,6 +102,9 @@
                     <connections>
                         <outlet property="collectionView" destination="oZT-KW-dzc" id="5gu-Mn-jx3"/>
                         <outlet property="tableView" destination="7Fs-Y8-dDZ" id="OAb-eV-CWy"/>
+                        <outlet property="tipLabel" destination="Meo-9L-pKX" id="YSk-xo-rDj"/>
+                        <outlet property="tipTopConstraint" destination="SJ0-Ua-pi2" id="kJP-y0-4xY"/>
+                        <outlet property="tipView" destination="Ul2-C0-2Bu" id="dgr-Dw-JHD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRb-MV-peR" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,6 +12,10 @@ import AMPopTip
 class ChatRoomVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var tipView: UIView!
+    @IBOutlet weak var tipTopConstraint: NSLayoutConstraint!
+    
     var choiceView: ChoiceTableView = ChoiceTableView()
     var choiceCache: [String] = []
     var name = Conversations.shared.data[0] {
@@ -71,14 +75,19 @@ class ChatRoomVC: UIViewController {
             self.choiceView.isUserInteractionEnabled = false
             self.choiceView.data = []
             self.tableView.tableFooterView = nil
-            //缓存已选
+            
             let model = noti.object as! MessageModel
+            //检查是否有选中tip
+            if model.tip != nil {
+                self.showTipMessage(content: model.tip!)
+            }
+            //缓存已选
             let combinedStr = model.content + String(model.index)
             self.choiceCache.append(combinedStr)
             if self.choiceCache.count > 20 {
                 self.choiceCache.remove(at: 0)
             }
-
+            
         }
     }
     
@@ -123,6 +132,10 @@ extension ChatRoomVC: MessagesDelegate {
     }
     
     func newMessageReceived(_ message: MessageModel) {
+        if message.tip != nil && message.type != .choice {
+            showTipMessage(content: message.tip!)
+        }
+        
         //当前聊天页面其他人信息
         if message.type == .others {
             let index = Conversations.shared.newConversation(name: message.name)
@@ -182,6 +195,7 @@ extension ChatRoomVC: MessagesDelegate {
         })
     }
     
+    //其他人的消息
     func popTipMessage(message:MessageModel, index: Int) {
         let cell = collectionView.cellForItem(at: IndexPath.init(row: index, section: 0))!
         let frame = cell.convert(cell.bounds, to: view)
@@ -195,6 +209,22 @@ extension ChatRoomVC: MessagesDelegate {
         Defaults.shared.set(count, for: unreadKey)
     }
     
+    //系统提示消息
+    func showTipMessage(content: String) {
+        tipLabel.text = content
+        view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.2, animations: {
+            self.tipTopConstraint.constant = 10
+            self.view.layoutIfNeeded()
+        }) { (finished) in
+            _ = delay(2, task: { [unowned self] in
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.tipTopConstraint.constant = -50
+                    self.view.layoutIfNeeded()
+                })
+            })
+        }
+    }
 }
 
 //MARK: - CollectionView 代理

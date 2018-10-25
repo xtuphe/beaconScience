@@ -60,6 +60,7 @@ struct ConditionModel  {
  w writings 文章
  n name     名字
  q quan     朋友圈
+ t tip      系统提示
  */
 
 enum MessageType : Int, Codable {
@@ -72,7 +73,6 @@ enum MessageType : Int, Codable {
     case quanImage  //朋友圈图片
     case quanArticle//朋友圈文章
     case quan       //朋友圈文本
-    
 }
 
 struct MessageModel {
@@ -88,6 +88,7 @@ struct MessageModel {
     var file : String?
     var reply : String?
     var money : Double?
+    var tip : String?
     
     init(rawStr:String, index: Int, name:String) {
         self.index = index
@@ -139,6 +140,8 @@ struct MessageModel {
                 money = Double(surfix)
             } else if prefix == "m" {
                 mark = surfix
+            } else if prefix == "t" {
+                tip = surfix
             }
         }
     }
