@@ -24,6 +24,7 @@ enum NotiName : String {
     case RedDotChat = "ShowChatRedDot"
 }
 
+let notificationIdentifier = "NotificationIdentifier"
 
 func registerNoti(timeInterval:TimeInterval, title:String, body:String){
     let content = UNMutableNotificationContent()
@@ -38,7 +39,7 @@ func registerNoti(timeInterval:TimeInterval, title:String, body:String){
                                                     repeats: false)
     
     // Schedule the notification.
-    let request = UNNotificationRequest(identifier: "FiveSecond", content: content, trigger: trigger)
+    let request = UNNotificationRequest(identifier: notificationIdentifier, content: content, trigger: trigger)
     
     
     let center = UNUserNotificationCenter.current()

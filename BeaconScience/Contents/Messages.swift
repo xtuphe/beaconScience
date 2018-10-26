@@ -37,7 +37,8 @@ class Messages {
     var task : Task?
     weak var delegate : MessagesDelegate?
     let properties : Defaults
-
+    var nextModel : MessageModel?
+    
     init() {
         printLog(message: "messages init")
         properties = Defaults.init(userDefaults: UserDefaults.init(suiteName: "BeaconScienceProperty")!)
@@ -200,11 +201,13 @@ class Messages {
             reloadFile(fileName: currentMessage.file!)
             index = -1
         }
+        nextModel = nil
         //检查是否需要跳转
         if currentMessage.jump != nil {
             for nextMessage in marked {
                 if nextMessage.mark == currentMessage.jump {
                     self.index = nextMessage.index
+                    nextModel = nextMessage
                     break
                 }
             }
@@ -213,18 +216,21 @@ class Messages {
         }
         //检查下条消息间隔时间
         if currentMessage.gap != nil {
-            if currentMessage.gap! > 10 {
-                //超过10秒，注册通知
-                
-            } else {
-                self.gap = currentMessage.gap!
-                self.whatsNext()
-            }
+            self.gap = currentMessage.gap!
+            self.whatsNext()
         } else {
             self.gap = defaultGap
             self.whatsNext()
         }
-        
+        //检查下条信息
+        if nextModel == nil {
+            if self.index < data.count {
+                nextModel = data[self.index]
+            }
+            //保存下条的index与fileName
+            let indexKey = Key<Int>("IndexKey\(fileName!)")
+            Defaults.shared.set(index, for: indexKey)
+        }
     }
     
     func conditionCheck(currentMessage: MessageModel) -> Bool {

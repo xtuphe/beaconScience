@@ -30,7 +30,8 @@ import GoogleMobileAds
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var wasActive : Bool = false
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Initialize the Google Mobile Ads SDK.
@@ -44,9 +45,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let center = UNUserNotificationCenter.current()
         center.delegate = NotificationCenterX.shared
         
+        if #available(iOS 12.0, *) {
+            center.requestAuthorization(options: [.alert, .badge, .sound, .provisional, .criticalAlert, .providesAppNotificationSettings]) { (granted, error) in
+                if !granted {
+                    print("Notification Needs granted")
+                }
+            }
+        } else {
+            center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+                if !granted {
+                    print("Notification Needs granted")
+                }
+            }
+        }
+        
         center.requestAuthorization(options: []) { (granted, error) in
             if !granted {
-                print("Needs granted")
+                print("Notification Needs granted")
             }
         }
         
@@ -63,6 +78,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+//        if Messages.shared.task != nil {
+//            cancel(Messages.shared.task)
+//            Messages.shared.task = nil
+//        }
+        if Messages.shared.nextModel != nil {
+            registerNoti(timeInterval: Messages.shared.gap, title: Messages.shared.nextModel?.name ?? "?", body: Messages.shared.nextModel?.content ?? "???")
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -71,6 +93,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        removeAllNoti()
+//        if wasActive {
+//            Messages.shared.whatsNext()
+//        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
