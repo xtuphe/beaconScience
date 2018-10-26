@@ -38,6 +38,7 @@ class Messages {
     weak var delegate : MessagesDelegate?
     let properties : Defaults
     var nextModel : MessageModel?
+    var mainLine = "马建国"
     
     init() {
         printLog(message: "messages init")
@@ -115,8 +116,9 @@ class Messages {
         if sideLines.contains(name) {
             return
         }
-        let mainLine = Key<String>(mainLineKey)
-        Defaults.shared.set(name, for: mainLine)
+        let mainLineK = Key<String>(mainLineKey)
+        Defaults.shared.set(name, for: mainLineK)
+        mainLine = name
     }
     
     func isMainLine(name: String) -> Bool {
@@ -124,6 +126,7 @@ class Messages {
         if Defaults.shared.has(mainLine) {
             let savedName = Defaults.shared.get(for: mainLine)
             if savedName == name {
+                self.mainLine = name
                 return true
             }
         }
@@ -208,6 +211,9 @@ class Messages {
                 if nextMessage.mark == currentMessage.jump {
                     self.index = nextMessage.index
                     nextModel = nextMessage
+                    //保存下条的index与fileName
+                    let indexKey = Key<Int>("IndexKey\(fileName!)")
+                    Defaults.shared.set(index, for: indexKey)
                     break
                 }
             }
