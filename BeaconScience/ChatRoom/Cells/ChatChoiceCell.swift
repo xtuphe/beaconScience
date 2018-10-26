@@ -48,7 +48,7 @@ class ChatChoiceCell: UITableViewCell {
         } else {
             Messages.shared.messageCheck(currentMessage: model!)
         }
-        NotificationCenter.default.post(name: notiName(name: "ChoiceViewShouldDismiss"), object: model)
+        NotificationCenter.default.post(name: notiName(name: .ChoiceViewShouldDismiss), object: model)
 
     }
     

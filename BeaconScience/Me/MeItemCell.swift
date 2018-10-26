@@ -22,6 +22,7 @@ class MeItemCell: UITableViewCell {
     @objc func tapped() {
         if itemLabel.text == "重置" {
             Defaults.reset()
+            Conversations.shared.delete()
         }
         if itemLabel.text == "Bonus$" {
             Router.presentBonus(amount: 9999)

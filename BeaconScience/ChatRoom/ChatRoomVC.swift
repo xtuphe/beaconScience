@@ -18,14 +18,14 @@ class ChatRoomVC: UIViewController {
     
     var choiceView: ChoiceTableView = ChoiceTableView()
     var choiceCache: [String] = []
-    var name = Conversations.shared.data[0] {
+    var currentName = Conversations.shared.firstName {
         didSet {
             loadSaves()
-            Conversations.shared.onSightName = name
         }
     }
     var tableData : [MessageModel] = []
     let popTip = PopTip()
+    var visible : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +33,11 @@ class ChatRoomVC: UIViewController {
         setupTableView()
         setupNotification()
         setupMessageCenter()
-        name = Conversations.shared.data[0]
+        currentName = Conversations.shared.data[0]
         choiceView.setup()
         setupPoptip()
+        setupRedDotNotification()
+        checkRedDotSaves()
     }
     
     func setupCollectionView() {
@@ -66,11 +68,12 @@ class ChatRoomVC: UIViewController {
     }
     
     func setupNotification(){
-        NotificationCenter.default.addObserver(forName: notiName(name: "ChatRoomNeedsRefresh"), object: nil, queue: nil) { (noti) in
+        
+        NotificationCenter.default.addObserver(forName: notiName(name: .ChatRoomNeedsRefresh), object: nil, queue: nil) { (noti) in
             self.collectionView.reloadData()
             self.tableView.reloadData()
         }
-        NotificationCenter.default.addObserver(forName: notiName(name: "ChoiceViewShouldDismiss"), object: nil, queue: nil) { (noti) in
+        NotificationCenter.default.addObserver(forName: notiName(name: .ChoiceViewShouldDismiss), object: nil, queue: nil) { (noti) in
             //防止手快
             self.choiceView.isUserInteractionEnabled = false
             self.choiceView.data = []
@@ -79,7 +82,9 @@ class ChatRoomVC: UIViewController {
             let model = noti.object as! MessageModel
             //检查是否有选中tip
             if model.tip != nil {
-                self.showTipMessage(content: model.tip!)
+                _ = delay(1, task: {
+                    self.showTipMessage(content: model.tip!)
+                })
             }
             //缓存已选
             let combinedStr = model.content + String(model.index)
@@ -90,6 +95,7 @@ class ChatRoomVC: UIViewController {
             
         }
     }
+
     
     func setupMessageCenter(){
         Messages.shared.delegate = self
@@ -98,7 +104,7 @@ class ChatRoomVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        Conversations.shared.onSightName = nil
+        visible = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,7 +113,10 @@ class ChatRoomVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Conversations.shared.onSightName = name
+        visible = true
+        tabBarItem.badgeValue = nil
+        let key = Key<Bool>("RedDotChat")
+        Defaults.shared.set(false, for: key)
     }
     
     //修改StatusBar为白色
@@ -115,6 +124,52 @@ class ChatRoomVC: UIViewController {
         return .lightContent
     }
 }
+
+extension ChatRoomVC {
+    
+    func setupRedDotNotification() {
+        NotificationCenter.default.addObserver(forName: notiName(name: .RedDotChat), object: nil, queue: nil) { (noti) in
+            self.showRedDot(index:0)
+        }
+        NotificationCenter.default.addObserver(forName: notiName(name: .RedDotTimeLine), object: nil, queue: nil) { (noti) in
+            self.showRedDot(index:1)
+        }
+        NotificationCenter.default.addObserver(forName: notiName(name: .RedDotMine), object: nil, queue: nil) { (noti) in
+            self.showRedDot(index:2)
+        }
+    }
+    
+    func checkRedDotSaves() {
+        let key1 = Key<Bool>("RedDotChat")
+        let key2 = Key<Bool>("RedDotTimeLine")
+        let key3 = Key<Bool>("RedDotMine")
+        if Defaults.shared.get(for: key1) ?? false {
+            self.showRedDot(index:0)
+        }
+        if Defaults.shared.get(for: key2) ?? false {
+            self.showRedDot(index: 1)
+        }
+        if Defaults.shared.get(for: key3) ?? false {
+            self.showRedDot(index: 2)
+        }
+    }
+    
+    func showRedDot(index:Int) {
+        let item = (tabBarController?.tabBar.items![index])!
+        item.badgeColor = .clear
+        item.setBadgeTextAttributes(
+            [NSAttributedStringKey.font.rawValue : UIFont.boldSystemFont(ofSize: 20),
+             NSAttributedStringKey.foregroundColor.rawValue : UIColor.red ],
+            for: UIControlState.normal)
+        item.badgeValue = "●"
+        //保存红点
+        let keyNames = ["RedDotChat", "RedDotTimeLine", "RedDotMine"]
+        let key = Key<Bool>(keyNames[index])
+        Defaults.shared.set(true, for: key)
+    }
+
+}
+
 
 //MARK: - 消息中心代理
 
@@ -132,7 +187,7 @@ extension ChatRoomVC: MessagesDelegate {
     }
     
     func newMessageReceived(_ message: MessageModel) {
-        if message.tip != nil && message.type != .choice {
+        if message.tip != nil && message.type != .choice && message.type != .chosen {
             showTipMessage(content: message.tip!)
         }
         
@@ -143,7 +198,7 @@ extension ChatRoomVC: MessagesDelegate {
             return
         }
         //其他人页面当前聊天人信息
-        if name != Messages.shared.name {
+        if currentName != Messages.shared.name {
             let index = Conversations.shared.newConversation(name: Messages.shared.name)
             newMessageHandle(index: index, message: message, name: Messages.shared.name)
             return
@@ -168,6 +223,11 @@ extension ChatRoomVC: MessagesDelegate {
             _ = delay(0.1) { [unowned self] in
                 self.tableView.scrollToRow(at: IndexPath.init(row: self.tableData.count - 1, section: 0), at: .bottom, animated: true)
             }
+        }
+        
+        if !visible && message.type == .normal{
+            showRedDot(index: 0)
+            showMessage(name: message.name, content: message.content)
         }
     }
     
@@ -200,7 +260,7 @@ extension ChatRoomVC: MessagesDelegate {
         let cell = collectionView.cellForItem(at: IndexPath.init(row: index, section: 0))!
         let frame = cell.convert(cell.bounds, to: view)
         popTip.show(text: message.content!, direction: .down, maxWidth: 250, in: view, from: frame)
-        let unreadKey = Key<Int>("UnreadKey\(name)")
+        let unreadKey = Key<Int>("UnreadKey\(currentName)")
         var count = 0
         if Defaults.shared.has(unreadKey) {
             count = Defaults.shared.get(for: unreadKey)!
@@ -252,13 +312,13 @@ extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
         tableView.tableFooterView = nil
         
         Conversations.shared.selected(index: indexPath.row)
-        name = Conversations.shared.data[0]
-        printLog(message: ".....selecting name: \(name)")
+        currentName = Conversations.shared.firstName
+        printLog(message: ".....selecting name: \(currentName)")
 
         collectionView.moveItem(at: indexPath, to: IndexPath.init(row: 0, section: 0))
 
-        if Messages.shared.safeToLoad(name: name) {
-            Messages.shared.reload(name: name)
+        if Messages.shared.safeToLoad(name: currentName) {
+            Messages.shared.reload(name: currentName)
             if Messages.shared.task == nil {
                 Messages.shared.whatsNext()
             }
@@ -271,7 +331,7 @@ extension ChatRoomVC : UICollectionViewDelegate, UICollectionViewDataSource {
 extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
     
     func loadSaves() {
-        let indexKey = Key<Int>("\(name)SavedCount")
+        let indexKey = Key<Int>("\(currentName)SavedCount")
         var savedCount = 0
         if Defaults.shared.has(indexKey) {
             savedCount = Defaults.shared.get(for: indexKey)!
@@ -298,7 +358,7 @@ extension ChatRoomVC : UITableViewDelegate, UITableViewDataSource {
     
     func getSavedMessageWith(index : Int) -> MessageModel {
         let key = Key<SavedMessage>("\(index)")
-        let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(name)")!)
+        let defaults = Defaults.init(userDefaults: UserDefaults.init(suiteName: "beaconScience.\(currentName)")!)
         let savedModel = defaults.get(for: key)!
         var messageModel = MessageModel.init()
         messageModel.content = savedModel.content

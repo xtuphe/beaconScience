@@ -9,12 +9,12 @@
 import Foundation
 
 //首次加载的session
-let defSession = "李子轩"
+let defSession = "马建国"
 
 class Conversations {
     static let shared = Conversations()
-    var data : Array<String> = []
-    var onSightName: String?
+    var data : Array<String> = [defSession]
+    var firstName: String = defSession
     
     init() {
         
@@ -29,9 +29,9 @@ class Conversations {
         if fileManager.fileExists(atPath: url.path) {
             data = NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as! Array<String>
             _ = try? fileManager.removeItem(at: url)
-        } else {
-            data = [defSession]
         }
+        
+        firstName = data[0]
         
         /*
         for name in data {
@@ -69,6 +69,25 @@ class Conversations {
         }
     }
     
+    func delete() {
+        let fileManager = FileManager.default
+        guard let directory =
+            fileManager.urls(for: .libraryDirectory,
+                             in: .userDomainMask).first
+            else { return }
+        let url = directory.appendingPathComponent(
+            "SavedGames/Conversations")
+        
+        if fileManager.isDeletableFile(atPath: url.path) {
+            do {
+                try fileManager.removeItem(at: url)
+                printLog(message: "DeleteSuccess")
+            } catch {
+                printLog(message: "DeleteError")
+            }
+        }
+    }
+    
     //返回新对话之前的位置，如果是0则为全新对话
     func newConversation(name: String) -> Int {
         if name == data[0] {
@@ -100,5 +119,6 @@ class Conversations {
         data.remove(at: index)
         data.insert(model, at: 0)
         save()
+        firstName = data[0]
     }
 }

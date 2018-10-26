@@ -9,7 +9,8 @@
 import Foundation
 
 let defaultGap : Double = 1
-let defaultFile : String = "李子轩-1"
+//let defaultFile : String = "李子轩-1"
+let defaultFile : String = "马建国-1"
 let mainLineKey : String = "MainLine"
 let sideLines = ["RPG", "Invest"]
 
@@ -175,6 +176,7 @@ class Messages {
                 || currentMessage.type == .quanImage {
                 TimeLine.shared.newData(message: currentMessage)
                 self.messageCheck(currentMessage: currentMessage)
+                NotificationCenter.default.post(name: notiName(name: .RedDotTimeLine), object: nil)
             } else {
                 //展示当前消息
                 self.delegate?.newMessageReceived(currentMessage)
@@ -320,7 +322,7 @@ class Messages {
     }
 
     func choicesCheck(message: MessageModel) {
-        if name != Conversations.shared.onSightName {
+        if name != Conversations.shared.firstName {
             if task != nil {
                 cancel(task)
                 task = nil

@@ -81,7 +81,7 @@ class ChoiceCard : UIView {
         } else if state == .pending {
             state = .selected
             choiceSelected()
-            NotificationCenter.default.post(name: notiName(name: "ChoiceViewShouldDismiss"), object: nil)
+            NotificationCenter.default.post(name: notiName(name: .ChoiceViewShouldDismiss), object: nil)
         }
         
     }

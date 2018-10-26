@@ -34,6 +34,13 @@ class MeVC: UITableViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarItem.badgeValue = nil
+        let key = Key<Bool>("RedDotChat")
+        Defaults.shared.set(false, for: key)
+    }
 
     func setupTableView() {
         tableView.register(UINib.init(nibName: "MeItemCell", bundle: nil), forCellReuseIdentifier: "MeItemCell")

@@ -16,6 +16,14 @@ import UserNotifications
  
  */
 
+enum NotiName : String {
+    case ChatRoomNeedsRefresh = "ChatRoomNeedsRefresh"
+    case ChoiceViewShouldDismiss = "ChoiceViewShouldDismiss"
+    case RedDotTimeLine = "ShowTimeLineRedDot"
+    case RedDotMine = "ShowMyRedDot"
+    case RedDotChat = "ShowChatRedDot"
+}
+
 
 func registerNoti(timeInterval:TimeInterval, title:String, body:String){
     let content = UNMutableNotificationContent()
@@ -63,11 +71,8 @@ class NotificationCenterX: NSObject, UNUserNotificationCenterDelegate {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "testNoti"), object: response)
         print("Did receive : background")
     }
-    
-    
-    
 }
 
-func notiName(name: String) -> Notification.Name {
-    return NSNotification.Name(rawValue: name)
+func notiName(name: NotiName) -> Notification.Name {
+    return NSNotification.Name(rawValue: name.rawValue)
 }

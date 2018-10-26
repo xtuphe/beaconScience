@@ -125,17 +125,20 @@ struct MessageModel {
             } else if prefix == "i" {
                 if surfix == "q" {
                     type = .quanImage
+                    gap = 0.1
                 } else if surfix == "c" {
                     type = .image
                 }
             } else if prefix == "w" {
                 if surfix == "q" {
                     type = .quanArticle
+                    gap = 0.1
                 } else {
                     type = .article
                 }
             } else if prefix == "q" {
                 type = .quan
+                gap = 0.1
             } else if prefix == "r" {
                 money = Double(surfix)
             } else if prefix == "m" {

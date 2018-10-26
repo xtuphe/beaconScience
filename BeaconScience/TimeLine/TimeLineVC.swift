@@ -31,12 +31,17 @@ class TimeLineVC: UITableViewController {
         tableView.reloadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarItem.badgeValue = nil
+        let key = Key<Bool>("RedDotTimeLine")
+        Defaults.shared.set(false, for: key)
+    }
+    
     func setupTableView() {
-        
         tableView.register(UINib.init(nibName: "ArticleCell", bundle: nil), forCellReuseIdentifier: "ArticleCell")
         tableView.register(UINib.init(nibName: "ImageCell", bundle: nil), forCellReuseIdentifier: "ImageCell")
         tableView.register(UINib.init(nibName: "PlainTextCell", bundle: nil), forCellReuseIdentifier: "PlainTextCell")
-
     }
     
     // MARK: - Table view data source
