@@ -85,6 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
         print("Did Enter Background - Apple noti registered")
         if Messages.shared.nextModel != nil {
+            if Messages.shared.nextModel?.type == .choice {
+                return
+            }
             registerNoti(timeInterval: Messages.shared.gap, title: Messages.shared.nextModel?.name ?? "?", body: Messages.shared.nextModel?.content ?? "???")
         }
     }

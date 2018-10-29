@@ -26,7 +26,7 @@ class ChatChosenCell: UITableViewCell {
 
     func refresh() {
         contentLabel.text = model!.content
-        avatarImageView.image = UIImage.init(named: "BeaconNight")
+        avatarImageView.image = UIImage.init(named: "User.jpeg")
     }
     
     
