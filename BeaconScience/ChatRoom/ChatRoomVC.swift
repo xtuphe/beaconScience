@@ -33,7 +33,7 @@ class ChatRoomVC: UIViewController {
         setupTableView()
         setupNotification()
         setupMessageCenter()
-        currentName = Conversations.shared.data[0]
+        loadSaves()
         choiceView.setup()
         setupPoptip()
         setupRedDotNotification()
@@ -182,7 +182,7 @@ extension ChatRoomVC: MessagesDelegate {
         choiceView.frame = CGRect.init(x: 0, y: 0, width: screenWidth(), height: choiceView.height() + 10)
         tableView.tableFooterView = choiceView
         if tableView.contentOffset.y < tableView.contentSize.height - tableView.frame.size.height {
-            tableView.setContentOffset(CGPoint.init(x:0, y:tableView.contentSize.height - (screenHeight() - collectionView.frame.size.height - tabBarHeight())), animated: true)
+            tableView.setContentOffset(CGPoint.init(x:0, y:tableView.contentSize.height - tableView.frame.size.height), animated: true)
         }
     }
     
@@ -277,7 +277,7 @@ extension ChatRoomVC: MessagesDelegate {
             self.tipTopConstraint.constant = 10
             self.view.layoutIfNeeded()
         }) { (finished) in
-            _ = delay(2, task: { [unowned self] in
+            _ = delay(4, task: { [unowned self] in
                 UIView.animate(withDuration: 0.2, animations: {
                     self.tipTopConstraint.constant = -50
                     self.view.layoutIfNeeded()

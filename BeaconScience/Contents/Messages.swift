@@ -9,9 +9,8 @@
 import Foundation
 
 let defaultGap : Double = 1
-//let defaultFile : String = "李子轩-1"
-let defaultFile : String = "马建国-1"
-let mainLineKey : String = "MainLine"
+let defaultName : String = "马建国"
+let kMainLine : String = "MainLine"
 let sideLines = ["RPG", "Invest"]
 
 protocol MessagesDelegate: AnyObject {
@@ -32,68 +31,35 @@ class Messages {
     var marked : Array<MessageModel> = []
     var index = 0
     var gap = 2.0
-    var name = Conversations.shared.data[0]
+    var name : String
     var fileName : String?
     var task : Task?
     weak var delegate : MessagesDelegate?
     let properties : Defaults
     var nextModel : MessageModel?
-    var mainLine = "马建国"
+    var mainLine : String
     
     init() {
         printLog(message: "messages init")
         properties = Defaults.init(userDefaults: UserDefaults.init(suiteName: "BeaconScienceProperty")!)
-        //检查是否为初次加载
-        let firstTimeKey = Key<Bool>("NotFirstTimeKey")
-        if Defaults.shared.has(firstTimeKey) {
-            if safeToLoad(name: name) {
-                reload(name: name)
-            }
-        } else {
-            reload(fileName:defaultFile)
-            Defaults.shared.set(true, for: firstTimeKey)
-        }
+        let mainLineKey = Key<String>(kMainLine)
+        name = Defaults.shared.get(for: mainLineKey) ?? defaultName
+        mainLine = name
+        saveMainLine(name: name)
+        reload(name: name)
     }
     
     func reload(name: String) {
         
         self.name = name
         fileName = nil
-        index = 0
         data = []
         
         let fileKey = Key<String>("FileKey\(name)")
-        if Defaults.shared.has(fileKey) {
-            fileName = Defaults.shared.get(for: fileKey)!
-            getData(fileName: fileName!)
-            let indexKey = Key<Int>("IndexKey\(fileName!)")
-            if Defaults.shared.has(indexKey) {
-                index = Defaults.shared.get(for: indexKey)!
-            }
-            whatsNext()
-        }
-    }
-    
-    func reload(fileName: String) {
-        
-        self.fileName = fileName
-        index = 0
-        data = []
-        
-        let fileNameArray = (fileName as NSString).components(separatedBy: "-")
-        name = fileNameArray.first!
-        
-        saveMainLine(name: name)
-        
-        let indexKey = Key<Int>("IndexKey\(fileName)")
-        if Defaults.shared.has(indexKey) {
-            index = Defaults.shared.get(for: indexKey)!
-        }
-        
-        let fileKey = Key<String>("FileKey\(name)")
-        Defaults.shared.set(fileName, for: fileKey)
-        
-        getData(fileName: fileName)
+        fileName = Defaults.shared.get(for: fileKey) ?? String("\(name)-1")
+        getData(fileName: fileName!)
+        let indexKey = Key<Int>("IndexKey\(fileName!)")
+        index = Defaults.shared.get(for: indexKey) ?? 0
         whatsNext()
     }
     
@@ -116,13 +82,13 @@ class Messages {
         if sideLines.contains(name) {
             return
         }
-        let mainLineK = Key<String>(mainLineKey)
+        let mainLineK = Key<String>(kMainLine)
         Defaults.shared.set(name, for: mainLineK)
         mainLine = name
     }
     
     func isMainLine(name: String) -> Bool {
-        let mainLine = Key<String>(mainLineKey)
+        let mainLine = Key<String>(kMainLine)
         if Defaults.shared.has(mainLine) {
             let savedName = Defaults.shared.get(for: mainLine)
             if savedName == name {
@@ -234,14 +200,6 @@ class Messages {
         } else {
             self.index += 1
         }
-        //检查下条消息间隔时间
-        if currentMessage.gap != nil {
-            self.gap = currentMessage.gap!
-            self.whatsNext()
-        } else {
-            self.gap = defaultGap
-            self.whatsNext()
-        }
         //检查下条信息
         if nextModel == nil {
             if self.index < data.count {
@@ -250,6 +208,21 @@ class Messages {
             //保存下条的index与fileName
             let indexKey = Key<Int>("IndexKey\(fileName!)")
             Defaults.shared.set(index, for: indexKey)
+        }
+        //检查下条消息间隔时间
+        if currentMessage.gap != nil {
+            self.gap = currentMessage.gap!
+            self.whatsNext()
+        } else {
+            if currentMessage.type == .normal {
+                let letterCount = currentMessage.content.count
+                self.gap = Double(letterCount) / 20.0 + 0.3
+                self.gap = self.gap > 3 ? 3 : self.gap
+            } else {
+                self.gap = defaultGap
+            }
+            print(self.gap)
+            self.whatsNext()
         }
     }
     

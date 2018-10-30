@@ -8,13 +8,10 @@
 
 import Foundation
 
-//首次加载的session
-let defSession = "马建国"
-
 class Conversations {
     static let shared = Conversations()
-    var data : Array<String> = [defSession]
-    var firstName: String = defSession
+    var data : Array<String> = []
+    var firstName: String = Messages.shared.mainLine
     
     init() {
         
@@ -31,7 +28,10 @@ class Conversations {
             _ = try? fileManager.removeItem(at: url)
         }
         
-        firstName = data[0]
+        if data.count == 0 {
+            data.append(firstName)
+            save()
+        }
         
         /*
         for name in data {
