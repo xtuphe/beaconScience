@@ -252,6 +252,7 @@ extension ChatRoomVC: MessagesDelegate {
         _ = delay(0.3, task: { [unowned self] in
             //暂时固定其他人的消息在1的位置
             self.popTipMessage(message: message, index: 1)
+            cancel(Messages.shared.task)
         })
     }
     

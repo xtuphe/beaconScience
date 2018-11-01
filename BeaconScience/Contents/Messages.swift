@@ -42,11 +42,17 @@ class Messages {
     init() {
         printLog(message: "messages init")
         properties = Defaults.init(userDefaults: UserDefaults.init(suiteName: "BeaconScienceProperty")!)
-        let mainLineKey = Key<String>(kMainLine)
-        name = Defaults.shared.get(for: mainLineKey) ?? defaultName
-        mainLine = name
-        saveMainLine(name: name)
-        reload(name: name)
+//        let mainLineKey = Key<String>(kMainLine)
+//        name = Defaults.shared.get(for: mainLineKey) ?? defaultName
+//        mainLine = name
+//        saveMainLine(name: name)
+//        reload(name: name)
+        mainLine = "邢小雨"
+        name = mainLine
+        reloadFile(fileName: "\(name)-4")
+        let indexKey = Key<Int>("IndexKey\(fileName!)")
+        index = Defaults.shared.get(for: indexKey) ?? 0
+        whatsNext()
     }
     
     func reload(name: String) {
