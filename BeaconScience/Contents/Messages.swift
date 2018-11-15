@@ -42,17 +42,17 @@ class Messages {
     init() {
         printLog(message: "messages init")
         properties = Defaults.init(userDefaults: UserDefaults.init(suiteName: "BeaconScienceProperty")!)
-//        let mainLineKey = Key<String>(kMainLine)
-//        name = Defaults.shared.get(for: mainLineKey) ?? defaultName
-//        mainLine = name
-//        saveMainLine(name: name)
-//        reload(name: name)
-        mainLine = "邢小雨"
-        name = mainLine
-        reloadFile(fileName: "\(name)-4")
-        let indexKey = Key<Int>("IndexKey\(fileName!)")
-        index = Defaults.shared.get(for: indexKey) ?? 0
-        whatsNext()
+        let mainLineKey = Key<String>(kMainLine)
+        name = Defaults.shared.get(for: mainLineKey) ?? defaultName
+        mainLine = name
+        saveMainLine(name: name)
+        reload(name: name)
+//        mainLine = "邢小雨"
+//        name = mainLine
+//        reloadFile(fileName: "\(name)-4")
+//        let indexKey = Key<Int>("IndexKey\(fileName!)")
+//        index = Defaults.shared.get(for: indexKey) ?? 0
+//        whatsNext()
     }
     
     func reload(name: String) {
@@ -222,7 +222,7 @@ class Messages {
         } else {
             if currentMessage.type == .normal {
                 let letterCount = currentMessage.content.count
-                self.gap = Double(letterCount) / 20.0 + 0.3
+                self.gap = Double(letterCount) / 10.0 + 0.3
                 self.gap = self.gap > 3 ? 3 : self.gap
             } else {
                 self.gap = defaultGap

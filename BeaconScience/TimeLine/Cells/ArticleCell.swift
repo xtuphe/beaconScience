@@ -44,6 +44,7 @@ class ArticleCell: UITableViewCell {
     
     @objc func tapped() {
         let articleVC = ArticleDetailVC()
+        articleVC.fileName = model?.content
         Router.show(controller: articleVC)
     }
     

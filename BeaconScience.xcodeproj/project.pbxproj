@@ -49,6 +49,8 @@
 		DA2035B02189597E00C64D3C /* 郜淼芳-3.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA2035AF2189597E00C64D3C /* 郜淼芳-3.txt */; };
 		DA2035B2218AB33900C64D3C /* 邢小雨-6.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA2035B1218AB33900C64D3C /* 邢小雨-6.txt */; };
 		DA2035B4218AF90000C64D3C /* 建筑工地.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2035B3218AF90000C64D3C /* 建筑工地.png */; };
+		DA2035B921942ECB00C64D3C /* ArticleListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2035B721942ECB00C64D3C /* ArticleListVC.swift */; };
+		DA2035BA21942ECB00C64D3C /* ArticleListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2035B821942ECB00C64D3C /* ArticleListVC.xib */; };
 		DA2501BD20E4BD65007F80FC /* CancelableDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2501BC20E4BD65007F80FC /* CancelableDelay.swift */; };
 		DA2501BF20E4D5D2007F80FC /* Intro2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA2501BE20E4D5D2007F80FC /* Intro2.txt */; };
 		DA27C3DD2029A90C005DD70C /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA27C3DC2029A90C005DD70C /* Defaults.swift */; };
@@ -105,6 +107,7 @@
 		DAD026C2216718C900B3DB53 /* 邵山红-2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DAD026C1216718C900B3DB53 /* 邵山红-2.txt */; };
 		DADE040F20E5DA41000007ED /* News1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DADE040E20E5DA41000007ED /* News1.txt */; };
 		DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF3ADA205284800084DE1F /* Repeater.swift */; };
+		DAF8F821219D669F004144E0 /* Studio.JPG in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F820219D669F004144E0 /* Studio.JPG */; };
 		DAFBAA59215B680800539CDD /* BonusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBAA57215B680800539CDD /* BonusCell.swift */; };
 		DAFBAA5A215B680800539CDD /* BonusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAFBAA58215B680800539CDD /* BonusCell.xib */; };
 /* End PBXBuildFile section */
@@ -155,6 +158,8 @@
 		DA2035AF2189597E00C64D3C /* 郜淼芳-3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "郜淼芳-3.txt"; sourceTree = "<group>"; };
 		DA2035B1218AB33900C64D3C /* 邢小雨-6.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "邢小雨-6.txt"; sourceTree = "<group>"; };
 		DA2035B3218AF90000C64D3C /* 建筑工地.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "建筑工地.png"; sourceTree = "<group>"; };
+		DA2035B721942ECB00C64D3C /* ArticleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListVC.swift; sourceTree = "<group>"; };
+		DA2035B821942ECB00C64D3C /* ArticleListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListVC.xib; sourceTree = "<group>"; };
 		DA2501BC20E4BD65007F80FC /* CancelableDelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelableDelay.swift; sourceTree = "<group>"; };
 		DA2501BE20E4D5D2007F80FC /* Intro2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Intro2.txt; sourceTree = "<group>"; };
 		DA27C3DC2029A90C005DD70C /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
@@ -211,6 +216,7 @@
 		DAD026C1216718C900B3DB53 /* 邵山红-2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "邵山红-2.txt"; sourceTree = "<group>"; };
 		DADE040E20E5DA41000007ED /* News1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = News1.txt; sourceTree = "<group>"; };
 		DAEF3ADA205284800084DE1F /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
+		DAF8F820219D669F004144E0 /* Studio.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Studio.JPG; sourceTree = "<group>"; };
 		DAFBAA57215B680800539CDD /* BonusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusCell.swift; sourceTree = "<group>"; };
 		DAFBAA58215B680800539CDD /* BonusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BonusCell.xib; sourceTree = "<group>"; };
 		FF665B0156DEB42B76A78349 /* Pods-BeaconScience.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconScience.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience.release.xcconfig"; sourceTree = "<group>"; };
@@ -345,6 +351,8 @@
 				DAD023AC2134022E00D587F1 /* Cells */,
 				DA1D5E51200C833A00BEE807 /* TimeLineVC.swift */,
 				DAD023AD2134025800D587F1 /* ArticleDetailVC.swift */,
+				DA2035B721942ECB00C64D3C /* ArticleListVC.swift */,
+				DA2035B821942ECB00C64D3C /* ArticleListVC.xib */,
 			);
 			path = TimeLine;
 			sourceTree = "<group>";
@@ -385,6 +393,7 @@
 		DA203571216D816200C64D3C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DAF8F820219D669F004144E0 /* Studio.JPG */,
 				DA2035B3218AF90000C64D3C /* 建筑工地.png */,
 				DA2035862179CB1300C64D3C /* 锐书兰现场照片.jpg */,
 				DA203572216D817200C64D3C /* WeWantYou.jpeg */,
@@ -610,6 +619,7 @@
 				DAD023A82133EF8900D587F1 /* 新员工手册.md in Resources */,
 				DAD026A9215C6F7300B3DB53 /* BonusVC.xib in Resources */,
 				DA2035832178D1FB00C64D3C /* 小云-4.txt in Resources */,
+				DAF8F821219D669F004144E0 /* Studio.JPG in Resources */,
 				DA2035B02189597E00C64D3C /* 郜淼芳-3.txt in Resources */,
 				DA2035992179DF8800C64D3C /* 李子轩.png in Resources */,
 				DA2035A0217DA87200C64D3C /* 泰㙃迪-1.txt in Resources */,
@@ -652,6 +662,7 @@
 				DA2035812177220F00C64D3C /* 小云-3.txt in Resources */,
 				DA2035AE218952AD00C64D3C /* 邢小雨-5.txt in Resources */,
 				DA203573216D817200C64D3C /* WeWantYou.jpeg in Resources */,
+				DA2035BA21942ECB00C64D3C /* ArticleListVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,6 +742,7 @@
 				DA1A7C1C20EE0FDB001A8154 /* NotiView.swift in Sources */,
 				DA43CA60212F3E2300AACDB3 /* ArticleCell.swift in Sources */,
 				DAD023A4213061EA00D587F1 /* PlainTextCell.swift in Sources */,
+				DA2035B921942ECB00C64D3C /* ArticleListVC.swift in Sources */,
 				DA1D5E4F200857E300BEE807 /* ChatRoomVC.swift in Sources */,
 				DA5A04D421141ECF00801C83 /* CGFloat+Extensions.swift in Sources */,
 				DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */,
@@ -902,7 +914,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Xtuphe.BeaconScience;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -919,7 +931,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Xtuphe.BeaconScience;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

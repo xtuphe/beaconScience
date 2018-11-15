@@ -80,6 +80,7 @@ class Conversations {
         
         if fileManager.isDeletableFile(atPath: url.path) {
             do {
+                
                 try fileManager.removeItem(at: url)
                 printLog(message: "DeleteSuccess")
             } catch {

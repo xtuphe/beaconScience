@@ -26,6 +26,10 @@ func screenHeight() -> CGFloat{
     return UIScreen.main.bounds.height
 }
 
+func navBarHeight() -> CGFloat {
+    return statusBarHeight() + 44
+}
+
 func statusBarHeight() -> CGFloat{
     return UIApplication.shared.statusBarFrame.size.height
 }

@@ -20,14 +20,18 @@ class MeItemCell: UITableViewCell {
     }
 
     @objc func tapped() {
-        if itemLabel.text == "重置" {
+        let text = itemLabel.text
+        if text == "重置" {
             Defaults.reset()
             Conversations.shared.delete()
         }
-        if itemLabel.text == "Bonus$" {
+        if text == "文件" {
+            Router.presentFilesVC()
+        }
+        if text == "Bonus$" {
             Router.presentBonus(amount: 9999)
         }
-        if itemLabel.text == "Advertisement" {
+        if text == "Advertisement" {
             GoogleAds.shared.presentInterstitial()
         }
     }
