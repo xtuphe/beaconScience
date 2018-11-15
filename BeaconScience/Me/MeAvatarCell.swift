@@ -16,7 +16,26 @@ class MeAvatarCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(MeAvatarCell.showAlert))
+        addGestureRecognizer(tap)
     }
+    
+    @objc func showAlert() {
+        let alert = UIAlertController.init()
+        let changeAvatar = UIAlertAction.init(title: "更改头像", style: .destructive) { (action) in
+            
+        }
+        let changeName = UIAlertAction.init(title: "更改头像", style: .destructive) { (action) in
+            
+        }
+        let cancelAction = UIAlertAction.init(title: "取消", style: .cancel) { (action) in
+            
+        }
+        alert.addAction(changeAvatar)
+        alert.addAction(changeName)
+        alert.addAction(cancelAction)
+        Router.show(controller: alert)
+    }
+
 
 }

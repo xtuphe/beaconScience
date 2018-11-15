@@ -22,8 +22,7 @@ class MeItemCell: UITableViewCell {
     @objc func tapped() {
         let text = itemLabel.text
         if text == "重置" {
-            Defaults.reset()
-            Conversations.shared.delete()
+            showResetAlert()
         }
         if text == "文件" {
             Router.presentFilesVC()
@@ -34,6 +33,20 @@ class MeItemCell: UITableViewCell {
         if text == "Advertisement" {
             GoogleAds.shared.presentInterstitial()
         }
+    }
+    
+    func showResetAlert() {
+        let alert = UIAlertController.init()
+        let resetAction = UIAlertAction.init(title: "重置", style: .destructive) { (action) in
+            Defaults.reset()
+            Conversations.shared.delete()
+        }
+        let cancelAction = UIAlertAction.init(title: "取消", style: .cancel) { (action) in
+            
+        }
+        alert.addAction(resetAction)
+        alert.addAction(cancelAction)
+        Router.show(controller: alert)
     }
     
 }
