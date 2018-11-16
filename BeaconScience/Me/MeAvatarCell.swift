@@ -25,7 +25,7 @@ class MeAvatarCell: UITableViewCell {
         let changeAvatar = UIAlertAction.init(title: "更改头像", style: .default) { (action) in
             
         }
-        let changeName = UIAlertAction.init(title: "更改头像", style: .default) { (action) in
+        let changeName = UIAlertAction.init(title: "更改名字", style: .default) { (action) in
             
         }
         let cancelAction = UIAlertAction.init(title: "取消", style: .cancel) { (action) in

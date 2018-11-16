@@ -25,7 +25,8 @@ class MeVC: UITableViewController {
         modalPresentationStyle = .currentContext
         setupTableView()
         setupInfoCell()
-        data = [["头像姓名"], ["钱包", "文件"], ["重置"], ["Bonus$", "Advertisement"]]
+        //for test : "Bonus$"
+        data = [["头像姓名"], ["钱包", "文件"], ["重置"], ["Advertisement"], ["关于"]]
         
         _ = GoogleAds.shared
     }

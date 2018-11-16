@@ -111,6 +111,8 @@
 		DAF8F823219E66DE004144E0 /* 郜淼芳.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F822219E66DE004144E0 /* 郜淼芳.png */; };
 		DAF8F825219E6825004144E0 /* 作者-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F824219E6825004144E0 /* 作者-1.txt */; };
 		DAF8F827219E685A004144E0 /* 作者.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F826219E685A004144E0 /* 作者.png */; };
+		DAF8F829219E7789004144E0 /* 1llusi0n.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F828219E7789004144E0 /* 1llusi0n.png */; };
+		DAF8F82B219E7873004144E0 /* 关于.md in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F82A219E7873004144E0 /* 关于.md */; };
 		DAFBAA59215B680800539CDD /* BonusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBAA57215B680800539CDD /* BonusCell.swift */; };
 		DAFBAA5A215B680800539CDD /* BonusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAFBAA58215B680800539CDD /* BonusCell.xib */; };
 /* End PBXBuildFile section */
@@ -223,6 +225,8 @@
 		DAF8F822219E66DE004144E0 /* 郜淼芳.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "郜淼芳.png"; sourceTree = "<group>"; };
 		DAF8F824219E6825004144E0 /* 作者-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "作者-1.txt"; sourceTree = "<group>"; };
 		DAF8F826219E685A004144E0 /* 作者.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "作者.png"; sourceTree = "<group>"; };
+		DAF8F828219E7789004144E0 /* 1llusi0n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1llusi0n.png; sourceTree = "<group>"; };
+		DAF8F82A219E7873004144E0 /* 关于.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "关于.md"; sourceTree = "<group>"; };
 		DAFBAA57215B680800539CDD /* BonusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusCell.swift; sourceTree = "<group>"; };
 		DAFBAA58215B680800539CDD /* BonusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BonusCell.xib; sourceTree = "<group>"; };
 		FF665B0156DEB42B76A78349 /* Pods-BeaconScience.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconScience.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience.release.xcconfig"; sourceTree = "<group>"; };
@@ -410,6 +414,7 @@
 		DA2035882179DBE400C64D3C /* Avatars */ = {
 			isa = PBXGroup;
 			children = (
+				DAF8F828219E7789004144E0 /* 1llusi0n.png */,
 				DAF8F826219E685A004144E0 /* 作者.png */,
 				DAF8F822219E66DE004144E0 /* 郜淼芳.png */,
 				DA2035942179DF8700C64D3C /* 李子轩.png */,
@@ -453,6 +458,7 @@
 			children = (
 				DAD026AA215C705100B3DB53 /* BeaconScience语法.md */,
 				DAD023A72133EF8900D587F1 /* 新员工手册.md */,
+				DAF8F82A219E7873004144E0 /* 关于.md */,
 			);
 			path = Articles;
 			sourceTree = "<group>";
@@ -656,6 +662,7 @@
 				DA4A1B8621367E9D0014FF89 /* MeItemCell.xib in Resources */,
 				DA4A1B8221367C7E0014FF89 /* MeAvatarCell.xib in Resources */,
 				DA2035AA2186C1F900C64D3C /* 邢小雨-3.txt in Resources */,
+				DAF8F829219E7789004144E0 /* 1llusi0n.png in Resources */,
 				DAF8F823219E66DE004144E0 /* 郜淼芳.png in Resources */,
 				DA2035982179DF8800C64D3C /* 小云.png in Resources */,
 				DA20357921758F7600C64D3C /* 小云-2.txt in Resources */,
@@ -673,6 +680,7 @@
 				DA1D5E63200F307200BEE807 /* Intro1.txt in Resources */,
 				DA2035812177220F00C64D3C /* 小云-3.txt in Resources */,
 				DA2035AE218952AD00C64D3C /* 邢小雨-5.txt in Resources */,
+				DAF8F82B219E7873004144E0 /* 关于.md in Resources */,
 				DA203573216D817200C64D3C /* WeWantYou.jpeg in Resources */,
 				DA2035BA21942ECB00C64D3C /* ArticleListVC.xib in Resources */,
 			);

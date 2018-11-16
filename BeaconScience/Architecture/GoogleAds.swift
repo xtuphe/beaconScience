@@ -26,7 +26,8 @@ class GoogleAds : NSObject, GADInterstitialDelegate {
          test:
          ca-app-pub-3940256099942544/4411468910
          */
-        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3038479336466621/1362928925")
+//        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
         interstitial.delegate = self
         interstitial.load(GADRequest())
         return interstitial
@@ -34,6 +35,7 @@ class GoogleAds : NSObject, GADInterstitialDelegate {
     
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         interstitial = createAndLoadInterstitial()
+        Router.presentBonus(amount: 100)
     }
     
     func presentInterstitial() {

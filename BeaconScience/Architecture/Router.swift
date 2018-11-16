@@ -26,6 +26,12 @@ class Router: NSObject {
         Router.rootVC().present(bonusVC, animated: true, completion: {})
     }
     
+    class func presentMD(fileName:String) {
+        let articleVC = ArticleDetailVC()
+        articleVC.fileName = fileName
+        Router.show(controller: articleVC)
+    }
+    
     class func presentFilesVC() {
         let filesVC = ArticleListVC()
         Router.show(controller: filesVC)

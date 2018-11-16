@@ -27,6 +27,9 @@ class MeItemCell: UITableViewCell {
         if text == "文件" {
             Router.presentFilesVC()
         }
+        if text == "关于" {
+            Router.presentMD(fileName:"关于")
+        }
         if text == "Bonus$" {
             Router.presentBonus(amount: 9999)
         }
