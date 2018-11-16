@@ -108,6 +108,9 @@
 		DADE040F20E5DA41000007ED /* News1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DADE040E20E5DA41000007ED /* News1.txt */; };
 		DAEF3ADB205284800084DE1F /* Repeater.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAEF3ADA205284800084DE1F /* Repeater.swift */; };
 		DAF8F821219D669F004144E0 /* Studio.JPG in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F820219D669F004144E0 /* Studio.JPG */; };
+		DAF8F823219E66DE004144E0 /* 郜淼芳.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F822219E66DE004144E0 /* 郜淼芳.png */; };
+		DAF8F825219E6825004144E0 /* 作者-1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F824219E6825004144E0 /* 作者-1.txt */; };
+		DAF8F827219E685A004144E0 /* 作者.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F826219E685A004144E0 /* 作者.png */; };
 		DAFBAA59215B680800539CDD /* BonusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBAA57215B680800539CDD /* BonusCell.swift */; };
 		DAFBAA5A215B680800539CDD /* BonusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAFBAA58215B680800539CDD /* BonusCell.xib */; };
 /* End PBXBuildFile section */
@@ -217,6 +220,9 @@
 		DADE040E20E5DA41000007ED /* News1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = News1.txt; sourceTree = "<group>"; };
 		DAEF3ADA205284800084DE1F /* Repeater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repeater.swift; sourceTree = "<group>"; };
 		DAF8F820219D669F004144E0 /* Studio.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Studio.JPG; sourceTree = "<group>"; };
+		DAF8F822219E66DE004144E0 /* 郜淼芳.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "郜淼芳.png"; sourceTree = "<group>"; };
+		DAF8F824219E6825004144E0 /* 作者-1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "作者-1.txt"; sourceTree = "<group>"; };
+		DAF8F826219E685A004144E0 /* 作者.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "作者.png"; sourceTree = "<group>"; };
 		DAFBAA57215B680800539CDD /* BonusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusCell.swift; sourceTree = "<group>"; };
 		DAFBAA58215B680800539CDD /* BonusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BonusCell.xib; sourceTree = "<group>"; };
 		FF665B0156DEB42B76A78349 /* Pods-BeaconScience.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconScience.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience.release.xcconfig"; sourceTree = "<group>"; };
@@ -404,6 +410,8 @@
 		DA2035882179DBE400C64D3C /* Avatars */ = {
 			isa = PBXGroup;
 			children = (
+				DAF8F826219E685A004144E0 /* 作者.png */,
+				DAF8F822219E66DE004144E0 /* 郜淼芳.png */,
 				DA2035942179DF8700C64D3C /* 李子轩.png */,
 				DA2035962179DF8800C64D3C /* 马建国.png */,
 				DA2035952179DF8700C64D3C /* 泰㙃迪.png */,
@@ -493,6 +501,7 @@
 			children = (
 				DAD026B021649F5300B3DB53 /* 马建国-1.txt */,
 				DA20357A217594BB00C64D3C /* 马建国-2.txt */,
+				DAF8F824219E6825004144E0 /* 作者-1.txt */,
 			);
 			path = Boss;
 			sourceTree = "<group>";
@@ -612,6 +621,7 @@
 				DA2035872179CB1400C64D3C /* 锐书兰现场照片.jpg in Resources */,
 				DA304A7E20EF4DF900462048 /* Testor-2.txt in Resources */,
 				DAD023A121305D7F00D587F1 /* ImageCell.xib in Resources */,
+				DAF8F827219E685A004144E0 /* 作者.png in Resources */,
 				DA20359B2179DF8800C64D3C /* 马建国.png in Resources */,
 				DA304A7C20EF4B3E00462048 /* Testor-1.txt in Resources */,
 				DAD026AB215C705100B3DB53 /* BeaconScience语法.md in Resources */,
@@ -636,6 +646,7 @@
 				DA1D5E42200742B000BEE807 /* LaunchScreen.storyboard in Resources */,
 				DA1D5E3F200742B000BEE807 /* Assets.xcassets in Resources */,
 				DA2035A2217F110700C64D3C /* 郜淼芳-2.txt in Resources */,
+				DAF8F825219E6825004144E0 /* 作者-1.txt in Resources */,
 				DA2035852178D3D000C64D3C /* 郜淼芳-1.txt in Resources */,
 				DA1D5E3D200742B000BEE807 /* Main.storyboard in Resources */,
 				DA0CFAA720E36AC60028861B /* ChatChoiceCell.xib in Resources */,
@@ -645,6 +656,7 @@
 				DA4A1B8621367E9D0014FF89 /* MeItemCell.xib in Resources */,
 				DA4A1B8221367C7E0014FF89 /* MeAvatarCell.xib in Resources */,
 				DA2035AA2186C1F900C64D3C /* 邢小雨-3.txt in Resources */,
+				DAF8F823219E66DE004144E0 /* 郜淼芳.png in Resources */,
 				DA2035982179DF8800C64D3C /* 小云.png in Resources */,
 				DA20357921758F7600C64D3C /* 小云-2.txt in Resources */,
 				DAD026B121649F5300B3DB53 /* 马建国-1.txt in Resources */,
