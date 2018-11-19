@@ -113,6 +113,8 @@
 		DAF8F827219E685A004144E0 /* 作者.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F826219E685A004144E0 /* 作者.png */; };
 		DAF8F829219E7789004144E0 /* 1llusi0n.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F828219E7789004144E0 /* 1llusi0n.png */; };
 		DAF8F82B219E7873004144E0 /* 关于.md in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F82A219E7873004144E0 /* 关于.md */; };
+		DAF8F82E21A0104A004144E0 /* NativeAdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8F82C21A0104A004144E0 /* NativeAdCell.swift */; };
+		DAF8F82F21A0104A004144E0 /* NativeAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAF8F82D21A0104A004144E0 /* NativeAdCell.xib */; };
 		DAFBAA59215B680800539CDD /* BonusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFBAA57215B680800539CDD /* BonusCell.swift */; };
 		DAFBAA5A215B680800539CDD /* BonusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAFBAA58215B680800539CDD /* BonusCell.xib */; };
 /* End PBXBuildFile section */
@@ -227,6 +229,8 @@
 		DAF8F826219E685A004144E0 /* 作者.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "作者.png"; sourceTree = "<group>"; };
 		DAF8F828219E7789004144E0 /* 1llusi0n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1llusi0n.png; sourceTree = "<group>"; };
 		DAF8F82A219E7873004144E0 /* 关于.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "关于.md"; sourceTree = "<group>"; };
+		DAF8F82C21A0104A004144E0 /* NativeAdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdCell.swift; sourceTree = "<group>"; };
+		DAF8F82D21A0104A004144E0 /* NativeAdCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NativeAdCell.xib; sourceTree = "<group>"; };
 		DAFBAA57215B680800539CDD /* BonusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusCell.swift; sourceTree = "<group>"; };
 		DAFBAA58215B680800539CDD /* BonusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BonusCell.xib; sourceTree = "<group>"; };
 		FF665B0156DEB42B76A78349 /* Pods-BeaconScience.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconScience.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconScience/Pods-BeaconScience.release.xcconfig"; sourceTree = "<group>"; };
@@ -484,6 +488,8 @@
 				DAD0239F21305D7F00D587F1 /* ImageCell.xib */,
 				DAD023A2213061EA00D587F1 /* PlainTextCell.swift */,
 				DAD023A3213061EA00D587F1 /* PlainTextCell.xib */,
+				DAF8F82C21A0104A004144E0 /* NativeAdCell.swift */,
+				DAF8F82D21A0104A004144E0 /* NativeAdCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -648,6 +654,7 @@
 				DA2035B2218AB33900C64D3C /* 邢小雨-6.txt in Resources */,
 				DA31936C20F49798004D8897 /* ChatListCell.xib in Resources */,
 				DA1D5E58200C851200BEE807 /* ChatBaseCell.xib in Resources */,
+				DAF8F82F21A0104A004144E0 /* NativeAdCell.xib in Resources */,
 				DAD026B62164E53300B3DB53 /* 小云-1.txt in Resources */,
 				DA1D5E42200742B000BEE807 /* LaunchScreen.storyboard in Resources */,
 				DA1D5E3F200742B000BEE807 /* Assets.xcassets in Resources */,
@@ -763,6 +770,7 @@
 				DA43CA60212F3E2300AACDB3 /* ArticleCell.swift in Sources */,
 				DAD023A4213061EA00D587F1 /* PlainTextCell.swift in Sources */,
 				DA2035B921942ECB00C64D3C /* ArticleListVC.swift in Sources */,
+				DAF8F82E21A0104A004144E0 /* NativeAdCell.swift in Sources */,
 				DA1D5E4F200857E300BEE807 /* ChatRoomVC.swift in Sources */,
 				DA5A04D421141ECF00801C83 /* CGFloat+Extensions.swift in Sources */,
 				DA1D5E36200742B000BEE807 /* AppDelegate.swift in Sources */,

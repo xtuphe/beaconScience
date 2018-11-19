@@ -129,48 +129,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="rdD-1x-MhN">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeaconNight" translatesAutoresizingMaskIntoConstraints="NO" id="5uo-KL-w5w">
-                                    <rect key="frame" x="0.0" y="-90" width="375" height="230"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="230" id="0Tt-fd-bPs"/>
-                                    </constraints>
-                                </imageView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TW3-lN-3Sn">
-                                    <rect key="frame" x="280" y="145" width="80" height="80"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="1rm-N5-Iyg">
-                                            <rect key="frame" x="2" y="2" width="76" height="76"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="80" id="3WW-CU-nBb"/>
-                                        <constraint firstAttribute="height" constant="80" id="9OH-Pn-yiT"/>
-                                        <constraint firstAttribute="trailing" secondItem="1rm-N5-Iyg" secondAttribute="trailing" constant="2" id="GBZ-dw-txJ"/>
-                                        <constraint firstAttribute="bottom" secondItem="1rm-N5-Iyg" secondAttribute="bottom" constant="2" id="Gra-KR-6tq"/>
-                                        <constraint firstItem="1rm-N5-Iyg" firstAttribute="leading" secondItem="TW3-lN-3Sn" secondAttribute="leading" constant="2" id="RCI-ZU-mEf"/>
-                                        <constraint firstItem="1rm-N5-Iyg" firstAttribute="top" secondItem="TW3-lN-3Sn" secondAttribute="top" constant="2" id="hCs-fA-I73"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                            <color key="value" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                            </subviews>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="TW3-lN-3Sn" firstAttribute="bottom" secondItem="5uo-KL-w5w" secondAttribute="bottom" constant="85" id="4Jc-nR-cDl"/>
-                                <constraint firstItem="5uo-KL-w5w" firstAttribute="top" secondItem="rdD-1x-MhN" secondAttribute="top" constant="-90" id="6Vx-Yh-bg4"/>
-                                <constraint firstAttribute="trailing" secondItem="5uo-KL-w5w" secondAttribute="trailing" id="Fyd-Sq-bRX"/>
-                                <constraint firstItem="5uo-KL-w5w" firstAttribute="leading" secondItem="rdD-1x-MhN" secondAttribute="leading" id="v7O-j3-0Mi"/>
-                                <constraint firstAttribute="trailing" secondItem="TW3-lN-3Sn" secondAttribute="trailing" constant="15" id="x3d-Sw-jav"/>
-                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="prototype2" id="e32-Oo-qGg">
@@ -189,8 +149,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="发现" image="Navi" selectedImage="Navic" id="Vuf-sQ-9SP"/>
                     <connections>
-                        <outlet property="headerAvatar" destination="1rm-N5-Iyg" id="sB6-dR-DA0"/>
-                        <outlet property="headerBackground" destination="5uo-KL-w5w" id="gdE-ky-J3T"/>
+                        <outlet property="headerView" destination="rdD-1x-MhN" id="mqp-pF-KGz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O4d-gJ-O2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -228,8 +187,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Avatar" width="245" height="245"/>
-        <image name="BeaconNight" width="900" height="900"/>
         <image name="Chat" width="60" height="60"/>
         <image name="Chatc" width="60" height="60"/>
         <image name="Me" width="60" height="60"/>

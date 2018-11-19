@@ -10,14 +10,14 @@ import UIKit
 
 class TimeLineVC: UITableViewController {
     
-    @IBOutlet weak var headerAvatar: UIImageView!
-    @IBOutlet weak var headerBackground: UIImageView!
+    @IBOutlet weak var headerView: UIView!
     
     var data : Array<MessageModel> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        GoogleAds.shared.addBannerAdTo(view: headerView)
     }
 
     //修改StatusBar为黑色

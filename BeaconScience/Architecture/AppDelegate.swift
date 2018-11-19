@@ -36,7 +36,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Initialize the Google Mobile Ads SDK.
         // Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-3038479336466621~7730942440")
+        let adMobID : String!
+        #if DEBUG
+        adMobID = "ca-app-pub-3940256099942544~1458002511"
+        #else
+        adMobID = "ca-app-pub-3038479336466621~7730942440"
+        #endif
+        GADMobileAds.configure(withApplicationID: adMobID)
         
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         printLog(message: "沙盒路径：\(path)")

@@ -21,11 +21,20 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Studio.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="pwA-9a-MwH">
                                 <rect key="frame" x="50" y="20" width="275" height="647"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="游戏中出现的人物, 公司, 地名, 故事纯属虚构, 如有雷同纯属巧合" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yy4-yS-ne5">
+                                <rect key="frame" x="20" y="595" width="335" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="pwA-9a-MwH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="QU0-9n-k1z"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yy4-yS-ne5" secondAttribute="bottom" constant="60" id="aiB-Na-13h"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yy4-yS-ne5" secondAttribute="trailing" constant="20" id="aq2-8l-6SY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pwA-9a-MwH" secondAttribute="bottom" id="dBp-pS-TSJ"/>
+                            <constraint firstItem="yy4-yS-ne5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="emw-iv-yEO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pwA-9a-MwH" secondAttribute="trailing" constant="50" id="lia-Ab-XZg"/>
                             <constraint firstItem="pwA-9a-MwH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sz6-0B-pdP"/>
                         </constraints>
@@ -34,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
     <resources>
