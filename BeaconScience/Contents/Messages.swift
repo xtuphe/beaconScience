@@ -142,17 +142,17 @@ class Messages {
             }
             if currentMessage.money != nil {
                 let money = currentMessage.money!
-                let moneyKey = Key<Double>("UserMoneyKey")
-                var savedMoney = 0.0
-                if Defaults.shared.has(moneyKey) {
-                    savedMoney = Defaults.shared.get(for: moneyKey)!
-                }
-                Defaults.shared.set(savedMoney + money, for: moneyKey)
-                
+
                 if money > 0 {
                     Router.presentBonus(amount: money)
                 } else {
                     showMessage(name: "小云", content: "支出\(money)")
+                    let moneyKey = Key<Double>("UserMoneyKey")
+                    var savedMoney = 0.0
+                    if Defaults.shared.has(moneyKey) {
+                        savedMoney = Defaults.shared.get(for: moneyKey)!
+                    }
+                    Defaults.shared.set(savedMoney + money, for: moneyKey)
                 }
             }
             //选择 or 朋友圈 or 消息

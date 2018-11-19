@@ -12,6 +12,7 @@ class MeItemCell: UITableViewCell {
     
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var rightLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +22,8 @@ class MeItemCell: UITableViewCell {
 
     @objc func tapped() {
         let text = itemLabel.text
+        if text == "钱包" {
+        }
         if text == "重置" {
             showResetAlert()
         }

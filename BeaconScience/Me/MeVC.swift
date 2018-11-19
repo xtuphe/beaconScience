@@ -41,6 +41,7 @@ class MeVC: UITableViewController {
         tabBarItem.badgeValue = nil
         let key = Key<Bool>("RedDotChat")
         Defaults.shared.set(false, for: key)
+        tableView.reloadData()
     }
 
     func setupTableView() {
@@ -103,6 +104,12 @@ extension MeVC {
         let array = data[indexPath.section]
         let title = array[indexPath.row]
         cell.itemLabel.text = title
+        if title == "钱包" {
+            cell.rightLabel.isHidden = false
+            let moneyKey = Key<Double>("UserMoneyKey")
+            let money = Defaults.shared.get(for: moneyKey) ?? 0
+            cell.rightLabel.text = String.init(format: "%.2f", money)
+        }
         cell.itemImageView.image = UIImage.init(named: title)
         return cell
     }

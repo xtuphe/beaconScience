@@ -21,6 +21,12 @@ class BonusVC: UIViewController {
         super.viewDidLoad()
         upperLid.layer.anchorPoint = CGPoint.init(x:0.5, y: 0)
         amountLabel.text = "获得$\(amount ?? 1)!"
+        let moneyKey = Key<Double>("UserMoneyKey")
+        var savedMoney = 0.0
+        if Defaults.shared.has(moneyKey) {
+            savedMoney = Defaults.shared.get(for: moneyKey)!
+        }
+        Defaults.shared.set(savedMoney + amount, for: moneyKey)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

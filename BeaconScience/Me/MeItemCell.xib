@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,8 +25,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLd-C0-GJj">
+                        <rect key="frame" x="55" y="0.0" width="250" height="47.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uj5-XS-Ci2">
-                        <rect key="frame" x="15" y="10" width="30" height="27"/>
+                        <rect key="frame" x="15" y="10" width="30" height="27.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="Qki-TC-ZNL"/>
                         </constraints>
@@ -34,18 +40,23 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="f17-R4-qWh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6M3-lx-MOa"/>
+                    <constraint firstItem="YLd-C0-GJj" firstAttribute="centerY" secondItem="f17-R4-qWh" secondAttribute="centerY" id="Ezl-VA-SIe"/>
+                    <constraint firstItem="YLd-C0-GJj" firstAttribute="width" secondItem="f17-R4-qWh" secondAttribute="width" id="HkJ-am-ZpS"/>
                     <constraint firstAttribute="bottom" secondItem="Uj5-XS-Ci2" secondAttribute="bottom" constant="10" id="Nqf-lN-szo"/>
                     <constraint firstAttribute="bottom" secondItem="f17-R4-qWh" secondAttribute="bottom" id="Vd8-xH-CHX"/>
                     <constraint firstItem="Uj5-XS-Ci2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="XZa-K6-Y7I"/>
                     <constraint firstItem="Uj5-XS-Ci2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ZnT-wM-AbM"/>
                     <constraint firstAttribute="trailing" secondItem="f17-R4-qWh" secondAttribute="trailing" constant="15" id="fgx-xb-Db5"/>
+                    <constraint firstItem="YLd-C0-GJj" firstAttribute="centerX" secondItem="f17-R4-qWh" secondAttribute="centerX" id="icR-FB-f0D"/>
                     <constraint firstItem="f17-R4-qWh" firstAttribute="leading" secondItem="Uj5-XS-Ci2" secondAttribute="trailing" constant="10" id="meP-1E-fWk"/>
+                    <constraint firstItem="YLd-C0-GJj" firstAttribute="height" secondItem="f17-R4-qWh" secondAttribute="height" id="wef-PL-YKR"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="itemImageView" destination="Uj5-XS-Ci2" id="XPU-71-yDP"/>
                 <outlet property="itemLabel" destination="f17-R4-qWh" id="Gu7-ny-lrX"/>
+                <outlet property="rightLabel" destination="YLd-C0-GJj" id="hVX-fP-IUX"/>
             </connections>
             <point key="canvasLocation" x="34" y="56"/>
         </tableViewCell>
