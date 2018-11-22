@@ -128,11 +128,10 @@ class Conversations {
         for name in data {
             if name == Messages.shared.mainLine {
                 data.swapAt(0, index)
-                break
+                save()
+                return
             }
             index += 1
         }
-        data.insert(Messages.shared.mainLine, at: 0)
-        save()
     }
 }
